@@ -22,7 +22,7 @@ const bpmnVisualization2 = new BpmnVisualization({
 // just for displaying my title and version of the tool
 const footer = document.querySelector('footer');
 const version = bpmnVisualization.getVersion();
-footer.innerText = `TFG-version-${version.lib}`;
+footer.innerText = `TFG-tool-version-${version.lib}`;
 
 // ################ ZONA DE PRUEBAS ################
 //TODO probar a cargar en una variable el texto raw de los diagramas y luego cargarlos en el load
@@ -214,8 +214,9 @@ var cont2=0;
 var pr;
 var pr2;
 var sim;
+var poolsA;
+var poolsB;
 
-// Ejemplo de uso de la función
 (async () => {
     //const taskNames = await getTaskNames('/src/csv_files/Get_conference.bpmn.csv');
     //console.log("Tareas leídas del archivo CSV Get conference");
@@ -228,46 +229,76 @@ var sim;
     // Delete paper - Delete subject (con datos simulados)
     //###############################
 
-    switch (diagramA) {
-        case 'colors.bpmn':
+
+    /*
+            ¡¡¡¡¡¡ IMPORTANTE !!!!!!
             
-        break;
+            LA COMPARACION SOLO ES EN UN SENTIDO
+
+            POR EJEMPLO GET - UPDATE
+
+            PERO NO UPDATE -GET 
+
+            Porque la matriz de similitud tiene N x M elementos y en cuanto un diagrama tenga mas tareas que el otro se producira un error
+    */
+
+    switch (diagramA) {
         case 'crs-delete-paper-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Delete_paper.bpmn.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-delete-subject-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Delete_subject.bpmn.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-get-conference-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            poolsA = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
+        break;
+        case 'crs-update-conference-bpmn.bpmn':
+            pr = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            poolsA = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
         default:
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            poolsA = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
     }
 
     switch (diagramB) {
-        case 'colors.bpmn':
-            
-        break;
         case 'crs-delete-paper-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Delete_paper.bpmn.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-delete-subject-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Delete_subject.bpmn.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-get-conference-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            poolsB = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
+            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
         default:
             pr2 = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            poolsB = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
+            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
     }
 
     //console.log(pr);
@@ -289,13 +320,52 @@ var sim;
     //console.log(sim);
     
     //Se almacena en idsFromA los ids de las tareas del diagrama A convertidos a camelCase a partir de los nombres de las tareas
-    const idsFromA = convertirACamelCase(pr).map(string => string.replace(/\r/g, ""));
+    let idsFromA = convertirACamelCase(pr).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
     //Se almacena en idsFromB los ids de las tareas del diagrama B convertidos a camelCase a partir de los nombres de las tareas
-    const idsFromB = convertirACamelCase(pr2).map(string => string.replace(/\r/g, ""));
+    let idsFromB = convertirACamelCase(pr2).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
     console.log("Ids convertidos para el diagrama A: ",idsFromA);
     console.log("Ids convertidos para el diagrama B: ",idsFromB);
 
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
+    //Nuevo
+    console.log("@@@@@@@@@ CONVERTIR ID A NOMBRES @@@@@@@@@@@@");
+    const namesFromA = convertToNames(idsFromA).map(string => string.replace(/\r/g, ""));
+    console.log("Nombres convertidos para el diagrama A: ", namesFromA);
+    const namesFromB = convertToNames(idsFromB).map(string => string.replace(/\r/g, ""));
+    console.log("Nombres convertidos para el diagrama B: ", namesFromB);
+
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    //Hasta aqui
+
+    console.log("@@@@@@@@@@@@@@@ POOLS DIAGRAMA A @@@@@@@@@@@@@@@@@@@@");
+    console.log("Pools del diagrama A: ", poolsA);
+    console.log("@@@@@@@@@@@@@@@ POOLS DIAGRAMA B @@@@@@@@@@@@@@@@@@@@");
+    console.log("Pools del diagrama B: ", poolsB);
+
+    //Nuevo
+    console.log("@@@@@@@@@@@@@@@ TAREAS DIAGRAMA A @@@@@@@@@@@@@@@@@@@@")
+    let idPoolsA = new Map();
+    for(var i=0; i<pr.length; i++){
+        console.log("Tarea: ",pr[i]," - ID: " + idsFromA[i] + " - " + "pool: " + poolsA[i]);
+        idPoolsA.set(idsFromA[i], poolsA[i]);
+        console.log(idPoolsA.get(idsFromA[i]))
+    }
+    //idPoolsA.map(string => string.replace(/\r/g, ""));
+    console.log({idPoolsA})
+
+    console.log("@@@@@@@@@@@@@@@ TAREAS DIAGRAMA B @@@@@@@@@@@@@@@@@@@@");
+    
+    let idPoolsB = new Map();
+    for(var i=0; i<pr2.length; i++){
+        console.log("Tarea ",pr2[i]," - ID: " + idsFromB[i] + " - " + "pool: " + poolsB[i]);
+        idPoolsB.set(idsFromB[i], poolsB[i]);
+        console.log(idPoolsB.get(idsFromB[i]));
+    }
+    console.log({idPoolsB});
+
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    //Hasta aqui
 
     //Valor maximo de similitud entre dos tareas para cada fila de la matriz
     let max_match = 0;
@@ -309,6 +379,26 @@ var sim;
     let taskFromA_min = null;
     //Nombre de la tarea del diagrama B con menor similitud
     let taskFromB_min = null;
+
+    //Nuevo
+    //Pool para la tarea del diagrama A con mayor similitud en cada iteracion
+    let maxTmpPoolA = null;
+    //Pool para la tarea del diagrama B con mayor similitud en cada iteracion
+    let maxTmpPoolB = null;
+    //Pool para la tarea del diagrama A con menor similitud en cada iteracion
+    let minTmpPoolA = null;
+    //Pool para la tarea del diagrama B con menor similitud en cada iteracion
+    let minTmpPoolB = null;
+    //Pool para la tarea del diagrama A con mayor similitud anterior en la iteracion
+    let oldMaxTmpPoolA = null;
+    //Pool para la tarea del diagrama B con mayor similitud anterior en la iteracion
+    let oldMaxTmpPoolB = null;
+    //Pool para la tarea del diagrama A con menor similitud anterior en la iteracion
+    let oldMinTmpPoolA = null;
+    //Pool para la tarea del diagrama B con menor similitud anterior en la iteracion
+    let oldMinTmpPoolB = null;
+    //
+
     //Nombres de las tareas del diagrama A con mayor similitud en cada fila de la matriz
     let maxTaskFromAArray = [];
     //Nombres de las tareas del diagrama A con menor similitud en cada fila de la matriz
@@ -322,6 +412,19 @@ var sim;
     let maxTaskFromAValuesArray = [];
     //Valores de similitud minimos para las tareas de A en cada fila de la matriz 
     let minTaskFromAValuesArray = [];
+
+    //Nuevo
+    //Guarda el valor del pool para los ids de las tareas de A con mayor similitud en cada fila de la matriz
+    let maxTaskFromAPoolsArray = [];
+    //Guarda el valor del pool para los ids de las tareas de B con menor similitud en cada fila de la matriz
+    let maxTaskFromBPoolsArray = [];
+    //Guarda el valor del pool para los ids de las tareas de A con menor similitud en cada fila de la matriz
+    //Sincronizado con el array de minTaskFromAArray
+    let minTaskFromAPoolsArray = [];
+    //Guarda el valor del pool para los ids de las tareas de B con menor similitud en cada fila de la matriz
+    //Sincronizado con el array de minTaskFromBArray
+    let minTaskFromBPoolsArray = [];
+    //Hasta aqui
     
     /* 
     Se lee cada casilla de la matriz, se saca el maximo y el minimo de coincidencia para cada tarea de A respecto con cada tarea de B
@@ -365,7 +468,6 @@ var sim;
     }
     */
 
-    //En proceso. La idea es trabajar con los ids para solucionar el problema comentado anteriormente
     for(cont = 0; cont < idsFromA.length; cont++){
         for(cont2 = 0; cont2 < idsFromB.length; cont2++){
             //console.log("MATRIZ ",[cont],[cont2],sim[cont][cont2]);
@@ -373,18 +475,64 @@ var sim;
             //console.log("### Valor de la matriz-> ", sim[cont][cont2]);
 
             //Se hace un mejor hasta ahora para obtener los maximos y minimos en cada fila, junto con las tareas
+            // ########## Quiza aqui se puede plantear algo con los pools de las tareas
             if(sim[cont][cont2] > max_match){
                 max_match = sim[cont][cont2];
                 taskFromA_max = idsFromA[cont];
                 taskFromB_max = idsFromB[cont2]; //taskFromB_max = pr2[cont];
+                //Se guardan los pools de las tareas con mayor similitud
+                oldMaxTmpPoolA = poolsA[cont];
+                oldMaxTmpPoolB = poolsB[cont2];
+            }
+            if(sim[cont][cont2] == max_match){
+                
+                //Si las tareas tienen la misma similitud, se comprueba si el pool de la tarea de A es igual al de la tarea de B
+                if(oldMaxTmpPoolA == poolsB[cont2]){
+                    //Cuando estan en el mismo pool se actualiza la tarea con mayor similitud
+                    max_match = sim[cont][cont2];
+                    taskFromA_max = idsFromA[cont];
+                    taskFromB_max = idsFromB[cont2];
+                    //Se guardan los pools de las tareas con mayor similitud por si en la siguiente iteracion hay otra tarea con la misma similitud
+                    //Para poder volver a comprobar los pools
+                    oldMaxTmpPoolA = poolsA[cont];
+                    oldMaxTmpPoolB = poolsB[cont2];
+                }
+                
             }
             if(sim[cont][cont2] < min_match){
                 min_match = sim[cont][cont2];
                 taskFromA_min = idsFromA[cont];
                 taskFromB_min = idsFromB[cont2];
+                //Se guardan los pools de las tareas con menor similitud
+                oldMinTmpPoolA = poolsA[cont];
+                oldMinTmpPoolB = poolsB[cont2];
+
+                //console.log("***** MENOR SIM Y PASA POR TAREA DE B: ",taskFromB_min, " - POOL: ",poolsB[cont2], " - SIM: ",sim[cont][cont2], " *****");
+            }
+            if(sim[cont][cont2] == min_match){
+                console.log("########## TAREA B: ", idsFromB[cont2],"  pool ",poolsB[cont2], " SIM: ", sim[cont][cont2], " ########################")
+                if(oldMinTmpPoolA != poolsB[cont2]){
+                    //Cuando estan en distinto pool se actualiza la tarea con menor similitud
+                    min_match = sim[cont][cont2];
+                    taskFromA_min = idsFromA[cont];
+                    taskFromB_min = idsFromB[cont2];
+
+                    //console.log("Valor min: ",min_match, "task A - ",taskFromA_min, "pool ", poolsA[cont], "task B - ",taskFromB_min, "pool ", poolsB[cont2]);
+                    //Se guardan los pools de las tareas con menor similitud
+                    oldMinTmpPoolA = poolsA[cont];
+                    oldMinTmpPoolB = poolsB[cont2];
+                    //
+                    /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+                    console.log("Se ha actualizado la tarea")
+                    console.log("MATCH: ",min_match, " - Task from A: ",taskFromA_min, " - Task from B: ",taskFromB_min);
+                    console.log("POOL A: ",poolsA[cont], " - POOL B: ",poolsB[cont2]);
+                    console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");*/
+                    //console.log("----- IGUAL SIM Y PASA POR TAREA DE B: ",taskFromB_min, " - POOL: ",poolsB[cont2], " -----");
+                    //
+                }
             }
         }
-
+        
         //Se meten las tareas en los arrays y lo mismo con los valores de similitud maximos y minimos
         maxTaskFromAArray.push(taskFromA_max);
         minTaskFromAArray.push(taskFromA_min);
@@ -392,16 +540,76 @@ var sim;
         minTaskFromBArray.push(taskFromB_min);
         maxTaskFromAValuesArray.push(max_match);
         minTaskFromAValuesArray.push(min_match);
+
+        //
+
+        //###### IMPORTANTE ######
+        //Pensar como hacer antes de esto para que se tenga en cuenta el pool de cada tarea
+
+        //Se obtienen los pools de las tareas con mayor y menor similitud
+        maxTmpPoolA = idPoolsA.get(taskFromA_max);
+        //console.log("maxTmpPoolA: ",maxTmpPoolA);
+        maxTaskFromAPoolsArray.push(maxTmpPoolA);
+
+        maxTmpPoolB = idPoolsB.get(taskFromB_max);
+        //console.log("maxTmpPoolB: ",maxTmpPoolB);
+        maxTaskFromBPoolsArray.push(maxTmpPoolB);
+
+        minTmpPoolA = idPoolsA.get(taskFromA_min);
+        //console.log("minTmpPoolA: ",minTmpPoolA);
+        minTaskFromAPoolsArray.push(minTmpPoolA);
+
+        minTmpPoolB = idPoolsB.get(taskFromB_min);
+        //console.log("minTmpPoolB: ",minTmpPoolB);
+        minTaskFromBPoolsArray.push(minTmpPoolB);
+
+        //
         
-        console.log("MAX MATCH: ",max_match, " - Task from A MAX: ",taskFromA_max, " - Task from B MAX: ",taskFromB_max);
-        console.log("MIN MATCH: ",min_match, " - Task from A min: ",taskFromA_min, " - Task from B min: ",taskFromB_min);
-        console.log(taskFromA_max, taskFromB_max, taskFromA_min, taskFromB_min);
+        console.log("MAX MATCH: ",max_match, " - Task from A MAX: ",taskFromA_max, "- pool : ",maxTmpPoolA, " - Task from B MAX: ",taskFromB_max,"- pool : ",maxTmpPoolB);
+        console.log("MIN MATCH: ",min_match, " - Task from A min: ",taskFromA_min, "- pool : ",minTmpPoolA," - Task from B min: ",taskFromB_min,"- pool : ",minTmpPoolB);
+        //console.log(taskFromA_max, taskFromB_max, taskFromA_min, taskFromB_min);
             
         //console.log("Fin de la vuelta");
         //Resetear los valores de maximo y minimo para la siguiente vuelta
         max_match = 0;
         min_match = 1;
     }
+    //Hasta aqui
+
+    //Nuevo
+
+    console.log("---------------------- MAX POOLS FROM A AND IDS ----------------------");
+    
+    console.log(maxTaskFromAPoolsArray);
+
+    for(let i = 0; i < maxTaskFromAPoolsArray.length; i++){
+        console.log("Tarea ",maxTaskFromAArray[i]," pool: ",maxTaskFromAPoolsArray[i]);
+    }
+
+    console.log("---------------------- MAX POOLS FROM B AND IDS ----------------------");
+    
+    console.log(maxTaskFromBPoolsArray);
+
+    for(let i = 0; i < maxTaskFromBPoolsArray.length; i++){
+        console.log("Tarea ",maxTaskFromBArray[i]," pool: ",maxTaskFromBPoolsArray[i]);
+    }
+    
+    console.log("---------------------- MIN POOLS FROM A AND IDS ----------------------");
+    
+    console.log(minTaskFromAPoolsArray);
+
+    for(let i = 0; i < minTaskFromAPoolsArray.length; i++){
+        console.log("Tarea ",minTaskFromAArray[i]," pool: ",minTaskFromAPoolsArray[i]);
+    }
+
+    console.log("---------------------- MIN POOLS FROM B AND IDS ----------------------");
+    
+    console.log(minTaskFromBPoolsArray);
+
+    for(let i = 0; i < minTaskFromBPoolsArray.length; i++){
+        console.log("Tarea ",minTaskFromBArray[i]," pool: ",minTaskFromBPoolsArray[i]);
+    }
+
     //Hasta aqui
 
     /*console.log("Recorriendo la lista de maxima coincidencia para A:",maxTaskFromAArray.length)
@@ -685,6 +893,57 @@ var sim;
             });
         }
         
+    }
+    else{
+        // En proceso
+        //Se colorean las tareas del diagrama A con baja coincidencia respecto a tareas del diagrama B
+        for(cont=0; cont < id_min_tasks_from_A.length; cont++){
+            //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
+            //console.log("/AAAAAAAAA/", id_max_tasks_from_A[cont]);
+            bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
+        }
+        //Hasta aqui
+
+        //En proceso
+        //Se colorean las tareas del diagrama B con baja coincidencia respecto a tareas del diagrama A
+        for(cont=0; cont < id_min_tasks_from_B.length; cont++){
+            //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
+            console.log("/BBBBBBBBB/", id_min_tasks_from_B[cont]);
+            bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
+        }
+        //Hasta aqui
+
+        //En proceso
+        for(cont=0; cont < id_min_tasks_from_A.length; cont++){
+            //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            console.log("/CCCCCCCC/", id_min_tasks_from_A[cont]);
+            bpmnVisualization.bpmnElementsRegistry.addOverlays(id_min_tasks_from_A[cont], {
+                position: 'top-center',
+                label: `${minTaskFromAValuesArray[cont]}`,
+                style: {
+                    font: { color: 'black', size: 16 },
+                    fill: { color: 'white', opacity: 100 },
+                    stroke: { color: 'black', width: 4 },
+                },
+            });
+        }
+        //Hasta aqui
+
+        //En proceso
+        for(cont=0; cont < id_min_tasks_from_B.length; cont++){
+            //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            console.log("/DDDDDDDD/", id_min_tasks_from_B[cont]);
+            bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
+                position: 'top-center',
+                label: `${minTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
+                style: {
+                    font: { color: 'black', size: 16 },
+                    fill: { color: 'white', opacity: 100 },
+                    stroke: { color: 'black', width: 4 },
+                },
+            });
+        }
+        //Hasta aqui
     }
     
     //FIN DE LA PRUEBA

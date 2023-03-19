@@ -364,9 +364,9 @@ var cont2=0;
     //console.log("ID de la lista de minima coincidencia para B",id_min_tasks_from_B);
     //Hasta aqui
 
-    /*
+    
     //Se colorean las tareeas del diagrama A con alta coincidencia respecto a tareas del diagrama B
-    for(cont=0; cont < id_max_tasks_from_A.length; cont++){
+    /*for(cont=0; cont < id_max_tasks_from_A.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
         //console.log("/AAAAAAAAA/", id_max_tasks_from_A[cont]);
         if(maxTaskFromAValuesArray[cont] <= (1/3)){
@@ -382,21 +382,21 @@ var cont2=0;
 
     // En proceso
     //Se colorean las tareeas del diagrama A con baja coincidencia respecto a tareas del diagrama B
-    /*for(cont=0; cont < id_min_tasks_from_A.length; cont++){
+    for(cont=0; cont < id_min_tasks_from_A.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
         //console.log("/AAAAAAAAA/", id_max_tasks_from_A[cont]);
         bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
-    }*/
-    for(cont=0; cont < id_max_tasks_from_A.length; cont++){
+    }
+    /*for(cont=0; cont < id_max_tasks_from_A.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
         //console.log("/AAAAAAAAA/", id_max_tasks_from_A[cont]);
         bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
-    }
+    }*/
     //Hasta aqui
 
-    /*
+    
     //Se colorean las tareeas del diagrama B con alta coincidencia respecto a tareas del diagrama A
-    for(cont=0; cont < id_max_tasks_from_B.length; cont++){
+    /*for(cont=0; cont < id_max_tasks_from_B.length; cont++){
         //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
         console.log("/BBBBBBBBB/", id_max_tasks_from_B[cont]);
         if(maxTaskFromAValuesArray[cont] <= (1/3)){
@@ -408,26 +408,26 @@ var cont2=0;
         else{
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
         }
-    }
-    */
+    }*/
+    
 
     //En proceso
     //Se colorean las tareeas del diagrama B con baja coincidencia respecto a tareas del diagrama A
-    /*for(cont=0; cont < id_min_tasks_from_B.length; cont++){
+    for(cont=0; cont < id_min_tasks_from_B.length; cont++){
         //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
         //console.log("/BBBBBBBBB/", id_min_tasks_from_B[cont]);
         bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
-    }*/
-    for(cont=0; cont < id_max_tasks_from_B.length; cont++){
+    }
+    /*for(cont=0; cont < id_max_tasks_from_B.length; cont++){
         //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
         //console.log("/BBBBBBBBB/", id_min_tasks_from_B[cont]);
         bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
-    }
+    }*/
     //Hasta aqui
 
     //PRUEBA PARA AGREGAR OVERLAY
     
-    for(cont=0; cont < id_max_tasks_from_A.length; cont++){
+    /*for(cont=0; cont < id_max_tasks_from_A.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
         //console.log("/CCCCCCCC/", id_max_tasks_from_A[cont]);
         bpmnVisualization.bpmnElementsRegistry.addOverlays(id_max_tasks_from_A[cont], {
@@ -439,10 +439,10 @@ var cont2=0;
                 stroke: { color: 'black', width: 4 },
             },
         });
-    }
+    }*/
     
     //En proceso
-    /*for(cont=0; cont < id_min_tasks_from_A.length; cont++){
+    for(cont=0; cont < id_min_tasks_from_A.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
         //console.log("/CCCCCCCC/", id_min_tasks_from_A[cont]);
         bpmnVisualization.bpmnElementsRegistry.addOverlays(id_min_tasks_from_A[cont], {
@@ -454,10 +454,10 @@ var cont2=0;
                 stroke: { color: 'black', width: 4 },
             },
         });
-    }*/
+    }
     //Hasta aqui
     
-    for(cont=0; cont < id_max_tasks_from_B.length; cont++){
+    /*for(cont=0; cont < id_max_tasks_from_B.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
         //console.log("/DDDDDDDD/", id_max_tasks_from_B[cont]);
         bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_max_tasks_from_B[cont], {
@@ -469,10 +469,10 @@ var cont2=0;
                 stroke: { color: 'black', width: 4 },
             },
         });
-    }
+    }*/
     
     //En proceso
-    /*for(cont=0; cont < id_min_tasks_from_B.length; cont++){
+    for(cont=0; cont < id_min_tasks_from_B.length; cont++){
         //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
         //console.log("/DDDDDDDD/", id_min_tasks_from_B[cont]);
         bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
@@ -484,7 +484,7 @@ var cont2=0;
                 stroke: { color: 'black', width: 4 },
             },
         });
-    }*/
+    }
     //Hasta aqui
 
     //FIN DE LA PRUEBA
