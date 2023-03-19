@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TFG</title>
+    <meta charset="UTF-8" />
+    <!--<script type="module" src="/src/process.js"></script>-->
+    <script type="module" src="/src/test-parser-js.js"></script>
+
+    
+    <!--<script type="module" src="src/prueba2.js"></script>-->
+    <!--<script type="module" src="src/prueba2_verde.js"></script>-->
+    <!-- <script type="module" src="src/subido.js"></script> -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/src/styles.css">
+    <!-- Se cargan las librerias de py-script  -->
+    <!-- Importacion de librerias -->
+    <!--
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    
+    <py-env>
+        - xml.etree.ElementTree
+        - glob
+        - re
+    </py-env>
+    -->
+    
+
+</head>
+
+<body>
+    <nav>
+        <!-- Esta página representa el mínimo-->
+        <a class="no-underline" href="/index.html">Home (Minimum)</a>
+        <a class="no-underline" id="current-page" href="/src/html/pre-process-diagram.html">Parse Diagrams</a>
+        <a class="no-underline" href="/src/html/minimo_especial.html">Special Minimum</a>
+        <a class="no-underline" href="/src/html/maximo.html">Maximum</a>
+        <a class="no-underline" href="/src/html/maximo_especial.html">Special Maximum</a>
+        <a class="no-underline" href="/src/html/subida.html">Select diagrams</a>
+        <a class="no-underline" href="/src/html/info.html">Info</a>
+        <a class="no-underline" href="/src/html/testzone.html">¡¡¡TEST ZONE!!!</a>
+    </nav>
+    <div id="titulo">Semantic View - Eduardo Cano García</div>
+        
+    <div class="info-content" id="preprocess">
+        <h1>Preprocess Diagrams</h1>
+        <p>In this page, you must pre-process the diagrams before you can start using the tool.</p>
+        <h2>Option 1: select the folder to pre-process the diagrams inside</h2>
+        <!-- Elemento para seleccionar la carpeta del proyecto -->
+        <label for="file-input" class="scriptbutton">Select Folder</label>
+        <input type="file" hidden id="file-input" webkitdirectory mozdirectory msdirectory odirectory directory multiple />
+        <br><br>
+        <button hidden id="descargar">Descargar BPMN</button>
+        <button hidden id="processFiles">Procesar Archivos</button>
+        <hr>
+        <h2>Option 2: just clic on "Parse all" to parse the .bpmn diagrams</h2>
+
+        <!--<input type="button" class="scriptbutton" id='script' name="scriptbutton" value=" Parse all " onclick="main()">-->
+        
+        <input type="button" class="scriptbutton" id='script' name="scriptbutton" value=" Parse all " onclick="goPython()">
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+        <script>
+            function goPython(){
+                $.ajax({
+                //url: "/src/hola.cgi",
+                url: "src/third_parser_v0.4.py",
+                context: $('#preprocess')
+                }).done(function() {
+                alert('The files were successfully parsed');
+                });
+            }
+        </script>
+        
+        
+<!--
+        <py-script> 
+import xml.etree.ElementTree as ET
+import glob
+import re
+
+#this function recieves a string with the name of a task and converts it to camel case for using it later to be the id of the task
+def convertToCamelCase(strings):
+    #object for counting each string ocurrence
+    counters={}
+    #split the full string into words
+    words = strings.split(" ")
+    
+    #convert the first word to lower case and the rest of them to upper case
+    camelCased = [word.lower() if i == 0 else word[0].upper() + word[1:].lower() for i, word in enumerate(words)]
+    
+    #join the words into a string and add a suffix if the string has been repeated
+    result = "".join(camelCased)
+    if result in counters:
+        counters[result] += 1
+        return result + str(counters[result])
+    counters[result] = 1
+    return result
+
+def modifyBpmnFile(file):
+    #regular expression for searching tasks
+    regexTask = re.compile(r'Task[\s\S]*?id="([\s\S]*?)"[\s\S]*?name="([\s\S]*?)"')
+    
+    modifiedFile = file
+    taskNames = {}
+    
+    #search tasks in the file
+    for match in regexTask.finditer(file):
+        if (match.group(2) != "" and (match.group(2) != None)):
+            taskName = convertToCamelCase(match.group(2))
+        else:
+            taskName = match.group(1)
+        
+        #if a task with that name has already been found, add a number to the end of it
+        if taskName in taskNames:
+            count = taskNames[taskName]
+            taskNames[taskName] = count + 2
+            taskName += str(count)
+        else:
+            taskNames[taskName] = 2
+            
+        #replace the task id with the named converted to camel case
+        modifiedId = taskName
+        idRegex = re.compile(re.escape(match.group(1)))
+        modifiedFile = re.sub(idRegex, modifiedId, modifiedFile)
+        
+    return modifiedFile
+
+# this function modifies the namespaces but the next function removes them
+def add_task_position(root):
+    task_counter = 1
+    for elem in root.iter():
+        if elem.tag.endswith("Task"):
+            elem.set("taskPosition", str(task_counter))
+            task_counter += 1
+
+def remove_namespaces(tree):
+    for elem in tree.getiterator():
+        match = re.match(r"\{.*\}(.*)", elem.tag)
+        if match:
+            elem.tag = match.group(1)
+    return tree
+
+def main():
+    print('PASA POIR MAIN')
+    #path = "./bpmn_diagrams/*.bpmn"
+    path = "./unparsed/*.bpmn"
+    files = glob.glob(path)
+
+    for name in files:
+        print(name)
+        with open(name) as f:
+            content = f.read()
+            modified_file = modifyBpmnFile(content)
+            name2 = name
+            with open(name2, "w") as f:
+                f.write(modified_file)
+    
+    for name in files:
+        tree = ET.parse(name)
+        root = tree.getroot()
+        add_task_position(root)
+        tree.write(name)
+
+    for name in files:
+        tree = ET.parse(name)
+        root = tree.getroot()
+        namespaces = {}
+        tree = remove_namespaces(tree)
+        tree.write(name)
+
+main()
+        </py-script>
+-->
+
+    </div>
+    
+    <footer></footer>
+
+</body>
+
+</html>
