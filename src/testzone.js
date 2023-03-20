@@ -1,11 +1,6 @@
 import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn-visualization';
-//import diagram from './bpmn_diagrams/diagram.bpmn?raw';
-//import diagram2 from './bpmn_diagrams/CRS - Create article.bpmn?raw';
-//import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
-//import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
 import './styles.css';
 import { getActivitiesRunningInstances, getEdgesWaitingInstances, getPrueba } from './js/algorithms.js';
-//import { calcularSimilitudCasillas, calcularSimilitudCasillas2 } from './js/similitud';
 import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
 
 // Variable para almacenar el diagrama de la parte izquierda de la pantalla 
@@ -105,17 +100,6 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
         console.log("EL DIAGRAMA 2 (DERECHA) SE HA CARGADO POR DEFECTO");
     }
 }
-
-
-
-//const response = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
-//const data = await response.text();
-//console.log(data);
-
-// ################ FIN ZONA DE PRUEBAS ############
-////////////////////////////////////
-
-
 
 // Cargar diagrama de la parte izquierda de la pantalla
 bpmnVisualization.load(diagram1Raw, {
