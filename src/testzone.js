@@ -111,87 +111,6 @@ bpmnVisualization2.load(diagram2Raw, {
     fit: { type: FitType.Center }
 });
 
-
-// retrieve data of the live instances
-/*
-const activitiesRunningInstances = getActivitiesRunningInstances();
-const edgesWaitingInstances = getEdgesWaitingInstances();
-const prueba = getPrueba();
-
-// add Overlays on running activity instances
-activitiesRunningInstances.forEach((value, activityId) => {
-    // running on time
-    if (value.onTime) {
-        bpmnVisualization.bpmnElementsRegistry.addOverlays(activityId, {
-            position: 'top-center',
-            label: `${value.onTime}`,
-            style: {
-                font: { color: 'white', size: 16 },
-                fill: { color: 'green', opacity: 50 },
-                stroke: { color: 'green', width: 2 },
-            },
-        });
-    }
-    // running late with risky level
-    if (value.risky) {
-        bpmnVisualization.bpmnElementsRegistry.addOverlays(activityId, {
-            position: 'top-left',
-            label: `${value.risky}`,
-            style: {
-                font: { color: 'white', size: 16 },
-                fill: { color: '#FF8C00', opacity: 50 },
-                stroke: { color: '#FF8C00', width: 2 },
-            },
-        });
-    }
-    // running late with critical level
-    if (value.critical) {
-        bpmnVisualization.bpmnElementsRegistry.addOverlays(activityId, {
-            position: 'top-right',
-            label: `${value.critical}`,
-            style: {
-                font: { color: 'white', size: 16 },
-                fill: { color: 'red', opacity: 50 },
-                stroke: { color: 'red', width: 2 },
-            },
-        });
-    }
-});
-
-// add CSS classes to running activity instances
-activitiesRunningInstances.forEach((value, activityId) => {
-    if (value.critical) {
-        bpmnVisualization.bpmnElementsRegistry.addCssClasses(activityId, 'task-running-critical');
-    } else if (value.risky) {
-        bpmnVisualization.bpmnElementsRegistry.addCssClasses(activityId, 'task-running-risky');
-    } else if (value.onTime) {
-        bpmnVisualization.bpmnElementsRegistry.addCssClasses(activityId, 'task-running-on-time');
-    }
-});
-*/
-
-/*
-bpmnVisualization2.bpmnElementsRegistry.getElementsByIds(ids).forEach((element) => {
-
-    bpmnVisualization2.bpmnElementsRegistry.getElementsByIds(ids).forEach((element) => {
-        console.log("MATRIZ ",[cont],[cont2],matrizz[cont][cont2]);
-        console.log("ID ",ids[cont],ids[cont2]);
-        if(matrizz[cont][cont2] < (1/3) ){
-            bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids[cont], 'low-match');
-            bpmnVisualization2.bpmnElementsRegistry.addCssClasses(ids[cont2], 'low-match');
-        } else if((1/3) <= matrizz[cont][cont2] && matrizz[cont][cont2] < (2/3) ){
-            bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids[cont], 'medium-match');
-            bpmnVisualization2.bpmnElementsRegistry.addCssClasses(ids[cont2], 'medium-match');
-        } else {
-            bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids[cont], 'high-match');
-            bpmnVisualization2.bpmnElementsRegistry.addCssClasses(ids[cont2], 'high-match');
-        }
-        cont2 = cont2 + 1;
-    });
-    cont = cont + 1;
-});*/
-
-
 //Contadores que se usaran para el procesamiento de las tareas de los diagramas
 var cont=0;
 var cont2=0;
@@ -202,10 +121,7 @@ var poolsA;
 var poolsB;
 
 (async () => {
-    //const taskNames = await getTaskNames('/src/csv_files/Get_conference.bpmn.csv');
-    //console.log("Tareas leídas del archivo CSV Get conference");
-    //console.log(taskNames);  // Imprime el array con los nombres de las tareas leídas del archivo CSV
-
+    
     //###### NOTA IMPORTANTISIMA ######
     //De momento solo se pueden comparar dos diagramas entre si, de los cuales se dispongan las tareas en csv y la matriz de similitud
     //Los disponibles son:
@@ -409,48 +325,6 @@ var poolsB;
     //Sincronizado con el array de minTaskFromBArray
     let minTaskFromBPoolsArray = [];
     //Hasta aqui
-    
-    /* 
-    Se lee cada casilla de la matriz, se saca el maximo y el minimo de coincidencia para cada tarea de A respecto con cada tarea de B
-    Falta intentar poner el css sobre cada tarea en base a su similitud
-    
-    for(cont = 0; cont < pr.length; cont++){
-        for(cont2 = 0; cont2 < pr2.length; cont2++){
-            //console.log("MATRIZ ",[cont],[cont2],sim[cont][cont2]);
-            //console.log("ID A: ",pr[cont]," ID B: ",pr2[cont2]);
-            //console.log("### Valor de la matriz-> ", sim[cont][cont2]);
-
-            //Se hace un mejor hasta ahora para obtener los maximos y minimos en cada fila, junto con las tareas
-            if(sim[cont][cont2] > max_match){
-                max_match = sim[cont][cont2];
-                taskFromA_max = pr[cont];
-                taskFromB_max = pr2[cont2]; //taskFromB_max = pr2[cont];
-            }
-            if(sim[cont][cont2] < min_match){
-                min_match = sim[cont][cont2];
-                taskFromA_min = pr[cont];
-                taskFromB_min = pr2[cont2];
-            }
-        }
-
-        //Se meten las tareas en los arrays y lo mismo con los valores de similitud maximos y minimos
-        maxTaskFromAArray.push(taskFromA_max);
-        minTaskFromAArray.push(taskFromA_min);
-        maxTaskFromBArray.push(taskFromB_max);
-        minTaskFromBArray.push(taskFromB_min);
-        maxTaskFromAValuesArray.push(max_match);
-        minTaskFromAValuesArray.push(min_match);
-        
-        console.log("MAX MATCH: ",max_match, " - Task from A MAX: ",taskFromA_max, " - Task from B MAX: ",taskFromB_max);
-        console.log("MIN MATCH: ",min_match, " - Task from A min: ",taskFromA_min, " - Task from B min: ",taskFromB_min);
-        console.log(taskFromA_max, taskFromB_max, taskFromA_min, taskFromB_min);
-            
-        //console.log("Fin de la vuelta");
-        //Resetear los valores de maximo y minimo para la siguiente vuelta
-        max_match = 0;
-        min_match = 1;
-    }
-    */
 
     for(cont = 0; cont < idsFromA.length; cont++){
         for(cont2 = 0; cont2 < idsFromB.length; cont2++){
@@ -459,7 +333,6 @@ var poolsB;
             //console.log("### Valor de la matriz-> ", sim[cont][cont2]);
 
             //Se hace un mejor hasta ahora para obtener los maximos y minimos en cada fila, junto con las tareas
-            // ########## Quiza aqui se puede plantear algo con los pools de las tareas
             if(sim[cont][cont2] > max_match){
                 max_match = sim[cont][cont2];
                 taskFromA_max = idsFromA[cont];
@@ -525,11 +398,7 @@ var poolsB;
         maxTaskFromAValuesArray.push(max_match);
         minTaskFromAValuesArray.push(min_match);
 
-        //
-
-        //###### IMPORTANTE ######
-        //Pensar como hacer antes de esto para que se tenga en cuenta el pool de cada tarea
-
+        //Nuevo
         //Se obtienen los pools de las tareas con mayor y menor similitud
         maxTmpPoolA = idPoolsA.get(taskFromA_max);
         //console.log("maxTmpPoolA: ",maxTmpPoolA);
@@ -546,13 +415,11 @@ var poolsB;
         minTmpPoolB = idPoolsB.get(taskFromB_min);
         //console.log("minTmpPoolB: ",minTmpPoolB);
         minTaskFromBPoolsArray.push(minTmpPoolB);
-
-        //
+        //Hasta aqui
         
         console.log("MAX MATCH: ",max_match, " - Task from A MAX: ",taskFromA_max, "- pool : ",maxTmpPoolA, " - Task from B MAX: ",taskFromB_max,"- pool : ",maxTmpPoolB);
         console.log("MIN MATCH: ",min_match, " - Task from A min: ",taskFromA_min, "- pool : ",minTmpPoolA," - Task from B min: ",taskFromB_min,"- pool : ",minTmpPoolB);
-        //console.log(taskFromA_max, taskFromB_max, taskFromA_min, taskFromB_min);
-            
+        
         //console.log("Fin de la vuelta");
         //Resetear los valores de maximo y minimo para la siguiente vuelta
         max_match = 0;
@@ -563,7 +430,6 @@ var poolsB;
     //Nuevo
 
     console.log("---------------------- MAX POOLS FROM A AND IDS ----------------------");
-    
     console.log(maxTaskFromAPoolsArray);
 
     for(let i = 0; i < maxTaskFromAPoolsArray.length; i++){
@@ -571,7 +437,6 @@ var poolsB;
     }
 
     console.log("---------------------- MAX POOLS FROM B AND IDS ----------------------");
-    
     console.log(maxTaskFromBPoolsArray);
 
     for(let i = 0; i < maxTaskFromBPoolsArray.length; i++){
@@ -579,7 +444,6 @@ var poolsB;
     }
     
     console.log("---------------------- MIN POOLS FROM A AND IDS ----------------------");
-    
     console.log(minTaskFromAPoolsArray);
 
     for(let i = 0; i < minTaskFromAPoolsArray.length; i++){
@@ -587,7 +451,6 @@ var poolsB;
     }
 
     console.log("---------------------- MIN POOLS FROM B AND IDS ----------------------");
-    
     console.log(minTaskFromBPoolsArray);
 
     for(let i = 0; i < minTaskFromBPoolsArray.length; i++){
@@ -613,22 +476,7 @@ var poolsB;
         console.log(element);
     });
 
-    // ############################################################################################################
-    //NOTA IMPORTANTE: NO PUEDO CONVERTIR YA LOS ARRAY DE MAXIMOS Y MINIMOS A IDENTIFICADORES, DEBO HACERLO ANTES
-    //#############################################################################################################
-
-    //Se convierten los nombres de las tareas con el maximo y minimo de coincidencia a identificadores
     //con .map(string => string.replace(/\r/g, "")) se esta eliminando el retorno de carro de cada string del array
-    /*
-    const id_max_tasks_from_A = convertirACamelCase(maxTaskFromAArray).map(string => string.replace(/\r/g, ""));
-    const id_min_tasks_from_A = convertirACamelCase(minTaskFromAArray).map(string => string.replace(/\r/g, ""));
-    const id_max_tasks_from_B = convertirACamelCase(maxTaskFromBArray).map(string => string.replace(/\r/g, ""));
-    const id_min_tasks_from_B = convertirACamelCase(minTaskFromBArray).map(string => string.replace(/\r/g, ""));
-    console.log("ID de la lista de maxima coincidencia para A",id_max_tasks_from_A);
-    console.log("ID de la lista de maxima coincidencia para B",id_max_tasks_from_B);
-    console.log("ID de la lista de minima coincidencia para A",id_min_tasks_from_A);
-    console.log("ID de la lista de minima coincidencia para B",id_min_tasks_from_B);
-    */
 
     //En proceso
     const id_max_tasks_from_A = maxTaskFromAArray.map(string => string.replace(/\r/g, ""));
@@ -827,7 +675,6 @@ var poolsB;
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             }
         }
-
         
         //Se colorean las tareeas del diagrama B con alta coincidencia respecto a tareas del diagrama A
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
@@ -844,7 +691,6 @@ var poolsB;
             }
         }
         
-
         //PRUEBA PARA AGREGAR OVERLAY
         
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
@@ -861,7 +707,6 @@ var poolsB;
             });
         }
         
-
         
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
@@ -970,151 +815,8 @@ var poolsB;
         res.innerHTML += id_min_similitudes[cont] + "<br>";
     }
 
-
-
-    // ######### PRUEBA DE OVERLAY Y COLOREADO #########
-    /*
-    var prueba_clasificacion = ['obtain-allConference','obtain-allConference2','chooseConference','obtainConference'];
-    var prueba_valores = [0.32,0.33,0.66,0.67];
-
-    for(cont=0; cont < prueba_clasificacion.length; cont++){
-        //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
-        console.log("/¿?¿?¿?¿?¿?/", prueba_clasificacion[cont]);
-        //clasificarValoresA(prueba_clasificacion, cont);
-        if(prueba_valores[cont] <= (1/3) ){
-            bpmnVisualization.bpmnElementsRegistry.addCssClasses(prueba_clasificacion[cont], 'low-match');
-            console.log("VVVVVVVVVVVVVVVVVEEEEEEEEEEEEEEEERRRRRRRRRDDDDDDDDDDDDDDDEEEEEEEEE")
-        } else if((1/3) < prueba_valores[cont] && prueba_valores[cont] <= (2/3) ){
-            bpmnVisualization.bpmnElementsRegistry.addCssClasses(prueba_clasificacion[cont], 'medium-match');
-            console.log("AAAAAAAMMMMMMAAAAAAAAAAAARRRRRRRIIIIIIIIILLLLLLLLLOOOOOOOOO");
-        } else {
-            bpmnVisualization.bpmnElementsRegistry.addCssClasses(prueba_clasificacion[cont], 'high-match');
-            console.log("RRRRRRRRROOOOOOOOOOOOOOJJJJJJJJJJJOOOOOOOOOOOOO");
-        }
-        bpmnVisualization.bpmnElementsRegistry.addOverlays(prueba_clasificacion[cont], {
-            position: 'top-center',
-            label: `${prueba_valores[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
-            style: {
-                font: { color: 'black', size: 16 },
-                fill: { color: 'white', opacity: 100 },
-                stroke: { color: 'black', width: 4 },
-            },
-        });
-    }
-    */
-    // ######### FIN PRUEBA DE OVERLAY Y COLOREADO #########
-
 })();
 
-
-
-
-
-
-
-//Pruebas de ID y tag name utilizando el DOM
-/*
-let parser = new DOMParser();
-let xmlDoc = parser.parseFromString(diagram2, "text/xml");
-console.log(xmlDoc);
-const element2 = xmlDoc.querySelector("[data-bpmn-id='asignarPuesto']");
-
-console.log('##############################');
-console.log(element2);
-
-console.log(bpmnVisualization2.bpmnElementsRegistry);
-const a = bpmnVisualization2.bpmnElementsRegistry;
-const e = a.getElementsByIds('asignarPuesto');
-console.log(e);
-bpmnVisualization2.bpmnElementsRegistry.addCssClasses('asignarPuesto', 'low-match');
-
-
-if(element2 != null){
-    let container = element2.parentNode;
-    let containerId = container.getAttribute("data-bpmn-id");
-    console.log(containerId);
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(containerId, {
-        position: 'middle',
-        label: 'heyyy',
-        style: {
-            font: { color: 'white', size: 16 },
-            fill: { color: 'red', opacity: 50 },
-            stroke: { color: 'red', width: 2 },
-        },
-    });
-    
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(container, 'prueba');
-    element2.style.color = "red";
-    element2.innerHTML = "Scan Invoiceddd";
-}
-*/
-
-/*
-// Carga la librería desde un módulo
-import BPMN from 'bpmn-js/lib/Modeler';
-
-// Cargamos el archivo .bpmn
-var bpmnXML = '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_1">' +
-'<bpmn:process id="Process_1" isExecutable="true">' +
-'<bpmn:startEvent id="StartEvent_1" />' +
-'<bpmn:task id="Task_1" name="My Task">' +
-'<bpmn:incoming>SequenceFlow_1</bpmn:incoming>' +
-'<bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>' +
-'</bpmn:task>' +
-'<bpmn:endEvent id="EndEvent_1" />' +
-'<bpmn:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1" />' +
-'<bpmn:sequenceFlow id="SequenceFlow_2" sourceRef="Task_1" targetRef="EndEvent_1" />' +
-'</bpmn:process>' +
-'</bpmn:definitions>';
-
-// Creamos una nueva instancia de BPMNModeler
-var modeler = new BPMNModeler({
-    container: '.parte-izquierda'
-});
-
-var m = new BPMN.Modeler({
-    container: 'parte-derecha'
-});
-
-
-// Cargamos el archivo .bpmn en el modeler
-modeler.importXML(bpmnXML, function(err) {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    
-    // Obtenemos todos los elementos de tarea del diagrama
-    var tasks = modeler.get('elementRegistry').filter(function(element) {
-        return element.type === 'bpmn:Task';
-    });
-    
-    // Buscamos la tarea que tenga el nombre "My Task"
-    var task;
-    for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].businessObject.name === "My Task") {
-            task = tasks[i];
-            break;
-        }
-    }
-    
-    console.log(task);
-});
-
-
-var tasks = bpmnVisualization.get('elementRegistry').filter(function(element) {
-    return element.type === 'bpmn:Task';
-});
-
-// Buscamos la tarea que tenga el nombre "My Task"
-var task;
-for (var i = 0; i < tasks.length; i++) {
-    if (tasks[i].businessObject.name === "Assign Approver") {
-        task = tasks[i];
-        break;
-    }
-}
-*/
 
 // ######################################## FUNCIONES ########################################
 
@@ -1223,7 +925,6 @@ function escribirArrayEnCSV(nombreArchivo, array) {
 // Ejemplo de uso: escribe un array de strings en un archivo CSV llamado "miArchivo.csv"
 //const miArray = ['Hola', 'Mundo', 'CSV'];
 //escribirArrayEnCSV('miArchivo.csv', miArray);
-
 
 function clasificarValoresA(valores, cont){
     if(valores[cont] <= (1/3) ){

@@ -1,0 +1,78 @@
+/* Estilo general de la barra de navegación */
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Estilo de los enlaces en la barra de navegación */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo del enlace activo */
+#current-page {
+    background-color: white;
+    color: #333;
+}
+
+/* Estilo del título de la página */
+#titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Estilo del contenedor principal */
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Estilo de la parte izquierda del contenedor principal */
+#parte-izquierda {
+    flex-basis: 60%;
+}
+
+/* Estilo de la parte derecha del contenedor principal */
+#parte-derecha {
+    flex-basis: 40%;
+}
+
+/* Estilo del pie de página */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Estilo de la clase contenedor */
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Estilo del primer div dentro de la clase contenedor */
+#parte-izquierda {
+    flex-basis: 50%;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}
+
+/* Estilo del segundo div dentro de la clase contenedor */
+#parte-derecha {
+    flex-basis: 50%;
+    box-sizing: border-box;
+    background-color: #e6e6e6;
+}
