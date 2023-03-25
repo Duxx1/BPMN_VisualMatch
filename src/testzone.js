@@ -345,6 +345,7 @@ var poolsB;
                 
                 //Si las tareas tienen la misma similitud, se comprueba si el pool de la tarea de A es igual al de la tarea de B
                 if(oldMaxTmpPoolA == poolsB[cont2]){
+                //if(oldMaxTmpPoolA == poolsB[cont2]){
                     //Cuando estan en el mismo pool se actualiza la tarea con mayor similitud
                     max_match = sim[cont][cont2];
                     taskFromA_max = idsFromA[cont];
@@ -366,7 +367,8 @@ var poolsB;
 
                 //console.log("***** MENOR SIM Y PASA POR TAREA DE B: ",taskFromB_min, " - POOL: ",poolsB[cont2], " - SIM: ",sim[cont][cont2], " *****");
             }
-            if(sim[cont][cont2] == min_match){
+            if(sim[cont][cont2] >= min_match){
+            //if(sim[cont][cont2] == min_match){
                 console.log("########## TAREA B: ", idsFromB[cont2],"  pool ",poolsB[cont2], " SIM: ", sim[cont][cont2], " ########################")
                 if(oldMinTmpPoolA != poolsB[cont2]){
                     //Cuando estan en distinto pool se actualiza la tarea con menor similitud

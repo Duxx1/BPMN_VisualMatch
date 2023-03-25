@@ -1,4 +1,4 @@
-# Desarrollo del TFG Eduardo Cano García
+# Development of Eduardo Cano García's TFG
 
 Run
 
@@ -9,7 +9,7 @@ npm start
 
 Open the URL mentioned in the console
 
-## How to Build the solution for deployment
+## How to Build for deployment
 
 Run `npm run build`
 
