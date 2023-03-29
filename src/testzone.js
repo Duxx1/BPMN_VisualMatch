@@ -20,12 +20,11 @@ const version = bpmnVisualization.getVersion();
 footer.innerText = `TFG-tool-version-${version.lib}`;
 
 // ################ ZONA DE PRUEBAS ################
-//TODO probar a cargar en una variable el texto raw de los diagramas y luego cargarlos en el load
-//Probar luego condicionales mezclados con la pagina de subir
+//Cargar en una variable el texto raw de los diagramas y luego renderizarlos en el load
 var diagramA = localStorage.getItem("diagramA");
 var diagramB = localStorage.getItem("diagramB");
-console.log(diagramA);
-console.log(diagramB);
+//console.log(diagramA);
+//console.log(diagramB);
 var diagram1;
 var diagram1Raw;
 var diagram2;
@@ -112,12 +111,19 @@ bpmnVisualization2.load(diagram2Raw, {
 });
 
 //Contadores que se usaran para el procesamiento de las tareas de los diagramas
+//Contador para iterar sobre las tareas del diagrama A
 var cont=0;
+//Contador para iterar sobre las tareas del diagrama B
 var cont2=0;
+//Tareas del diagrama A
 var pr;
+//Tareas del diagrama B
 var pr2;
+//Valores de la matriz de similitud
 var sim;
+//Pools de las tareas del diagrama A
 var poolsA;
+//Pools de las tareas del diagrama B
 var poolsB;
 
 (async () => {
@@ -129,17 +135,16 @@ var poolsB;
     // Delete paper - Delete subject (con datos simulados)
     //###############################
 
-
     /*
-            ¡¡¡¡¡¡ IMPORTANTE !!!!!!
-            
-            LA COMPARACION SOLO ES EN UN SENTIDO
+    ¡¡¡¡¡¡ IMPORTANTE !!!!!!
+    
+    LA COMPARACION SOLO ES EN UN SENTIDO
 
-            POR EJEMPLO GET - UPDATE
+    POR EJEMPLO GET - UPDATE
 
-            PERO NO UPDATE -GET 
+    PERO NO UPDATE -GET 
 
-            Porque la matriz de similitud tiene N x M elementos y en cuanto un diagrama tenga mas tareas que el otro se producira un error
+    Porque la matriz de similitud tiene N x M elementos y en cuanto un diagrama tenga mas tareas que el otro se producira un error
     */
 
     switch (diagramA) {
@@ -204,19 +209,13 @@ var poolsB;
     //console.log(pr);
     //console.log(pr2);
 
-    //Se almacena en pr los nombres de las tareas del diagrama A leidas desde el csv
-    //console.log("Probando a obtener del csv Get conference los nombres de las tareas:");
-    //pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
+    //Se tiene en pr los nombres de las tareas del diagrama A leidas desde el csv
     //console.log("nombres:", pr);
     
-    //Se almacena en pr2 los nombres de las tareas del diagrama B leidos desde el csv
-    //console.log("Probando a obtener del csv Update conference los nombres de las tareas:");
-    //pr2 = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
+    //Se tiene en pr2 los nombres de las tareas del diagrama B leidos desde el csv
     //console.log("nombres:", pr2);
     
-    //Se almacena en sim los valores de la matriz de similitud leidos desde el csv
-    //console.log("Probando a obtener del csv los valores de la matriz de similitud:");
-    //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+    //Se tiene en sim los valores de la matriz de similitud leidos desde el csv
     //console.log(sim);
     
     //Se almacena en idsFromA los ids de las tareas del diagrama A convertidos a camelCase a partir de los nombres de las tareas
@@ -271,16 +270,16 @@ var poolsB;
     let max_match = 0;
     //Valor minimo de similitud entre dos tareas para cada fila de la matriz
     let min_match = 1;
-    //Nombre de la tarea del diagrama A con mayor similitud
+    
+    //ID de la tarea del diagrama A con mayor similitud
     let taskFromA_max = null;
-    //Nombre de la tarea del diagrama B con mayor similitud
+    //ID de la tarea del diagrama B con mayor similitud
     let taskFromB_max = null;
-    //Nombre de la tarea del diagrama A con menor similitud
+    //ID de la tarea del diagrama A con menor similitud
     let taskFromA_min = null;
-    //Nombre de la tarea del diagrama B con menor similitud
+    //ID de la tarea del diagrama B con menor similitud
     let taskFromB_min = null;
 
-    //Nuevo
     //Pool para la tarea del diagrama A con mayor similitud en cada iteracion
     let maxTmpPoolA = null;
     //Pool para la tarea del diagrama B con mayor similitud en cada iteracion
@@ -297,23 +296,23 @@ var poolsB;
     let oldMinTmpPoolA = null;
     //Pool para la tarea del diagrama B con menor similitud anterior en la iteracion
     let oldMinTmpPoolB = null;
-    //
-
-    //Nombres de las tareas del diagrama A con mayor similitud en cada fila de la matriz
+    
+    //IDs de las tareas del diagrama A con mayor similitud en cada fila de la matriz
     let maxTaskFromAArray = [];
-    //Nombres de las tareas del diagrama A con menor similitud en cada fila de la matriz
+    //IDs de las tareas del diagrama A con menor similitud en cada fila de la matriz
     let minTaskFromAArray = [];
-    //Nombres de las tareas del diagrama B con mayor similitud en cada fila de la matriz
+    //IDs de las tareas del diagrama B con mayor similitud en cada fila de la matriz
     let maxTaskFromBArray = [];
-    //Nombres de las tareas del diagrama B con mayor similitud en cada fila de la matriz
+    //IDs de las tareas del diagrama B con mayor similitud en cada fila de la matriz
     let minTaskFromBArray = [];
+
     //Valores de similitud maximos para las tareas de A en cada fila de la matriz 
     //Nota: es el mismo que para las tareas de B
     let maxTaskFromAValuesArray = [];
-    //Valores de similitud minimos para las tareas de A en cada fila de la matriz 
+    //Valores de similitud minimos para las tareas de A en cada fila de la matriz
+    //Nota: es el mismo que para las tareas de B
     let minTaskFromAValuesArray = [];
-
-    //Nuevo
+    
     //Guarda el valor del pool para los ids de las tareas de A con mayor similitud en cada fila de la matriz
     let maxTaskFromAPoolsArray = [];
     //Guarda el valor del pool para los ids de las tareas de B con menor similitud en cada fila de la matriz
@@ -357,6 +356,7 @@ var poolsB;
                 }
                 
             }
+
             if(sim[cont][cont2] < min_match){
                 min_match = sim[cont][cont2];
                 taskFromA_min = idsFromA[cont];
@@ -364,11 +364,10 @@ var poolsB;
                 //Se guardan los pools de las tareas con menor similitud
                 oldMinTmpPoolA = poolsA[cont];
                 oldMinTmpPoolB = poolsB[cont2];
-
                 //console.log("***** MENOR SIM Y PASA POR TAREA DE B: ",taskFromB_min, " - POOL: ",poolsB[cont2], " - SIM: ",sim[cont][cont2], " *****");
             }
-            if(sim[cont][cont2] >= min_match){
-            //if(sim[cont][cont2] == min_match){
+            //if(sim[cont][cont2] >= min_match){
+            if(sim[cont][cont2] == min_match){
                 console.log("########## TAREA B: ", idsFromB[cont2],"  pool ",poolsB[cont2], " SIM: ", sim[cont][cont2], " ########################")
                 if(oldMinTmpPoolA != poolsB[cont2]){
                     //Cuando estan en distinto pool se actualiza la tarea con menor similitud
@@ -496,25 +495,20 @@ var poolsB;
 
     if(selected == 1){  //Si se selecciona la opcion de mostrar las tareas con menor similitud
 
-        // En proceso
         //Se colorean las tareas del diagrama A con baja coincidencia respecto a tareas del diagrama B
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             //console.log("/AAAAAAAAA/", id_max_tasks_from_A[cont]);
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
         }
-        //Hasta aqui
 
-        //En proceso
         //Se colorean las tareas del diagrama B con baja coincidencia respecto a tareas del diagrama A
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             console.log("/BBBBBBBBB/", id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
         }
-        //Hasta aqui
 
-        //En proceso
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/CCCCCCCC/", id_min_tasks_from_A[cont]);
@@ -528,9 +522,7 @@ var poolsB;
                 },
             });
         }
-        //Hasta aqui
 
-        //En proceso
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/DDDDDDDD/", id_min_tasks_from_B[cont]);
@@ -544,10 +536,8 @@ var poolsB;
                 },
             });
         }
-        //Hasta aqui
     }
     else if(selected == 2){     //Si se selecciona la opcion de mostrar las tareas con menor similitud y especial
-        // En proceso
         //Se colorean las tareeas del diagrama A con baja coincidencia respecto a tareas del diagrama B
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
@@ -562,9 +552,7 @@ var poolsB;
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'high-match');
             }
         }
-        //Hasta aqui
 
-        //En proceso
         //Se colorean las tareeas del diagrama B con baja coincidencia respecto a tareas del diagrama A
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
@@ -579,9 +567,7 @@ var poolsB;
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'high-match');
             }
         }
-        //Hasta aqui
 
-        //En proceso
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/CCCCCCCC/", id_min_tasks_from_A[cont]);
@@ -595,9 +581,7 @@ var poolsB;
                 },
             });
         }
-        //Hasta aqui
 
-        //En proceso
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/DDDDDDDD/", id_min_tasks_from_B[cont]);
@@ -611,7 +595,6 @@ var poolsB;
                 },
             });
         }
-        //Hasta aqui
     }
     else if(selected == 3){    //Si se selecciona la opcion de mostrar las tareas con mayor similitud
 
@@ -629,8 +612,6 @@ var poolsB;
             console.log("/BBBBBBBBB/", id_max_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
         }
-
-        //PRUEBA PARA AGREGAR OVERLAY
         
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
@@ -693,8 +674,6 @@ var poolsB;
             }
         }
         
-        //PRUEBA PARA AGREGAR OVERLAY
-        
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/CCCCCCCC/", id_max_tasks_from_A[cont]);
@@ -708,7 +687,6 @@ var poolsB;
                 },
             });
         }
-        
         
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
@@ -726,25 +704,20 @@ var poolsB;
         
     }
     else{
-        // En proceso
         //Se colorean las tareas del diagrama A con baja coincidencia respecto a tareas del diagrama B
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             //console.log("/AAAAAAAAA/", id_max_tasks_from_A[cont]);
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
         }
-        //Hasta aqui
 
-        //En proceso
         //Se colorean las tareas del diagrama B con baja coincidencia respecto a tareas del diagrama A
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             console.log("/BBBBBBBBB/", id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
         }
-        //Hasta aqui
 
-        //En proceso
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/CCCCCCCC/", id_min_tasks_from_A[cont]);
@@ -758,9 +731,7 @@ var poolsB;
                 },
             });
         }
-        //Hasta aqui
 
-        //En proceso
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             console.log("/DDDDDDDD/", id_min_tasks_from_B[cont]);
@@ -774,7 +745,6 @@ var poolsB;
                 },
             });
         }
-        //Hasta aqui
     }
     
     //FIN DE LA PRUEBA
