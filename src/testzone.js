@@ -219,9 +219,9 @@ var poolsB;
     //console.log(sim);
     
     //Se almacena en idsFromA los ids de las tareas del diagrama A convertidos a camelCase a partir de los nombres de las tareas
-    let idsFromA = convertirACamelCase(pr).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
+    let idsFromA = convertToCamelCase(pr).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
     //Se almacena en idsFromB los ids de las tareas del diagrama B convertidos a camelCase a partir de los nombres de las tareas
-    let idsFromB = convertirACamelCase(pr2).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
+    let idsFromB = convertToCamelCase(pr2).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
     console.log("Ids convertidos para el diagrama A: ",idsFromA);
     console.log("Ids convertidos para el diagrama B: ",idsFromB);
 
@@ -810,31 +810,31 @@ async function getTaskNames(fileUrl) {
 //Esta función recibe un array con los nombres de las tareas
 //Devuelve un array con los id de las tareas siendo el nombre de la tarea convertido a camelCase
 //Si aparece una misma tarea mas de una vez, se agrega un numero al final indicando la ocurrencia 
-function convertirACamelCase(cadenas) {
+function convertToCamelCase(strings) {
     // Crea un objeto para contar las ocurrencias de cada cadena
-    const contadores = {};
+    const counters = {};
     
     // Convierte cada cadena en un array de palabras y aplica la función de transformación
-    const camelCased = cadenas.map(cadena => {
+    const camelCased = strings.map(str => {
         // Divide la cadena en palabras
-        const palabras = cadena.split(' ');
+        const words = str.split(' ');
         
         // Convierte la primera palabra a minúsculas y las demás a mayúsculas
-        const camelCased = palabras.map((palabra, index) => {
+        const camelCased = words.map((word, index) => {
             if (index === 0) {
-                return palabra.toLowerCase();
+                return word.toLowerCase();
             }
-            return palabra[0].toUpperCase() + palabra.slice(1).toLowerCase();
+            return word[0].toUpperCase() + word.slice(1).toLowerCase();
         });
         
         // Une las palabras en una cadena y añade un sufijo si se ha repetido la cadena
-        const resultado = camelCased.join('');
-        if (contadores[resultado]) {
-            contadores[resultado] += 1;
-            return resultado + contadores[resultado];
+        const result = camelCased.join('');
+        if (counters[result]) {
+            counters[result] += 1;
+            return result + counters[result];
         }
-        contadores[resultado] = 1;
-        return resultado;
+        counters[result] = 1;
+        return result;
     });
     
     return camelCased;
