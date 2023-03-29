@@ -792,22 +792,33 @@ var poolsB;
     // Obtener una referencia al elemento canvas del DOM
     const $chart = document.querySelector("#chart");
     // Las etiquetas son las que van en el eje X. 
-    const tags = ["Maximum similarity", "Minimum similarity"]
-    // Podemos tener varios conjuntos de datos. Comencemos con uno
-    const diagramsData = {
-        label: "Similarity between diagrams",
-        data: [maxTotalSimilarity, minTotalSimilarity], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
-        borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
-        borderWidth: 1,// Ancho del borde
+    const tags = ["Similarity between diagramas"]
+    
+    var maxSimData = {
+        label: 'Maximum similarity',
+        data: [maxTotalSimilarity],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 2 // Ancho del borde
+    };
+    var minSimData = {
+        label: 'Minimum similarity',
+        data: [minTotalSimilarity],
+        backgroundColor: 'rgba(220, 250, 205, 1)',
+        borderColor: 'rgba(75, 255, 10, 1)',
+        borderWidth: 2 // Ancho del borde
+    };
+    var chartDiagramsData = {
+        labels: ["Maximum similarity", "Minimum similarity"],
+        datasets: [maxSimData, minSimData]
     };
     new Chart($chart, {
-        type: 'bar',// Tipo de gráfica
+        type: 'bar', // Gráfica de barras
         data: {
             labels: tags,
             datasets: [
-                diagramsData,
-                // Aquí más datos...
+                maxSimData,
+                minSimData,
             ]
         },
         options: {
@@ -815,7 +826,7 @@ var poolsB;
                 y: {
                     beginAtZero: true
                 },
-            },
+            }
         }
     });
 
