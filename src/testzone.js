@@ -768,14 +768,15 @@ var poolsB;
     }cont=0;
     console.log(id_min_similitudes);
 
-    
+    let maxTotalSimilarity = checkTotalSimilarity(maxTaskFromAValuesArray);
+    let minTotalSimilarity = checkTotalSimilarity(minTaskFromAValuesArray);
     
     /*
     Al descomentar las 2 lineas de abajo, se descargan 2 csv con las maximas y minimas similitudes
     de los ids de las tareas del diagrama A respecto a los del diagrama B, junto con el valor de similitud
     */
-    //escribirArrayEnCSV('id_max_similitudes.csv', id_max_similitudes);
-    //escribirArrayEnCSV('id_min_similitudes.csv', id_min_similitudes);
+    //writeArrayToCSV('id_max_similitudes.csv', id_max_similitudes);
+    //writeArrayToCSV('id_min_similitudes.csv', id_min_similitudes);
 
     const res = document.getElementById("results");
     res.innerHTML += "<h2 style=background-color:red>Maximum similarity results </h2><br>";
@@ -787,7 +788,41 @@ var poolsB;
         res.innerHTML += id_min_similitudes[cont] + "<br>";
     }
 
+
+    // Obtener una referencia al elemento canvas del DOM
+    const $chart = document.querySelector("#chart");
+    // Las etiquetas son las que van en el eje X. 
+    const tags = ["Maximum similarity", "Minimum similarity"]
+    // Podemos tener varios conjuntos de datos. Comencemos con uno
+    const diagramsData = {
+        label: "Similarity between diagrams",
+        data: [maxTotalSimilarity, minTotalSimilarity], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+        borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+        borderWidth: 1,// Ancho del borde
+    };
+    new Chart($chart, {
+        type: 'bar',// Tipo de gráfica
+        data: {
+            labels: tags,
+            datasets: [
+                diagramsData,
+                // Aquí más datos...
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+            },
+        }
+    });
+
+
 })();
+
+
 
 
 // ######################################## FUNCIONES ########################################
@@ -874,29 +909,41 @@ function convertToNames(inputStr){
     return transformed;
 }
 
-function escribirArrayEnCSV(nombreArchivo, array) {
+function writeArrayToCSV(fileName, array) {
     // Comprueba que el navegador soporta la API de archivos
     if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
-        alert('Tu navegador no soporta la API de archivos');
+        alert('Your browser does not support the File API');
         return;
     }
     
     // Crea un archivo Blob con los datos del array
-    const datos = array.join('\n');  // une los elementos del array con saltos de línea
-    const blob = new Blob([datos], { type: 'text/csv' });
+    const data = array.join('\n');  // une los elementos del array con saltos de línea
+    const blob = new Blob([data], { type: 'text/csv' });
     
     // Descarga el archivo
     
     const link = document.createElement('a');
-    link.download = nombreArchivo;
+    link.download = fileName;
     link.href = URL.createObjectURL(blob);
     link.click();
     
 }
 
+function checkTotalSimilarity(values) {
+    let accumulator = 0;
+    let length = values.length;
+    console.log("LONGITUD: " + length);
+    for(let i=0; i<values.length; i++){
+        accumulator += parseFloat(values[i]);
+        console.log("VALOR " + i + ": " + values[i] + "")
+    }
+    console.log("@@@ SIMILARITY BETWEEN DIAGRAMS: " + (accumulator/length) + " @@@");
+    return accumulator/length;
+}
+
 // Ejemplo de uso: escribe un array de strings en un archivo CSV llamado "miArchivo.csv"
 //const miArray = ['Hola', 'Mundo', 'CSV'];
-//escribirArrayEnCSV('miArchivo.csv', miArray);
+//writeArrayToCSV('miArchivo.csv', miArray);
 
 function clasificarValoresA(valores, cont){
     if(valores[cont] <= (1/3) ){
