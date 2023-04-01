@@ -752,10 +752,39 @@ var poolsB;
     //Variables para guardar los id de tareas con mayor y menor similitud, junto con el valor de similitud
     const id_max_similitudes = [];
     const id_min_similitudes = [];
+    const names_max_similitudes = [];
+    const names_min_similitudes = [];
     //Reseteo de contador para el bucle
     cont=0;
-    //cont2=0;
+    let taskNamesArrayFromA_max = [];
+    let taskNamesArrayFromB_max = [];
+    taskNamesArrayFromA_max = convertToNames(id_max_tasks_from_A);
+    taskNamesArrayFromB_max = convertToNames(id_max_tasks_from_B);
+
+    let taskNamesArrayFromA_min = [];
+    let taskNamesArrayFromB_min = [];
+    taskNamesArrayFromA_min = convertToNames(id_min_tasks_from_A);
+    taskNamesArrayFromB_min = convertToNames(id_min_tasks_from_B);
+    //Prueba para mostrar los nombres de las tareas junto con los pools en lugar de los id
     while(id_max_tasks_from_A[cont] !== undefined || id_max_tasks_from_B[cont] !== undefined ){
+        //id_max_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_max_tasks_from_A[cont] + "</b> tiene un mayor parecido con la tarea del diagrama <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> con un valor de " + maxTaskFromAValuesArray[cont]);
+        //id_max_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_max_tasks_from_A[cont] + "</b> has a greater similarity with the task in diagram <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> with a value of <b>" + maxTaskFromAValuesArray[cont] + "</b>");
+        names_max_similitudes.push("The task in diagram <b>A</b> with name <b>" + taskNamesArrayFromA_max[cont] + "</b> in <b>pool " + maxTaskFromAPoolsArray[cont] + "</b> has a greater similarity with the task in diagram <b>B</b> <b>" + taskNamesArrayFromB_max[cont] + "</b> in <b>pool " + maxTaskFromBPoolsArray[cont] + "</b> with a value of <b>" + maxTaskFromAValuesArray[cont] + "</b>");
+        cont++;
+    }cont=0;
+    console.log(id_max_similitudes);
+    while(id_min_tasks_from_A[cont] !== undefined || id_min_tasks_from_B[cont] !== undefined ){
+        //id_min_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_min_tasks_from_A[cont] + "</b> tiene un menor parecido con la tarea del diagrama <b>B</b> <b>" + id_min_tasks_from_B[cont] + "</b> con un valor de " + minTaskFromAValuesArray[cont]);
+        //id_min_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_min_tasks_from_A[cont] + "</b> has less similarity with the task in diagram <b>B</b> <b>" + id_min_tasks_from_B[cont] + "</b> with a value of <b>" + minTaskFromAValuesArray[cont] + "</b>");
+        names_min_similitudes.push("The task in diagram <b>A</b> with name <b>" + taskNamesArrayFromA_min[cont] + "</b> in <b>pool "+ minTaskFromAPoolsArray[cont] + "</b> has less similarity with the task in diagram <b>B</b> <b>" + taskNamesArrayFromB_min[cont] + "</b> in <b>pool " + minTaskFromBPoolsArray[cont] + "</b> with a value of <b>" + minTaskFromAValuesArray[cont] + "</b>");
+        cont++;
+    }cont=0;
+    console.log(id_min_similitudes);
+
+    // HASTA AQUI
+    // INICIO ORIGINAL
+    //cont2=0;
+    /*while(id_max_tasks_from_A[cont] !== undefined || id_max_tasks_from_B[cont] !== undefined ){
         //id_max_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_max_tasks_from_A[cont] + "</b> tiene un mayor parecido con la tarea del diagrama <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> con un valor de " + maxTaskFromAValuesArray[cont]);
         id_max_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_max_tasks_from_A[cont] + "</b> has a greater similarity with the task in diagram <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> with a value of <b>" + maxTaskFromAValuesArray[cont] + "</b>");
         cont++;
@@ -767,6 +796,8 @@ var poolsB;
         cont++;
     }cont=0;
     console.log(id_min_similitudes);
+    */
+    // FIN ORIGINAL
 
     let maxTotalSimilarity = checkTotalSimilarity(maxTaskFromAValuesArray);
     let minTotalSimilarity = checkTotalSimilarity(minTaskFromAValuesArray);
@@ -780,12 +811,14 @@ var poolsB;
 
     const res = document.getElementById("results");
     res.innerHTML += "<h2 style=background-color:red>Maximum similarity results </h2><br>";
-    for(cont=0; cont < id_max_similitudes.length; cont++){
-        res.innerHTML += id_max_similitudes[cont] + "<br>";
+    for(cont=0; cont < names_max_similitudes.length; cont++){
+        //res.innerHTML += id_max_similitudes[cont] + "<br>";
+        res.innerHTML += "<hr>"+ names_max_similitudes[cont] + "<br>";
     }
     res.innerHTML += "<h2 style=background-color:lightgreen>Minimum similarity results </h2><br>";
-    for(cont=0; cont < id_min_similitudes.length; cont++){
-        res.innerHTML += id_min_similitudes[cont] + "<br>";
+    for(cont=0; cont < names_min_similitudes.length; cont++){
+        //res.innerHTML += id_min_similitudes[cont] + "<br>";
+        res.innerHTML += "<hr>"+ names_min_similitudes[cont] + "<br>";
     }
 
 
@@ -835,8 +868,9 @@ var poolsB;
 
 
 
-
+// ###########################################################################################
 // ######################################## FUNCIONES ########################################
+// ###########################################################################################
 
 //Función para leer un archivo CSV y obtener un array con los nombres de las tareas
 async function getTaskNames(fileUrl) {
