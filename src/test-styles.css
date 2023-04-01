@@ -17,6 +17,12 @@ nav a {
     transition: background-color 0.3s ease;
 }
 
+#logo {
+    max-width: 100px;
+    text-align: left;
+    align-self: flex-start;
+}
+
 /* Estilo del enlace activo */
 #current-page {
     background-color: white;
@@ -28,6 +34,8 @@ nav a {
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
+    padding: 5px;
+    color: white;
 }
 
 /* Estilo del contenedor principal */
@@ -35,6 +43,7 @@ nav a {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-top: 10px;
 }
 
 /* Estilo de la parte izquierda del contenedor principal */
