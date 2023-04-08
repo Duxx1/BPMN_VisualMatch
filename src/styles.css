@@ -52,15 +52,15 @@ footer {
   fill: lightgray;
 }
 
-.low-match  > rect {
+.high-match > rect {
   fill: rgb(23, 255, 23);
 }
 
-.medium-match  > rect {
+.medium-match > rect {
   fill: rgb(228, 253, 1);
 }
 
-.high-match  > rect {
+.low-match > rect {
   fill: rgb(250, 5, 5);
   /*animation: palpitate 3s infinite;*/
 }

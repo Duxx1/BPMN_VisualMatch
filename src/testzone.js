@@ -810,12 +810,12 @@ var poolsB;
     //writeArrayToCSV('id_min_similitudes.csv', id_min_similitudes);
 
     const res = document.getElementById("results");
-    res.innerHTML += "<h2 style=background-color:red>Maximum similarity results </h2><br>";
+    res.innerHTML += "<h2 style=background-color:lightgreen>Maximum similarity results </h2><br>";
     for(cont=0; cont < names_max_similitudes.length; cont++){
         //res.innerHTML += id_max_similitudes[cont] + "<br>";
         res.innerHTML += "<hr>"+ names_max_similitudes[cont] + "<br>";
     }
-    res.innerHTML += "<h2 style=background-color:lightgreen>Minimum similarity results </h2><br>";
+    res.innerHTML += "<hr><br><h2 style=background-color:lightcoral>Minimum similarity results </h2><br>";
     for(cont=0; cont < names_min_similitudes.length; cont++){
         //res.innerHTML += id_min_similitudes[cont] + "<br>";
         res.innerHTML += "<hr>"+ names_min_similitudes[cont] + "<br>";
@@ -830,15 +830,15 @@ var poolsB;
     var maxSimData = {
         label: 'Maximum similarity',
         data: [maxTotalSimilarity],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(220, 250, 205, 1)',
+        borderColor: 'rgba(75, 255, 10, 1)',
         borderWidth: 2 // Ancho del borde
     };
     var minSimData = {
         label: 'Minimum similarity',
         data: [minTotalSimilarity],
-        backgroundColor: 'rgba(220, 250, 205, 1)',
-        borderColor: 'rgba(75, 255, 10, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 2 // Ancho del borde
     };
     var chartDiagramsData = {
