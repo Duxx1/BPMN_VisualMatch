@@ -4,7 +4,6 @@ import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn
 import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
 import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
 import './styles.css';
-import { getActivitiesRunningInstances, getEdgesWaitingInstances, getPrueba } from './js/algorithms.js';
 //import { calcularSimilitudCasillas, calcularSimilitudCasillas2 } from './js/similitud';
 import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
 

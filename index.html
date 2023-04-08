@@ -7,37 +7,45 @@
     <!--<script type="module" src="src/process.js"></script>-->
 
     <!--<script type="module" src="src/prueba2.js"></script>-->
-    <script type="module" src="/src/prueba2_verde.js"></script>
+    <!--<script type="module" src="/src/prueba2_verde.js"></script>-->
     <!-- <script type="module" src="src/subido.js"></script> -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="/src/test-styles.css" />
   </head>
 
   <body>
     <nav>
       <!-- Esta página representa el mínimo-->
+      <a href=""><img src="/logo.PNG" alt="logo" id="logo" /></a>
       <a class="no-underline" id="current-page" href="/index.html">Home (Minimum)</a>
       <a class="no-underline" href="src/html/minimo_especial.html">Special Minimum</a>
       <a class="no-underline" href="src/html/maximo.html">Maximum</a>
       <a class="no-underline" href="src/html/maximo_especial.html">Special Maximum</a>
+      <a class="no-underline" href="src/html/pre-process-diagram.html">Pre-process Diagram</a>
       <a class="no-underline" href="src/html/subida.html">Select diagrams</a>
       <a class="no-underline" href="src/html/info.html">Info</a>
       <a class="no-underline" href="src/html/testzone.html">¡¡¡TEST ZONE!!!</a>
       <a class="no-underline" href="src/html/pruebas.html">PRUEBAS</a>
+      
     </nav>
-    <div id="titulo">Semantic View - Eduardo Cano García</div>
-    <h2 style="text-align: center;">You can zoom in and out using the mouse wheel</h2>
-    <!-- <div id="bpmn-container"></div> -->
-    <div class="contenedor">
-      <div id="parte-izquierda">
-        <!--Contenido de la parte izquierda-->
+    <div id="titulo" style="color:black; text-align: center;">Semantic View - Eduardo Cano García</div>
+    
+    <div class="boxes">
+      <div class="square">
+        <a href="src/html/info.html">Info</a>
       </div>
-      <div id="parte-derecha">
-        <!--Contenido de la parte derecha-->
+      <div class="square">
+        <a href="src/html/subida.html">Select diagrams</a>
+      </div>
+      <div class="square">
+        <a href="src/html/pre-process-diagram.html">Pre-process Diagrams</a>
+      </div>
+      <div class="square">
+        <a href="src/html/testzone.html">¡¡¡TEST ZONE!!!</a>
       </div>
     </div>
 
     <footer></footer>
-    <button hidden id="descargar">Descargar BPMN</button>
     
   </body>
   

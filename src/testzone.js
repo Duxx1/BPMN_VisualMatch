@@ -1,6 +1,5 @@
 import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn-visualization';
 import './styles.css';
-import { getActivitiesRunningInstances, getEdgesWaitingInstances, getPrueba } from './js/algorithms.js';
 import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
 
 // Variable para almacenar el diagrama de la parte izquierda de la pantalla 

@@ -1,8 +1,8 @@
 import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn-visualization';
 //import diagram from './bpmn_diagrams/diagram.bpmn?raw';
 //import diagram2 from './bpmn_diagrams/CRS - Create article.bpmn?raw';
-//import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
-//import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
+import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
+import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
 //import diagram from './bpmn_diagrams/archivo.bpmn?raw';
 //import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
 //import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
@@ -12,11 +12,10 @@ import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn
 //import diagram2 from './test-diagrams/crs-update-conference-bpmn.bpmn?raw';
 //import diagram from './bpmn_diagrams/parsed1.bpmn?raw';
 //import diagram2 from './bpmn_diagrams/parsed3.bpmn?raw';
-import diagram from '/src/test-diagrams/crs-delete-paper-third-parser.bpmn?raw';
-import diagram2 from '/src/test-diagrams/crs-delete-subject-third-parser.bpmn?raw';
+//import diagram from '/src/test-diagrams/crs-delete-paper-third-parser.bpmn?raw';
+//import diagram2 from '/src/test-diagrams/crs-delete-subject-third-parser.bpmn?raw';
 //import diagram2 from './test-diagrams/crs-update-conference-bpmn-second-phase.bpmn?raw';
 import './styles.css';
-import { getActivitiesRunningInstances, getEdgesWaitingInstances, getPrueba } from './js/algorithms.js';
 //import { calcularSimilitudCasillas, calcularSimilitudCasillas2 } from './js/similitud';
 import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
 
