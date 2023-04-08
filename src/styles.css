@@ -21,11 +21,13 @@ footer {
   background-color: white;
 }
 
+/* Estilo para el contenedor de los diagramas */
 .contenedor {
   display: flex;
   justify-content: center;
 }
 
+/* Estilo para los contenedores individuales de los diagramas */
 #parte-izquierda,
 #parte-derecha {
   width: 50%;
@@ -38,6 +40,7 @@ footer {
   background-color: white;
 }
 
+/* Estilo para el nombre de la herramienta */
 #titulo {
   text-align: center;
   font-size: 1rem;
@@ -45,6 +48,7 @@ footer {
   margin-top: 1rem;
 }
 
+/* Estilos para los elementos de los diagramas BPMN */
 .bpmn-type-event > ellipse,
 .bpmn-type-activity > rect,
 .bpmn-type-gateway > path:nth-child(1) {
@@ -52,19 +56,23 @@ footer {
   fill: lightgray;
 }
 
+/* Estilo para las tareas de los diagramas con alta coincidencia */
 .high-match > rect {
   fill: rgb(23, 255, 23);
 }
 
+/* Estilo para las tareas de los diagramas con media coincidencia */
 .medium-match > rect {
   fill: rgb(228, 253, 1);
 }
 
+/* Estilo para las tareas de los diagramas con baja coincidencia */
 .low-match > rect {
   fill: rgb(250, 5, 5);
   /*animation: palpitate 3s infinite;*/
 }
 
+/* Animacion */
 @keyframes palpitate {
   0% {
     transform: scale(1.009);
@@ -77,13 +85,14 @@ footer {
   }
 }
 
-/* PRUEBAS */
+/* Estilo para la barra de navegacion */
 nav {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Estilo para los enlaces de la barra de navegacion */
 nav a {
   margin: 0 10px;
   padding: 5px;
@@ -91,24 +100,29 @@ nav a {
   background-color: beige;
 }
 
+/* Estilo cuando se deja el cursor sobre un enlace de la barra de navegacion */
 nav a:hover {
   color: red;
 }
 
+/* Estilos para los enlaces */ 
 a.no-underline {
   text-decoration: none;
   font-weight: bold;
   color: blue;
 }
 
+/* Estilo para el enlace con la pagina actual */
 #current-page {
   color: red;
 }
 
+/* Estilo del contenedor para la pagina de informacion */
 .information {
   display: flex;
 }
 
+/* Estilo del contenido dentro del contenedor de la pagina de informacion */
 .info-content {
   flex: 1;
   padding: 20px;
@@ -121,6 +135,7 @@ a.no-underline {
   border: 3px dashed #00A4BD;
 }
 
+/* Estilo para el cuadro de preprocesado de diagramas*/
 #info-upload, #preprocess {
   text-align: center;
   background-color: rgb(240, 230, 213);
@@ -132,6 +147,7 @@ a.no-underline {
   border: 3px dashed #00A4BD;
 }
 
+/* Estilo para el cuadro con los resultados de la comparativa */
 #results{
   text-align: justify;
   background-color: rgb(240, 230, 213);
@@ -143,19 +159,23 @@ a.no-underline {
   padding: 5px;
 }
 
+/* Estilo para alinear los pasos a seguir */
 #pasos {
   text-align: left;
 }
 
+/* Estilo para las listas */
 li {
   padding-top: 5px;
 }
 
+/* Estilo para los botones */
 #botones {
   display: flex;
   justify-content: space-around;
 }
 
+/* Estilo para otros botones */
 #back, #clean, #send {
   text-align: center;
   text-decoration: none;
@@ -166,14 +186,17 @@ li {
   padding-left: 2px;
 }
 
+/* Estilo para otro boton */
 #send {
   color: rgb(24, 80, 235);
 }
 
+/* Estilo para otro boton */
 #clean {
   color: rgb(235, 24, 24);
 }
 
+/* Estilo para otro boton */
 .scriptbutton {
   display: inline-block;
   padding: 10px 20px;
@@ -189,8 +212,10 @@ li {
   box-shadow: 0 6px #999;
 }
 
+/* Estilo para cuando se deja el raton sobre otro boton */
 .scriptbutton:hover {background-color: #163bdf}
 
+/* Estilo para cuando se deja el raton sobre otro boton */
 .scriptbutton:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;

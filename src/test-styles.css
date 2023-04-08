@@ -17,6 +17,7 @@ nav a {
     transition: background-color 0.3s ease;
 }
 
+/* Estilo para la imagen con el logo de la aplicacion */
 #logo {
     max-width: 100px;
     text-align: left;
@@ -38,6 +39,7 @@ nav a {
     color: white;
 }
 
+/* Estilo del contenedor de las cajas */
 .boxes {
     display: flex;
     flex-wrap: wrap;
@@ -46,6 +48,7 @@ nav a {
     height: 50vh;
 }
 
+/* Estilo de cada cuadrado */
 .square {
     width: 300px;
     height: 300px;
@@ -58,6 +61,7 @@ nav a {
     position: relative;
 }
 
+/* Estilo del enlace dentro del cuadrado */
 .square a {
     color: #fff;
     font-size: 24px;
@@ -70,6 +74,7 @@ nav a {
     padding: 10px;
 }
 
+/* Estilo para cuando se mantiene el raton sobre el enlace dentro del cuadrado */
 .square a:hover {
     background-color: darkblue;
 }
@@ -122,6 +127,7 @@ footer {
     background-color: #e6e6e6;
 }
 
+/* Estilo del grafico de barras */
 #info-chart {
     width: 50%;
     height: 50%;
