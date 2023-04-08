@@ -35,7 +35,7 @@
             <br><b>crs-delete-paper-bpmn.bpmn</b> junto con <b>crs-delete-subject-bpmn.bpmn</b></p>
             <hr>
             <h2 style="background-color: red; text-align: center;">IMPORTANTE</h2>
-            <b>Todo lo descrito abajo está en proceso y aún no se ha completado la opción para elegir datos reales</b>
+            <b>Todo lo descrito abajo está en proceso y aún no se ha completado la opción para elegir datos reales.</b>
             <br><b>De momento se usan datos simulados.</b>
             <br><b>En la zona de pruebas se están desarrollando las características</b>
             <hr>
@@ -56,7 +56,7 @@
                     <b>Mínimo.</b> 
                     Realiza una comparativa gráfica para cada tarea del diagrama A respecto con cada tarea del diagrama B, obteniendo la mínima coincidencia en cada caso.
                     <br>
-                    Solo utiliza el color verde para remarcar las coincidencias encontradas.
+                    Solo utiliza el color rojo para remarcar las coincidencias encontradas.
                 </li>
                 <li>
                     <b>Mínimo especial.</b> 
@@ -67,7 +67,7 @@
                     <b>Máximo.</b> 
                     Realiza una comparativa gráfica para cada tarea del diagrama A respecto con cada tarea del diagrama B, obteniendo la máxima coincidencia en cada caso.
                     <br>
-                    Solo utiliza el color rojo para remarcar las coincidencias encontradas.
+                    Solo utiliza el color verde para remarcar las coincidencias encontradas.
                 </li>
                 <li>
                     <b>Máximo especial.</b>
@@ -79,13 +79,13 @@
             En los modos <b><i>Mínimo especial</i></b> y <b><i>Máximo especial</i></b>, los colores se pueden interpretar como se expone a continuación:
             <ul>
                 <li>
-                    <b>Rojo: </b> alta coincidencia de la tarea del diagrama A respecto con la tarea del diagrama B.
+                    <b>Verde: </b> alta coincidencia de la tarea del diagrama A respecto con la tarea del diagrama B.
                 </li>
                 <li>
                     <b>Amarillo: </b> coincidencia media de la tarea del diagrama A respecto con la tarea del diagrama B.
                 </li>
                 <li>
-                    <b>Verde: </b> baja coincidencia de la tarea del diagrama B respecto con la tarea del diagrama B.
+                    <b>Rojo: </b> baja coincidencia de la tarea del diagrama B respecto con la tarea del diagrama B.
                 </li>
 
             <hr>
@@ -131,7 +131,7 @@
                     <b>Minimum.</b> 
                     Performs a graphical comparison for each task in diagram A with respect to each task in diagram B, obtaining the minimum coincidence in each case.
                     <br>
-                    It only uses green color to highlight the matches found.
+                    It only uses red color to highlight the matches found.
                 </li>
                 <li>
                     <b>Special minimum.</b> 
@@ -142,7 +142,7 @@
                     <b>Maximum.</b> 
                     Performs a graphical comparison for each task in diagram A with respect to each task in diagram B, obtaining the maximum match in each case.
                     <br>
-                    It only uses the red color to highlight the matches found.
+                    It only uses the green color to highlight the matches found.
                 </li>
                 <li>
                     <b>Special maximum.</b>
@@ -154,13 +154,13 @@
             In the <b><i>Special Minimum</i></b> and <b><i>Special Maximum</i></b> modes, the colors can be interpreted as follows:
             <ul>
                 <li>
-                    <b>Red: </b> high match of the task in diagram A with respect to the task in diagram B.
+                    <b>Green: </b> high match of the task in diagram A with respect to the task in diagram B.
                 </li>
                 <li>
                     <b>Yellow: </b> medium match of the task in diagram A with respect to the task in diagram B.
                 </li>
                 <li>
-                    <b>Green: </b> low match of the task in diagram B with respect to the task in diagram B.
+                    <b>Red: </b> low match of the task in diagram B with respect to the task in diagram B.
                 </li>
 
             <hr>
@@ -168,66 +168,7 @@
                 only the first match is colored. This is done in order not to overload the diagram with colors and to facilitate its reading and interpretation.</p>
         </div>
     </div>
-    <!-- 
-    <div id="info-content">
-        <h1>Información de la herramienta</h1>
-        <p>Esta herramienta permite, a partir de dos diagramas con formato .bpmn, dos .csv con los nombres de las tareas y una matriz de coincidencia en formato .csv, realizar una comparativa gráfica.
-            <br>Los diagramas .bpmn deben tener las tareas con identificadores asignados de la siguiente manera:
-            <br>Por ejemplo, para una tarea con nombre "Obtain-all conference", su identificador asociado debe utilizar camelCase y considerar una palabra toda secuencia de caracteres hasta encontrar un espacio.
-            Así, su identificador será "obtain-allConference".
-            <br>En caso de que dos tareas del mismo diagrama tengan el mismo nombre, se añadirá un número al final del identificador de la tarea, de forma que no se repitan.
-            <br>Por ejemplo, si tenemos dos tareas con nombre "Obtain-all conference", su identificador asociado será "obtain-allConference" y "obtain-allConference2".
-        </p>
-        <p>Por favor, utilice diagramas en <b>formato <i>.bpmn</i></b> cuyo nombre <b>no contenga caracteres especiales ni espacios</b>.</p>
-        <hr>
-        <h2 style="background-color: red;">IMPORTANTE</h2>
-        <b>Todo lo descrito abajo está en proceso y aún no se ha completado la opción para elegir datos reales</b>
-        <br><b>De momento se usan datos simulados.</b>
-        <br><b>En la zona de pruebas se están desarrollando las características</b>
-        <hr>
-        <p>Si pulsa sobre <b>Inicio</b>, podrá escoger entre las siguientes opciones:</p>
-        <ul>
-            <li>
-                <b>Mínimo.</b> 
-                Realiza una comparativa gráfica para cada tarea del diagrama A respecto con cada tarea del diagrama B, obteniendo la mínima coincidencia en cada caso.
-                <br>
-                Solo utiliza el color verde para remarcar las coincidencias encontradas.
-            </li>
-            <li>
-                <b>Mínimo especial.</b> 
-                Igual que <i>Mínimo</i>, pero utiliza verde, amarillo y rojo para remarcar las coincidencias encontradas.
-                <br>
-            </li>
-            <li>
-                <b>Máximo.</b> 
-                Realiza una comparativa gráfica para cada tarea del diagrama A respecto con cada tarea del diagrama B, obteniendo la máxima coincidencia en cada caso.
-                <br>
-                Solo utiliza el color rojo para remarcar las coincidencias encontradas.
-            </li>
-            <li>
-                <b>Máximo especial.</b>
-                Igual que <i>Máximo</i>, pero utiliza verde, amarillo y rojo para remarcar las coincidencias encontradas.
-                <br>
-            </li>
-        </ul>
-        
-        En los modos <b><i>Mínimo especial</i></b> y <b><i>Máximo especial</i></b>, los colores se pueden interpretar como se expone a continuación:
-        <ul>
-            <li>
-                <b>Rojo: </b> alta coincidencia de la tarea del diagrama A respecto con la tarea del diagrama B.
-            </li>
-            <li>
-                <b>Amarillo: </b> coincidencia media de la tarea del diagrama A respecto con la tarea del diagrama B.
-            </li>
-            <li>
-                <b>Verde: </b> baja coincidencia de la tarea del diagrama B respecto con la tarea del diagrama B.
-            </li>
-
-        <hr>
-        <p>Se utiliza una <i>primera coincidencia</i>, es decir, si una tarea del diagrama A tiene el mismo grado de coincidencia con dos o más tareas del diagrama B, se colorea solo la primera coincidencia.</p>
-        
-    </div>
-    -->
+    
 </body>
 
 </html>
