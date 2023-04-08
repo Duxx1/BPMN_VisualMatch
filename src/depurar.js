@@ -16,7 +16,6 @@ import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
 //import diagram2 from '/src/test-diagrams/crs-delete-subject-third-parser.bpmn?raw';
 //import diagram2 from './test-diagrams/crs-update-conference-bpmn-second-phase.bpmn?raw';
 import './styles.css';
-import { getActivitiesRunningInstances, getEdgesWaitingInstances, getPrueba } from './js/algorithms.js';
 //import { calcularSimilitudCasillas, calcularSimilitudCasillas2 } from './js/similitud';
 import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
 
