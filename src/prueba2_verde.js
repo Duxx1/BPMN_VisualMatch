@@ -1,8 +1,8 @@
-import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn-visualization';
+import { BpmnVisualization, FitType} from 'bpmn-visualization';
 //import diagram from './bpmn_diagrams/diagram.bpmn?raw';
 //import diagram2 from './bpmn_diagrams/CRS - Create article.bpmn?raw';
-import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
-import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
+import diagram from './bpmn_diagrams/CRS-Create-article-mal.bpmn?raw';
+import diagram2 from './bpmn_diagrams/CRS-Delete-track-mal.bpmn?raw';
 //import diagram from './bpmn_diagrams/archivo.bpmn?raw';
 //import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
 //import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
@@ -17,7 +17,7 @@ import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
 //import diagram2 from './test-diagrams/crs-update-conference-bpmn-second-phase.bpmn?raw';
 import './styles.css';
 //import { calcularSimilitudCasillas, calcularSimilitudCasillas2 } from './js/similitud';
-import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
+import { readMatrixFromCsv} from './js/read_csv.js';
 
 // Variable para almacenar el diagrama de la parte izquierda de la pantalla 
 const bpmnVisualization = new BpmnVisualization({
