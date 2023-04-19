@@ -52,6 +52,11 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
+        case 'CRS-Create-article-mal.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/CRS-Create-article-mal.bpmn');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
         default:
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
             diagram1Raw = await diagram1.text();
@@ -76,6 +81,11 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
         break;
         case 'crs-get-conference-bpmn.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
+            diagram2Raw = await diagram2.text();
+            console.log(diagram2Raw);
+        break;
+        case 'CRS-Delete-track-mal.bpmn':
+            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/CRS-Delete-track-mal.bpmn');
             diagram2Raw = await diagram2.text();
             console.log(diagram2Raw);
         break;
@@ -171,6 +181,13 @@ var poolsB;
             poolsA = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
+        case 'CRS-Create-article-mal.bpmn':
+            pr = await getTaskNames("/src/csv_files/tasks_CRS-Create-article.bpmn-mal.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/matrixLin2_CRS-Create-article.bpmn_CRS-Delete-track.bpmn.csv");
+            poolsA = await getTaskNames("/src/csv_files/CRS-Create-article.bpmnpools-mal.csv");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
+        break;
         default:
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
@@ -195,6 +212,13 @@ var poolsB;
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
+            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
+        break;
+        case 'CRS-Delete-track-mal.bpmn':
+            pr2 = await getTaskNames("/src/csv_files/tasks_CRS-Delete-track.bpmn-mal.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/matrixLin2_CRS-Create-article.bpmn_CRS-Delete-track.bpmn.csv");
+            poolsB = await getTaskNames("/src/csv_files/CRS-Delete-track.bpmnpools-mal.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
         default:
@@ -824,7 +848,7 @@ var poolsB;
     // Obtener una referencia al elemento canvas del DOM
     const $chart = document.querySelector("#chart");
     // Las etiquetas son las que van en el eje X. 
-    const tags = ["Similarity between diagramas"]
+    const tags = ["Average similarity between diagramas"]
     
     var maxSimData = {
         label: 'Maximum similarity',
