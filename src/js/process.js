@@ -39,9 +39,6 @@ function processBPMNFile(file) {
     return modifiedFile;
 }
 
-
-
-
 //Esta función recibe el texto raw de un archivo .bpmn y lo parsea
 //Devuelve un archivo .bpmn raw con los id de las tareas ya puestos a partir de los nombres
 function modifyBpmnFile(file) {
@@ -127,10 +124,8 @@ function detectar(file) {
     }
 }
 
-
 //const file = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-old.bpmn');
 //const rawFile = await file.text();
-
 
 //let modifiedFile = modifyBpmnFile(rawFile);
 //console.log(modifiedFile);
@@ -150,7 +145,6 @@ const $botonDescargar = document.querySelector("#descargar");
 $botonDescargar.onclick = () => {
     guardarArchivoDeTexto(modifiedFile, "archivo2.bpmn");
 }
-
 
 //detectar(rawFile);
 
@@ -186,7 +180,6 @@ function convertirACamelCase(cadenas) {
     contadores[resultado] = 1;
     return resultado;
 }
-
 
 // El objeto FileReader te permite leer los archivos en el directorio y utilizar su contenido como desees.
 

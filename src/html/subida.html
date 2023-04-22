@@ -74,32 +74,6 @@
         </form>
             <a id="view" href="/src/html/view-diagram.html">VIEW DIAGRAM</a>
         <br><br>
-
-        <!-- 
-        <script>
-            const input1 = document.querySelector('#bpmnFile1');
-            const fileNameDisplay1 = document.querySelector('#fileName1');
-            
-            input1.addEventListener('change', () => {
-                fileNameDisplay1.textContent = input1.files[0].name;
-                localStorage.setItem("diagramaA", fileNameDisplay1.textContent);
-            });
-            
-            const input2 = document.querySelector('#bpmnFile2');
-            const fileNameDisplay2 = document.querySelector('#fileName2');
-            
-            input2.addEventListener('change', () => {
-                fileNameDisplay2.textContent = input2.files[0].name;
-                localStorage.setItem("diagramaB", fileNameDisplay2.textContent);
-            });
-
-            const clean = document.querySelector('#clean');
-            clean.addEventListener('click', () => {
-                localStorage.clear();
-            });
-            
-        </script>
-        -->
         
         <hr>
         <button>
@@ -108,61 +82,6 @@
         <br><br>
         
     </div>
-
-    <!-- ESPAÑOL
-    <div id="info-upload">
-        
-        <h1>Por favor, seleccione diagramas en formato .bpmn</h1>
-        <form>
-            <label for="bpmnFile1">Seleccione un archivo .bpmn:</label>
-            <input type="file" id="bpmnFile1" name="bpmnFile1" accept=".bpmn">
-            <br><br>
-            
-            <label for="bpmnFile2">Selecciona un archivo .bpmn:</label>
-            <input type="file" id="bpmnFile2" name="bpmnFile2" accept=".bpmn">
-            <br><br>
-                                    
-            <hr>
-            <p>Nombre del primer archivo subido: <b><span id="fileName1"></span></b></p>
-            
-            <p>Nombre del segundo archivo subido: <b><span id="fileName2"></span></b></p>
-            <hr>
-            
-            <h2>Escoja una opción tras seleccionar los diagramas</h2>
-
-            <label>
-                <input type="radio" name="group1" id="min">Minimo
-            </label>
-            
-            <label>
-                <input type="radio" name="group1" id="min_sp">Mínimo especial
-            </label>
-            
-            <label>
-                <input type="radio" name="group1" id="max">Máximo
-            </label>
-            
-            <label>
-                <input type="radio" name="group1" id="max_sp">Máximo especial
-            </label>
-
-            <br><br>
-
-            <div id="botones">
-                <button id="clean">Clear</button>
-                <button id="send" type="submit">OK</button>
-            </div>
-        
-        </form>
-        <br>
-        <hr>
-        <button>
-            <a id="back" href="/index.html">VOLVER</a>
-        </button>
-        <br><br>
-        
-    </div>
-    -->
 
     <footer></footer>
     

@@ -4,6 +4,7 @@ import { BpmnVisualization, FitType} from 'bpmn-visualization';
 const bpmnVisualization = new BpmnVisualization({
     container: 'marco',
     navigation: { enabled: true },
+    fit: { type: FitType.Center }
 });
 
 // just for displaying my title and version of the tool
@@ -53,7 +54,7 @@ if (diagramC != undefined && diagramC != null){
             console.log(diagram1Raw);
     }
 } else{
-    //Carga de diagramCs por defecto
+    //Carga de diagrama por defecto
     if(diagram1 === null || diagram1 === undefined){
         diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
         diagram1Raw = await diagram1.text();
