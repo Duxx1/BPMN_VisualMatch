@@ -17,39 +17,44 @@
         <a class="no-underline" href="/src/html/subida.html">Select Diagrams</a>
         <a class="no-underline" href="/src/html/view-diagram.html">View Diagram</a>
         <a class="no-underline" id="current-page" href="">Info</a>
+        <a class="no-underline" href="/src/html/testzone.html">Compare</a>
     </nav>
     
     <div class="information">
         <!-- Sección en español -->
         <div class="info-content" id="info-esp">
             <h1 style="text-align: center;">Información de la herramienta</h1>
-            <p>Esta herramienta permite, a partir de dos diagramas con formato .bpmn, dos .csv con los nombres de las tareas y una matriz de coincidencia en formato .csv, 
-                realizar una comparativa gráfica entre ellos.
-                <br>Los diagramas .bpmn deben tener las tareas con identificadores asignados de la siguiente manera:
-                <br>Por ejemplo, para una tarea con nombre "Obtain-all conference", su identificador asociado debe utilizar camelCase y considerar una palabra toda secuencia de caracteres hasta encontrar un espacio.
-                Así, su identificador será "obtain-allConference".
-                <br>En caso de que dos tareas del mismo diagrama tengan el mismo nombre, se añadirá un número al final del identificador de la tarea, de forma que no se repitan.
-                <br>Por ejemplo, si tenemos dos tareas con nombre "Obtain-all conference", sus identificadores asociado serán "obtain-allConference" y "obtain-allConference2".
+            <p>Esta herramienta permite, a partir de dos diagramas con formato .bpmn, dos .csv con los nombres de las tareas, una matriz de coincidencia en formato .csv 
+                y dos ficheros .csv con los pools de las tareas, realizar una comparativa gráfica entre ellos.
+                <br>Esta herramienta se basa en WordDomain, de donde se extraen la mayoría de ficheros necesarios.
+                <br>Se debe tener en cuenta que esta herramienta solo funciona con WordDomain, por lo que se tendrá que haber hecho una comparación previa entre dos diagramas 
+                si se desean luego visualizar en esta herramienta, y se deberá seguir el manual de la documentación.
             </p>
             <hr>
-            <p>Por favor, utilice diagramas en <b>formato <i>.bpmn</i></b> cuyo nombre <b>no contenga caracteres especiales ni espacios</b>.
-            <br>Escoja los diagramas desde la carpeta del proyecto según se indica a continuación:<br>
+            <p>Por favor, utilice diagramas en <b>formato <i>.bpmn</i></b> cuyo nombre <b>no contenga caracteres especiales ni espacios. Lo mismo con el resto de archivos</b>.
+            <br>Escoja los diagramas desde la carpeta <b>bpmn_diagrams</b> del proyecto, según se indica a continuación:<br>
             <br><b>crs-get-conference-bpmn.bpmn</b> junto con <b>crs-update-conference-bpmn.bpmn</b>
-            <br><b>crs-delete-paper-bpmn.bpmn</b> junto con <b>crs-delete-subject-bpmn.bpmn</b></p>
+            <br><b>crs-create-article-bpmn.bpmn</b> junto con <b>crs-delete-track-bpmn.bpmn</b></p>
             <hr>
             <h2 style="background-color: red; text-align: center;">IMPORTANTE</h2>
-            <b>Todo lo descrito abajo está en proceso y aún no se ha completado la opción para elegir datos reales.</b>
-            <br><b>De momento se usan datos simulados.</b>
-            <br><b>En la zona de pruebas se están desarrollando las características</b>
+            <p>Use los diagramas mencionados arriba y en ese orden para visualizar la comparativa gráfica.</p>
+            <p>Si desea añadir nuevos diagramas, siga las instrucciones descritas en la documentación de la herramienta.</p>
             <hr>
             <h2 style="background-color: aqua; text-align: center;">Modo de uso</h2>
-            <p>A continuación, se presenta un resumen de los pasos a seguir para utilizar la herramienta:</p>
+            <p>A continuación, se presenta un resumen de los pasos a seguir para utilizar la herramienta.</p>
+            <p>Si desea realizar una visualización de un diagrama sin ningún tipo de comparativa, haga lo siguiente:</p>
+            <ol>
+                <li>Diríjase a la página de "Select Diagrams".</li>
+                <li>Seleccione el archivo del diagrama desde la carpeta <b>bpmn_diagrams</b> del proyecto, en la sección indicada.</li>
+                <li>Pulse sobre el botón "VIEW DIAGRAM".</li>
+            </ol>
+            <p>Si lo que desea es visualizar la comparativa entre dos diagramas, los pasos a seguir son los siguientes:</p>
             <ol id="pasos">
-                <li>Diríjase a la página de "Seleccionar Diagramas".</li>
-                <li>Escoja entre las combinaciones de diagrmas bpmn mencionadas anteriormente.</li>
+                <li>Diríjase a la página de "Select Diagrams".</li>
+                <li>Escoja entre las combinaciones de diagramas bpmn mencionadas anteriormente desde la carpeta <b>bpmn_diagrams</b>.</li>
                 <li>Seleccione una opción de comparación tras haber escogido los diagramas.</li>
                 <li>Pulse el botón de "OK" si está seguro de su elección. En caso contrario, pulse sobre "Limpiar" y vuelva al paso 2.</li>
-                <li>Una vez pulsado sobre "OK", vuelva a la página de inicio para ver el resultado.</li>
+                <li>Una vez pulsado sobre "OK", diríjase a la página "Compare" para ver el resultado.</li>
             </ol>
             <hr>
             <h2 style="background-color: aqua; text-align: center;">Interpretación</h2>
@@ -99,32 +104,38 @@
         <!-- Sección en inglés -->
         <div class="info-content" id="info-eng">
             <h1 style="text-align: center;">Information about the tool</h1>
-            <p>This tool allows, from two diagrams in .bpmn format, two .csv with the task names and a matching matrix in .csv format, to make a graphical comparison between them.
-                <br>The .bpmn diagrams should have the tasks with identifiers assigned as follows:<br>
-                For example, for a task named "Obtain-all conference", its associated identifier should use camelCase and consider a word any sequence of characters 
-                until a space is found. Thus, its identifier will be "obtain-allConference".<br>
-                In case two tasks in the same diagram have the same name, a number will be added at the end of the task identifier, so that they are not repeated.<br>
-                For example, if we have two tasks with the name "Obtain-all conference", their associated identifiers will be "obtain-allConference" and "obtain-allConference2".
+            <p>This tool allows, from two diagrams in .bpmn format, two .csv with the task names, a matching matrix in .csv format
+                and two .csv files with the tasks pools, to make a graphical comparison between them.
+                <br>This tool is based on WordDomain, from where most of the necessary files are extracted.
+                <br>It must be taken into account that this tool only works with WordDmain, so you will have to have made 
+                a previous comparison between two diagrms if you want to visualizar them in this tool, and you will have to follow 
+                the documentation manual.
             </p>
             <hr>
-            <p>Please, use diagrams in <b><i>.bpmn</i> format</b>, whose name <b>does not contain special characters or spaces</b>.
-            <br>Choose the diagrams from the project folder as indicated below:<br>
+            <p>Please, use diagrams in <b><i>.bpmn</i> format</b>, whose name <b>does not contain special characters or spaces. The same with the rest of the files</b>.
+            <br>Choose the diagrams from the project folder <b>bpmn_diagrams</b> as indicated below:<br>
             <br><b>crs-get-conference-bpmn.bpmn</b> in conjunction with <b>crs-update-conference-bpmn.bpmn</b>
-            <br><b>crs-delete-paper-bpmn.bpmn</b> in conjunction with <b>crs-delete-subject-bpmn.bpmn</b></p>
+            <br><b>crs-create-article-bpmn.bpmn</b> junto con <b>crs-delete-track-bpmn.bpmn</b></p>
             <hr>
             <h2 style="background-color: red; text-align: center;">IMPORTANT</h2>
-            <b>Everything described below is in process and the option to choose real data has not yet been completed.</b>
-            <br><b>Currently, the used data is simulated.</b>
-            <br><b>In the test zone, new features are being developed.</b>
+            <p>Use the above diagrams in that order to visualize the graphical comparison.</p>
+            <p>If you want to add new diagrams, folow the instructions described in the tool documentation.</p>
             <hr>
             <h2 style="background-color: aqua; text-align: center;">Usage mode</h2>
-            <p>Below is a summary of the steps to follow in order to use the tool:</p>
+            <p>Below is a summary of the steps to follow in order to use the tool.</p>
+            <p>If you want to visualize a diagram without any comparison, do the following:</p>
+            <ol>
+                <li>Go to "Select Diagrams" page.</li>
+                <li>Select the the diagram file from the <b>bpmn_diagrams</b> folder of the project, in the indicated section.</li>
+                <li>Click on the "VIEW DIAGRAM" button.</li>
+            </ol>
+            <p>If you want to visualize the comparison between two diagrams, the steps to follow are as indicated below:</p>
             <ol id="pasos">
                 <li>Go to the "Select diagrams" page.</li>
                 <li>Choose from the above mentioned bpmn diagram combinations.</li>
-                <li>Select a comparison option after you have chosen the diagrams.</li>
+                <li>Select a comparison option after you have chosen the diagrams from the <b>bpmn_diagrams</b> folder of the project.</li>
                 <li>Click the "OK" button if you are sure of your choice. Otherwise, click on "Clear" and return to step 2.</li>
-                <li>Once you have clicked on "OK", return to the home page to see the result.</li>
+                <li>Once you have clicked on "OK", go to the "Compare" page to see the result.</li>
             </ol>
             <hr>
             <h2 style="background-color: aqua; text-align: center;">Interpretation</h2>
