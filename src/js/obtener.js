@@ -14,6 +14,16 @@ input2.addEventListener('change', () => {
     localStorage.setItem("diagramB", fileNameDisplay2.textContent);
 });
 
+//
+const input3 = document.querySelector('#bpmnFile3');
+const fileNameDisplay3 = document.querySelector('#fileName3');
+
+input3.addEventListener('change', () => {
+    fileNameDisplay3.textContent = input3.files[0].name;
+    localStorage.setItem("diagramC", fileNameDisplay3.textContent);
+});
+//
+
 const send = document.querySelector('#send');
 send.addEventListener('click', () => {
     console.log(diagramA);
@@ -35,6 +45,7 @@ send.addEventListener('click', () => {
         alert("Please select two .bpmn diagrams. " + "\nAfter that, select one option.");
         localStorage.clear();
     }
+    
 });
 
 const clean = document.querySelector('#clean');

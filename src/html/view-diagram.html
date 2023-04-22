@@ -6,39 +6,32 @@
     <meta charset="UTF-8" />
     <!-- <script type="module" src="src/prueba2.js"></script> -->
     <!--<script type="module" src="src/prueba2_verde.js"></script> -->
-    <script type="module" src="/src/testzone.js"></script>
+    <script type="module" src="/src/js/view-diagram.js"></script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/src/test-styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <nav>
         <a href="/index.html"><img src="/logo.PNG" alt="logo" id="logo" /></a>
-        <a class="no-underline" id="current-page" href="">¡¡¡TEST ZONE!!!</a>
         <a class="no-underline" href="/index.html">Home</a>
+        <a class="no-underline" id="current-page" href="">View Diagram</a>
+        <a class="no-underline" href="/src/html/testzone.html">¡¡¡TEST ZONE!!!</a>
         <a class="no-underline" href="/src/html/subida.html">Select Diagrams</a>
-        <a href="/src/html/view-diagram.html">View Diagram</a>
         <a class="no-underline" href="./info.html">Info</a>
         <div id="titulo">BPMN VisualMatch - Eduardo Cano García</div>
     </nav>
     
+    <h2>This page is just for the visualization of a diagram. Hold Ctrl while using mouse wheel over the diagram to zoom in and out the diagram.</h2>
+
     <!-- <div id="bpmn-container"></div> -->
-    <div class="contenedor">
-        <div id="parte-izquierda">
-            <!--Contenido de la parte izquierda-->
-        </div>
-        <div id="parte-derecha">
-            <!--Contenido de la parte derecha-->
-        </div>
+    <div class="visualizar" id="marco">
+        <!-- Aqui se muestra el diagrama -->
     </div>
     <div id="results">
         <!-- Resultados de la comparativa -->
     </div>
     <br><br>
-    <div id="info-chart">
-        <canvas id="chart"></canvas>
-    </div>
     
     <footer></footer>
 </body>
