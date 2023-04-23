@@ -52,8 +52,8 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
-        case 'CRS-Create-article-mal.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/CRS-Create-article-mal.bpmn');
+        case 'crs-create-article-bpmn.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-create-article-bpmn.bpmn');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
@@ -84,8 +84,8 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram2Raw = await diagram2.text();
             console.log(diagram2Raw);
         break;
-        case 'CRS-Delete-track-mal.bpmn':
-            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/CRS-Delete-track-mal.bpmn');
+        case 'crs-delete-track-bpmn.bpmn':
+            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-delete-track-bpmn.bpmn');
             diagram2Raw = await diagram2.text();
             console.log(diagram2Raw);
         break;
@@ -181,7 +181,7 @@ var poolsB;
             poolsA = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
-        case 'CRS-Create-article-mal.bpmn':
+        case 'crs-create-article-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/tasks_CRS-Create-article.bpmn-mal.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/matrixLin2_CRS-Create-article.bpmn_CRS-Delete-track.bpmn.csv");
@@ -214,7 +214,7 @@ var poolsB;
             poolsB = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
-        case 'CRS-Delete-track-mal.bpmn':
+        case 'crs-delete-track-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_CRS-Delete-track.bpmn-mal.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
             sim = await readMatrixFromCsv("/src/similarity_matrix/matrixLin2_CRS-Create-article.bpmn_CRS-Delete-track.bpmn.csv");
