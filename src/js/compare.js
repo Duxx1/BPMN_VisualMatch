@@ -172,45 +172,45 @@ var poolsB;
         case 'crs-delete-paper-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Delete_paper.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-delete-subject-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Delete_subject.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-get-conference-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
             poolsA = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-update-conference-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
             poolsA = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-createarticle.bpmn':
             pr = await getTaskNames("/src/csv_files/tasks_crs-createarticle.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
             poolsA = await getTaskNames("/src/csv_files/crs-createarticle.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-updatereviewer.bpmn':
             pr = await getTaskNames("/src/csv_files/tasks_crs-updatereviewer.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
             poolsA = await getTaskNames("/src/csv_files/crs-updatereviewer.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-updatearticle.bpmn':
             pr = await getTaskNames("/src/csv_files/tasks_crs-updatearticle.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
             poolsA = await getTaskNames("/src/csv_files/crs-updatearticle.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
@@ -226,7 +226,7 @@ var poolsB;
         default:
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
             poolsA = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
     }
@@ -235,38 +235,38 @@ var poolsB;
         case 'crs-delete-paper-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Delete_paper.bpmn.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-delete-subject-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Delete_subject.bpmn.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
         break;
         case 'crs-get-conference-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-deletetrack.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_crs-deletetrack.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-deletetrack.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-updatetrack.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_crs-updatetrack.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-updatetrack.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
         case 'crs-getreport.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_crs-getreport.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-getreport.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
@@ -282,9 +282,24 @@ var poolsB;
         default:
             pr2 = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
+    }
+
+    //Probar aqui a decidir que matriz de similitud usar segun los diagramas
+    if(diagramA == 'crs-createarticle.bpmn' && diagramB == 'crs-deletetrack.bpmn'){
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
+    }
+    else if(diagramA == 'crs-updatereviewer.bpmn' && diagramB == 'crs-updatetrack.bpmn'){
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
+    }
+    else if(diagramA == 'crs-updatearticle.bpmn' && diagramB == 'crs-getreport.bpmn'){
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
+    }
+    else{
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+        //sim = await readMatrixFromCsv("/src/similarity_matrix/");
     }
     
     //Se almacena en idsFromA los ids de las tareas del diagrama A convertidos a camelCase a partir de los nombres de las tareas
