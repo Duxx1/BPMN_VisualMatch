@@ -38,13 +38,23 @@ if (diagramC != undefined && diagramC != null){
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
-        case 'crs-create-article-bpmn.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-create-article-bpmn.bpmn');
+        case 'crs-createarticle.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
-        case 'crs-delete-track-bpmn.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-delete-track-bpmn.bpmn');
+        case 'crs-deletetrack.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
+        case '':
+            diagram1 = await fetch('');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
+        case '':
+            diagram1 = await fetch('');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
