@@ -59,6 +59,18 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
+        case 'crs-updatearticle.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatearticle.bpmn');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
+        /*
+        case '':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
+        */
         default:
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
             diagram1Raw = await diagram1.text();
@@ -96,6 +108,18 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram2Raw = await diagram2.text();
             console.log(diagram2Raw);
         break;
+        case 'crs-getreport.bpmn':
+            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getreport.bpmn');
+            diagram2Raw = await diagram2.text();
+            console.log(diagram2Raw);
+        break;
+        /*
+        case '':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
+        */
         default:
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
             diagram2Raw = await diagram2.text();
@@ -183,6 +207,22 @@ var poolsB;
             poolsA = await getTaskNames("/src/csv_files/crs-updatereviewer.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
+        case 'crs-updatearticle.bpmn':
+            pr = await getTaskNames("/src/csv_files/tasks_crs-updatearticle.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
+            poolsA = await getTaskNames("/src/csv_files/crs-updatearticle.bpmnpools.csv");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
+        break;
+        /*
+        case '':
+            pr = await getTaskNames("/src/csv_files/");
+            pr = pr.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/");
+            poolsA = await getTaskNames("/src/csv_files/");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
+        break;
+        */
         default:
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
@@ -223,6 +263,22 @@ var poolsB;
             poolsB = await getTaskNames("/src/csv_files/crs-updatetrack.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
+        case 'crs-getreport.bpmn':
+            pr2 = await getTaskNames("/src/csv_files/tasks_crs-getreport.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
+            poolsB = await getTaskNames("/src/csv_files/crs-getreport.bpmnpools.csv");
+            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
+        break;
+        /*
+        case '':
+            pr2 = await getTaskNames("/src/csv_files/");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
+            sim = await readMatrixFromCsv("/src/similarity_matrix/");
+            poolsB = await getTaskNames("/src/csv_files/");
+            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
+        break;
+        */
         default:
             pr2 = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
