@@ -29,21 +29,6 @@ var diagram2Raw;
 if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != undefined){
     
     switch (diagramA) {
-        case 'colors.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/colors.bpmn');
-            diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
-        break;
-        case 'crs-delete-paper-bpmn.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-delete-paper-bpmn.bpmn');
-            diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
-        break;
-        case 'crs-delete-subject-bpmn.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-delete-subject-bpmn.bpmn');
-            diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
-        break;
         case 'crs-get-conference-bpmn.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
             diagram1Raw = await diagram1.text();
@@ -78,21 +63,6 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
     }
 
     switch (diagramB) {
-        case 'colors.bpmn':
-            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/colors.bpmn');
-            diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
-        break;
-        case 'crs-delete-paper-bpmn.bpmn':
-            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-delete-paper-bpmn.bpmn');
-            diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
-        break;
-        case 'crs-delete-subject-bpmn.bpmn':
-            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-delete-subject-bpmn.bpmn');
-            diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
-        break;
         case 'crs-get-conference-bpmn.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
             diagram2Raw = await diagram2.text();
@@ -169,16 +139,6 @@ var poolsB;
 (async () => {
     
     switch (diagramA) {
-        case 'crs-delete-paper-bpmn.bpmn':
-            pr = await getTaskNames("/src/csv_files/Delete_paper.bpmn.csv");
-            pr = pr.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
-        break;
-        case 'crs-delete-subject-bpmn.bpmn':
-            pr = await getTaskNames("/src/csv_files/Delete_subject.bpmn.csv");
-            pr = pr.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
-        break;
         case 'crs-get-conference-bpmn.bpmn':
             pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
@@ -232,16 +192,6 @@ var poolsB;
     }
 
     switch (diagramB) {
-        case 'crs-delete-paper-bpmn.bpmn':
-            pr2 = await getTaskNames("/src/csv_files/Delete_paper.bpmn.csv");
-            pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
-        break;
-        case 'crs-delete-subject-bpmn.bpmn':
-            pr2 = await getTaskNames("/src/csv_files/Delete_subject.bpmn.csv");
-            pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Delete_paper_CRS-Delete_subject.csv");
-        break;
         case 'crs-get-conference-bpmn.bpmn':
             pr2 = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
