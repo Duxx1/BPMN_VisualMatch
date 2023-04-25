@@ -48,13 +48,13 @@ if (diagramC != undefined && diagramC != null){
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
-        case '':
-            diagram1 = await fetch('');
+        case 'crs-updatereviewer.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatereviewer.bpmn');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
-        case '':
-            diagram1 = await fetch('');
+        case 'crs-updatetrack.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatetrack.bpmn');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
