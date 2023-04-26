@@ -502,6 +502,7 @@ var poolsB;
 
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_A[cont]);
             bpmnVisualization.bpmnElementsRegistry.addOverlays(id_min_tasks_from_A[cont], {
                 position: 'top-center',
                 label: `${minTaskFromAValuesArray[cont]}`,
@@ -515,6 +516,7 @@ var poolsB;
 
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
                 position: 'top-center',
                 label: `${minTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
@@ -531,32 +533,47 @@ var poolsB;
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             if(minTaskFromAValuesArray[cont] <= (1/3)){
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_A[cont], 'medium-match');
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_A[cont], 'high-match');
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
             }
             else if(minTaskFromAValuesArray[cont] > (1/3) && minTaskFromAValuesArray[cont] <= (2/3)){
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_A[cont], 'low-match');
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_A[cont], 'high-match');
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'medium-match');
             }
             else{
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_A[cont], 'low-match');
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_A[cont], 'medium-match');
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'high-match');
             }
         }
 
         //Se colorean las tareeas del diagrama B con baja coincidencia respecto a tareas del diagrama A
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
+            //console.log("Tarea: ",id_min_tasks_from_B[cont], " - Valor: ",minTaskFromAValuesArray[cont])
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             if(minTaskFromAValuesArray[cont] <= (1/3)){
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'medium-match');
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'high-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
             }
             else if(minTaskFromAValuesArray[cont] > (1/3) && minTaskFromAValuesArray[cont] <= (2/3)){
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'low-match');
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'high-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'medium-match');
             }
             else{
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'medium-match');
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'low-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'high-match');
+                console.log("Tarea: ",id_min_tasks_from_B[cont], " - Valor: ",minTaskFromAValuesArray[cont])
             }
         }
 
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_A[cont]);
             bpmnVisualization.bpmnElementsRegistry.addOverlays(id_min_tasks_from_A[cont], {
                 position: 'top-center',
                 label: `${minTaskFromAValuesArray[cont]}`,
@@ -569,7 +586,9 @@ var poolsB;
         }
 
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
+            console.log("Overlay: ", minTaskFromAValuesArray[cont])
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
                 position: 'top-center',
                 label: `${minTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
@@ -598,6 +617,7 @@ var poolsB;
         
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(id_max_tasks_from_A[cont]);
             bpmnVisualization.bpmnElementsRegistry.addOverlays(id_max_tasks_from_A[cont], {
                 position: 'top-center',
                 label: `${maxTaskFromAValuesArray[cont]}`,
@@ -611,6 +631,7 @@ var poolsB;
         
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_max_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_max_tasks_from_B[cont], {
                 position: 'top-center',
                 label: `${maxTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
@@ -629,12 +650,18 @@ var poolsB;
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             if(maxTaskFromAValuesArray[cont] <= (1/3)){
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_A[cont], 'medium-match');
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_A[cont], 'high-match');
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             }
             else if(maxTaskFromAValuesArray[cont] > (1/3) && maxTaskFromAValuesArray[cont] <= (2/3)){
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_A[cont], 'low-match');
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_A[cont], 'high-match');
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'medium-match');
             }
             else{
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_A[cont], 'low-match');
+                bpmnVisualization.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_A[cont], 'medium-match');
                 bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             }
         }
@@ -643,18 +670,25 @@ var poolsB;
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             if(maxTaskFromAValuesArray[cont] <= (1/3)){
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_B[cont], 'medium-match');
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_B[cont], 'high-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'low-match');
             }
             else if(maxTaskFromAValuesArray[cont] > (1/3) && maxTaskFromAValuesArray[cont] <= (2/3)){
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_B[cont], 'low-match');
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_B[cont], 'high-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'medium-match');
             }
             else{
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_B[cont], 'low-match');
+                bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_max_tasks_from_B[cont], 'medium-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             }
         }
         
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(id_max_tasks_from_A[cont]);
             bpmnVisualization.bpmnElementsRegistry.addOverlays(id_max_tasks_from_A[cont], {
                 position: 'top-center',
                 label: `${maxTaskFromAValuesArray[cont]}`,
@@ -668,6 +702,7 @@ var poolsB;
         
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
+            bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_max_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_max_tasks_from_B[cont], {
                 position: 'top-center',
                 label: `${maxTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B

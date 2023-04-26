@@ -17,6 +17,26 @@ nav a {
     transition: background-color 0.3s ease;
 }
 
+nav a:hover {
+    color: red;
+}
+
+/* Estilo para las tareas de los diagramas con alta coincidencia */
+.high-match > rect {
+    fill: rgb(23, 255, 23);
+}
+
+  /* Estilo para las tareas de los diagramas con media coincidencia */
+.medium-match > rect {
+    fill: rgb(228, 253, 1);
+}
+
+  /* Estilo para las tareas de los diagramas con baja coincidencia */
+.low-match > rect {
+    fill: rgb(250, 5, 5);
+    /*animation: palpitate 3s infinite;*/
+}
+
 /* Estilo para la imagen con el logo de la aplicacion */
 #logo {
     max-width: 100px;

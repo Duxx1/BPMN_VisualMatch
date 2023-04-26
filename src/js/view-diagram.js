@@ -75,7 +75,7 @@ if (diagramC != undefined && diagramC != null){
     if(diagram1 === null || diagram1 === undefined){
         diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
         diagram1Raw = await diagram1.text();
-        console.log("EL diagramC  SE HA CARGADO POR DEFECTO");
+        alert("Warning. The selected diagram is not suported together.\nPlease select other diagram.\nShowing preloaded diagram.")
     }
 }
 
