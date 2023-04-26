@@ -88,11 +88,16 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram2Raw = await diagram2.text();
             console.log(diagram2Raw);
         break;
+        case 'crs-getpaper.bpmn':
+            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
+            diagram2Raw = await diagram2.text();
+            console.log(diagram2Raw);
+        break;
         /*
         case '':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
-            diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
+            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
+            diagram2Raw = await diagram2.text();
+            console.log(diagram2Raw);
         break;
         */
         default:
@@ -234,11 +239,19 @@ var poolsB;
             poolsB = await getTaskNames("/src/csv_files/crs-getreport.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
+        case 'crs-getpaper.bpmn':
+            pr2 = await getTaskNames("/src/csv_files/tasks_crs-getpaper.csv");
+            pr2 = pr2.map(string => string.replace(/\r/g, ""));
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/");
+            poolsB = await getTaskNames("/src/csv_files/crs-getpaper.bpmnpools.csv");
+            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
+            console.log(poolsB);
+        break;
         /*
         case '':
             pr2 = await getTaskNames("/src/csv_files/");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/");
             poolsB = await getTaskNames("/src/csv_files/");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
         break;
@@ -265,6 +278,16 @@ var poolsB;
         sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-deletetrack_crs-updatetrack.csv");
         console.log(sim);
     }
+    else if(diagramA == 'crs-updatearticle.bpmn' && diagramB == 'crs-getpaper.bpmn'){
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getpaper.csv");
+        console.log(sim);
+    }
+    /*
+    else if(diagramA == '' && diagramB == ''){
+        sim = await readMatrixFromCsv("/src/similarity_matrix/");
+        console.log(sim);
+    }
+    */
     else{
         sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
         alert("Warning. The selected diagrams are not suported together.\nPlease go to the info page and and read which diagrams you can compare.")
