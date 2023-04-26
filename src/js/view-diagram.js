@@ -66,14 +66,14 @@ if (diagramC != undefined && diagramC != null){
         break;
         */
         default:
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
     }
 } else{
     //Carga de diagrama por defecto
     if(diagram1 === null || diagram1 === undefined){
-        diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
+        diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
         diagram1Raw = await diagram1.text();
         console.log("EL diagramC  SE HA CARGADO POR DEFECTO");
     }

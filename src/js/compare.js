@@ -62,7 +62,7 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
         break;
         */
         default:
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
     }
@@ -101,7 +101,7 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
         break;
         */
         default:
-            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
+            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
             diagram2Raw = await diagram2.text();
             console.log(diagram2Raw);
     }
@@ -109,12 +109,12 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
 }else{
     //Carga de diagramas por defecto
     if(diagram1 === null || diagram1 === undefined){
-        diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
+        diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
         diagram1Raw = await diagram1.text();
         console.log("EL DIAGRAMA 1 (IZQUIERDA) SE HA CARGADO POR DEFECTO");
     }
     if(diagram2 === null || diagram2 === undefined){
-        diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-bpmn.bpmn');
+        diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
         diagram2Raw = await diagram2.text();
         console.log("EL DIAGRAMA 2 (DERECHA) SE HA CARGADO POR DEFECTO");
     }
@@ -202,10 +202,10 @@ var poolsB;
         break;
         */
         default:
-            pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
+            pr = await getTaskNames("/src/csv_files/tasks_crs-createarticle.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-            poolsA = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
+            poolsA = await getTaskNames("/src/csv_files/crs-createarticle.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
     }
 
@@ -257,10 +257,10 @@ var poolsB;
         break;
         */
         default:
-            pr2 = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
+            pr2 = await getTaskNames("/src/csv_files/tasks_crs-deletetrack.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-            poolsB = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
+            poolsB = await getTaskNames("/src/csv_files/crs-deletetrack.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
     }
 
@@ -289,8 +289,8 @@ var poolsB;
     }
     */
     else{
-        sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-        alert("Warning. The selected diagrams are not suported together.\nPlease go to the info page and and read which diagrams you can compare.")
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
+        alert("Warning. The selected diagrams are not suported together.\nPlease go to the info page and and read which diagrams you can compare.\nShowing preloaded comparison.")
         //sim = await readMatrixFromCsv("/src/similarity_matrix/");
     }
     
