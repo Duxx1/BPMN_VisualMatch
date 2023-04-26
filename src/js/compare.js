@@ -49,6 +49,11 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
             diagram1Raw = await diagram1.text();
             console.log(diagram1Raw);
         break;
+        case 'crs-deletetrack.bpmn':
+            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
+            diagram1Raw = await diagram1.text();
+            console.log(diagram1Raw);
+        break;
         /*
         case '':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
@@ -174,11 +179,19 @@ var poolsB;
             poolsA = await getTaskNames("/src/csv_files/crs-updatearticle.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
+        case 'crs-deletetrack.bpmn':
+            pr = await getTaskNames("/src/csv_files/tasks_crs-deletetrack.csv");
+            pr = pr.map(string => string.replace(/\r/g, ""));
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/");
+            poolsA = await getTaskNames("/src/csv_files/crs-deletetrack.bpmnpools.csv");
+            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
+            console.log(poolsA);
+        break;
         /*
         case '':
             pr = await getTaskNames("/src/csv_files/");
             pr = pr.map(string => string.replace(/\r/g, ""));
-            sim = await readMatrixFromCsv("/src/similarity_matrix/");
+            //sim = await readMatrixFromCsv("/src/similarity_matrix/");
             poolsA = await getTaskNames("/src/csv_files/");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
         break;
@@ -212,6 +225,7 @@ var poolsB;
             //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-updatetrack.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
+            console.log(poolsB);
         break;
         case 'crs-getreport.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_crs-getreport.csv");
@@ -247,8 +261,13 @@ var poolsB;
     else if(diagramA == 'crs-updatearticle.bpmn' && diagramB == 'crs-getreport.bpmn'){
         sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getreport.csv");
     }
+    else if(diagramA == 'crs-deletetrack.bpmn' && diagramB == 'crs-updatetrack.bpmn'){
+        sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-deletetrack_crs-updatetrack.csv");
+        console.log(sim);
+    }
     else{
         sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
+        alert("Warning. The selected diagrams are not suported together.\nPlease go to the info page and and read which diagrams you can compare.")
         //sim = await readMatrixFromCsv("/src/similarity_matrix/");
     }
     

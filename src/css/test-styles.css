@@ -137,7 +137,7 @@ footer {
 
 /* Estilo del primer div dentro de la clase contenedor */
 #parte-izquierda {
-    flex-basis: 50%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
+    flex-basis: 100%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
     /* flex-basis: 50%; */
     box-sizing: border-box;
     background-color: #f2f2f2;
@@ -145,7 +145,7 @@ footer {
 
 /* Estilo del segundo div dentro de la clase contenedor */
 #parte-derecha {
-    flex-basis: 50%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
+    flex-basis: 100%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
     /* flex-basis: 50%; */
     box-sizing: border-box;
     background-color: #e6e6e6;
