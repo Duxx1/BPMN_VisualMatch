@@ -21,49 +21,40 @@ if (diagramC != undefined && diagramC != null){
         case 'crs-createarticle.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-deletetrack.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-updatereviewer.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatereviewer.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-updatetrack.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatetrack.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-updatearticle.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatearticle.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-getreport.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getreport.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-getpaper.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         /*
         case '':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         */
         default:
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
     }
 } else{
     //Carga de diagrama por defecto

@@ -32,68 +32,56 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
         case 'crs-createarticle.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-updatereviewer.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatereviewer.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-updatearticle.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatearticle.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         case 'crs-deletetrack.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         /*
         case '':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
         break;
         */
         default:
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
     }
 
     switch (diagramB) {
         case 'crs-deletetrack.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
             diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
         break;
         case 'crs-updatetrack.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-updatetrack.bpmn');
             diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
         break;
         case 'crs-getreport.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getreport.bpmn');
             diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
         break;
         case 'crs-getpaper.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
             diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
         break;
         /*
         case '':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/');
             diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
         break;
         */
         default:
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
             diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
     }
 
 }else{
@@ -101,12 +89,10 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
     if(diagram1 === null || diagram1 === undefined){
         diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
         diagram1Raw = await diagram1.text();
-        console.log("EL DIAGRAMA 1 (IZQUIERDA) SE HA CARGADO POR DEFECTO");
     }
     if(diagram2 === null || diagram2 === undefined){
         diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
         diagram2Raw = await diagram2.text();
-        console.log("EL DIAGRAMA 2 (DERECHA) SE HA CARGADO POR DEFECTO");
     }
 }
 
@@ -166,7 +152,6 @@ var poolsB;
             //sim = await readMatrixFromCsv("/src/similarity_matrix/");
             poolsA = await getTaskNames("/src/csv_files/crs-deletetrack.bpmnpools.csv");
             poolsA = poolsA.map(string => string.replace(/\r/g, ""));
-            console.log(poolsA);
         break;
         /*
         case '':
@@ -199,7 +184,6 @@ var poolsB;
             //sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatereviewer_crs-updatetrack.csv");
             poolsB = await getTaskNames("/src/csv_files/crs-updatetrack.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
-            console.log(poolsB);
         break;
         case 'crs-getreport.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_crs-getreport.csv");
@@ -214,7 +198,6 @@ var poolsB;
             //sim = await readMatrixFromCsv("/src/similarity_matrix/");
             poolsB = await getTaskNames("/src/csv_files/crs-getpaper.bpmnpools.csv");
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
-            console.log(poolsB);
         break;
         /*
         case '':
@@ -245,16 +228,13 @@ var poolsB;
     }
     else if(diagramA == 'crs-deletetrack.bpmn' && diagramB == 'crs-updatetrack.bpmn'){
         sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-deletetrack_crs-updatetrack.csv");
-        console.log(sim);
     }
     else if(diagramA == 'crs-updatearticle.bpmn' && diagramB == 'crs-getpaper.bpmn'){
         sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-updatearticle_crs-getpaper.csv");
-        console.log(sim);
     }
     /*
     else if(diagramA == '' && diagramB == ''){
         sim = await readMatrixFromCsv("/src/similarity_matrix/");
-        console.log(sim);
     }
     */
     else{
@@ -276,20 +256,14 @@ var poolsB;
     //Nuevo
     let idPoolsA = new Map();
     for(var i=0; i<pr.length; i++){
-        //console.log("Tarea: ",pr[i]," - ID: " + idsFromA[i] + " - " + "pool: " + poolsA[i]);
         idPoolsA.set(idsFromA[i], poolsA[i]);
-        //console.log(idPoolsA.get(idsFromA[i]))
     }
     //idPoolsA.map(string => string.replace(/\r/g, ""));
-    //console.log({idPoolsA})
     
     let idPoolsB = new Map();
     for(var i=0; i<pr2.length; i++){
-        //console.log("Tarea ",pr2[i]," - ID: " + idsFromB[i] + " - " + "pool: " + poolsB[i]);
         idPoolsB.set(idsFromB[i], poolsB[i]);
-        //console.log(idPoolsB.get(idsFromB[i]));
     }
-    //console.log({idPoolsB});
 
     //Hasta aqui
 
@@ -388,11 +362,9 @@ var poolsB;
                 //Se guardan los pools de las tareas con menor similitud
                 oldMinTmpPoolA = poolsA[cont];
                 oldMinTmpPoolB = poolsB[cont2];
-                //console.log("***** MENOR SIM Y PASA POR TAREA DE B: ",taskFromB_min, " - POOL: ",poolsB[cont2], " - SIM: ",sim[cont][cont2], " *****");
             }
             //if(sim[cont][cont2] >= min_match){
             if(sim[cont][cont2] == min_match){
-                //console.log("########## TAREA B: ", idsFromB[cont2],"  pool ",poolsB[cont2], " SIM: ", sim[cont][cont2], " ########################")
                 if(oldMinTmpPoolA != poolsB[cont2]){
                     //Cuando estan en distinto pool se actualiza la tarea con menor similitud
                     min_match = sim[cont][cont2];
@@ -418,24 +390,17 @@ var poolsB;
         //Nuevo
         //Se obtienen los pools de las tareas con mayor y menor similitud
         maxTmpPoolA = idPoolsA.get(taskFromA_max);
-        //console.log("maxTmpPoolA: ",maxTmpPoolA);
         maxTaskFromAPoolsArray.push(maxTmpPoolA);
 
         maxTmpPoolB = idPoolsB.get(taskFromB_max);
-        //console.log("maxTmpPoolB: ",maxTmpPoolB);
         maxTaskFromBPoolsArray.push(maxTmpPoolB);
 
         minTmpPoolA = idPoolsA.get(taskFromA_min);
-        //console.log("minTmpPoolA: ",minTmpPoolA);
         minTaskFromAPoolsArray.push(minTmpPoolA);
 
         minTmpPoolB = idPoolsB.get(taskFromB_min);
-        //console.log("minTmpPoolB: ",minTmpPoolB);
         minTaskFromBPoolsArray.push(minTmpPoolB);
         //Hasta aqui
-        
-        //console.log("MAX MATCH: ",max_match, " - Task from A MAX: ",taskFromA_max, "- pool : ",maxTmpPoolA, " - Task from B MAX: ",taskFromB_max,"- pool : ",maxTmpPoolB);
-        //console.log("MIN MATCH: ",min_match, " - Task from A min: ",taskFromA_min, "- pool : ",minTmpPoolA," - Task from B min: ",taskFromB_min,"- pool : ",minTmpPoolB);
         
         //Resetear los valores de maximo y minimo para la siguiente vuelta
         max_match = 0;
@@ -453,7 +418,6 @@ var poolsB;
     //Hasta aqui
 
     var selected = localStorage.getItem("selected");
-    //console.log("Selected: " + selected);
 
     if(selected == 1){  //Si se selecciona la opcion de mostrar las tareas con menor similitud
 
@@ -520,7 +484,6 @@ var poolsB;
 
         //Se colorean las tareeas del diagrama B con baja coincidencia respecto a tareas del diagrama A
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
-            //console.log("Tarea: ",id_min_tasks_from_B[cont], " - Valor: ",minTaskFromAValuesArray[cont])
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             if(minTaskFromAValuesArray[cont] <= (1/3)){
                 bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'medium-match');
@@ -536,7 +499,6 @@ var poolsB;
                 bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'medium-match');
                 bpmnVisualization2.bpmnElementsRegistry.removeCssClasses(id_min_tasks_from_B[cont], 'low-match');
                 bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'high-match');
-                console.log("Tarea: ",id_min_tasks_from_B[cont], " - Valor: ",minTaskFromAValuesArray[cont])
             }
         }
 
@@ -555,7 +517,6 @@ var poolsB;
         }
 
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
-            console.log("Overlay: ", minTaskFromAValuesArray[cont])
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'low-match');
             bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
@@ -749,14 +710,12 @@ var poolsB;
         names_max_similitudes.push("The task in diagram <b>A</b> with name <b>" + taskNamesArrayFromA_max[cont] + "</b> in <b>pool " + maxTaskFromAPoolsArray[cont] + "</b> has a greater similarity with the task in diagram <b>B</b> <b>" + taskNamesArrayFromB_max[cont] + "</b> in <b>pool " + maxTaskFromBPoolsArray[cont] + "</b> with a value of <b>" + maxTaskFromAValuesArray[cont] + "</b>");
         cont++;
     }cont=0;
-    //console.log(names_max_similitudes);
     while(id_min_tasks_from_A[cont] !== undefined || id_min_tasks_from_B[cont] !== undefined ){
         //id_min_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_min_tasks_from_A[cont] + "</b> tiene un menor parecido con la tarea del diagrama <b>B</b> <b>" + id_min_tasks_from_B[cont] + "</b> con un valor de " + minTaskFromAValuesArray[cont]);
         //id_min_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_min_tasks_from_A[cont] + "</b> has less similarity with the task in diagram <b>B</b> <b>" + id_min_tasks_from_B[cont] + "</b> with a value of <b>" + minTaskFromAValuesArray[cont] + "</b>");
         names_min_similitudes.push("The task in diagram <b>A</b> with name <b>" + taskNamesArrayFromA_min[cont] + "</b> in <b>pool "+ minTaskFromAPoolsArray[cont] + "</b> has less similarity with the task in diagram <b>B</b> <b>" + taskNamesArrayFromB_min[cont] + "</b> in <b>pool " + minTaskFromBPoolsArray[cont] + "</b> with a value of <b>" + minTaskFromAValuesArray[cont] + "</b>");
         cont++;
     }cont=0;
-    //console.log(names_min_similitudes);
 
     // HASTA AQUI
     // INICIO ORIGINAL
@@ -766,13 +725,11 @@ var poolsB;
         id_max_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_max_tasks_from_A[cont] + "</b> has a greater similarity with the task in diagram <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> with a value of <b>" + maxTaskFromAValuesArray[cont] + "</b>");
         cont++;
     }cont=0;
-    console.log(id_max_similitudes);
     while(id_min_tasks_from_A[cont] !== undefined || id_min_tasks_from_B[cont] !== undefined ){
         //id_min_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_min_tasks_from_A[cont] + "</b> tiene un menor parecido con la tarea del diagrama <b>B</b> <b>" + id_min_tasks_from_B[cont] + "</b> con un valor de " + minTaskFromAValuesArray[cont]);
         id_min_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_min_tasks_from_A[cont] + "</b> has less similarity with the task in diagram <b>B</b> <b>" + id_min_tasks_from_B[cont] + "</b> with a value of <b>" + minTaskFromAValuesArray[cont] + "</b>");
         cont++;
     }cont=0;
-    console.log(id_min_similitudes);
     */
     // FIN ORIGINAL
 
@@ -954,11 +911,9 @@ function writeArrayToCSV(fileName, array) {
 function checkTotalSimilarity(values) {
     let accumulator = 0;
     let length = values.length;
-    //console.log("LONGITUD: " + length);
+    
     for(let i=0; i<values.length; i++){
         accumulator += parseFloat(values[i]);
-        //console.log("VALOR " + i + ": " + values[i] + "")
     }
-    //console.log("@@@ SIMILARITY BETWEEN DIAGRAMS: " + (accumulator/length) + " @@@");
     return accumulator/length;
 }
