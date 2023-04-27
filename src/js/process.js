@@ -9,7 +9,6 @@ function processBPMNFile(file) {
     
     // Aplicar la expresión regular al archivo y buscar todas las tareas
     while (regexTask.exec(file) !== null) {
-        console.log("HAY MATCH #############################");
         let taskType = match[1];
         let taskName = match[2];
         let taskId = match[3];
@@ -28,7 +27,6 @@ function processBPMNFile(file) {
             taskNames.set(taskName, 1);
         }
         
-        console.log(taskName);
         names.push(taskName);
         
         // Reemplazar el id de la tarea por el nombre convertido a camel case
@@ -50,18 +48,7 @@ function modifyBpmnFile(file) {
     
     // Buscar tareas en el archivo
     while ((match = regexTask.exec(file)) !== null) {
-        console.log("HAY MATCH #############################");        
-        console.log("MATCH[0] -> "+match[0]);
-        console.log("MATCH[1] -> "+match[1]);
-        console.log("MATCH[2] -> "+match[2]);
-        console.log("MATCH[3] -> "+match[3]);
         
-        /*
-        let task=match[0];
-        let taskWithId = task.replace(match[1],match[2]);
-        console.log("CADENA->"+taskWithId);
-        */
-
         let taskName = "";
 
         if(match[2] != "" && match[2] != null && match[2] != undefined){
@@ -70,9 +57,6 @@ function modifyBpmnFile(file) {
         else{
             taskName = match[1];
         }
-        // Convertir el nombre a camel case
-        // original
-        // let taskName = convertirACamelCase(match[2]);
         
         // Si ya se ha encontrado una tarea con este nombre, añadirle un número al final
         //original
@@ -86,11 +70,8 @@ function modifyBpmnFile(file) {
         }
         // Reemplazar el id de la tarea con el nombre convertido a camel case
         let modifiedId = taskName;
-        console.log("MODIFIED ID -> "+modifiedId);
         let idRegex = new RegExp(match[1], "g");
-        //
-        console.log(taskName);
-        //
+
         modifiedFile = modifiedFile.replace(idRegex, modifiedId);
     }
     return modifiedFile;
@@ -107,28 +88,10 @@ function detectar(file) {
     
     // Buscar tareas en el archivo
     while ((match = regexTask.exec(file)) !== null) {
-        console.log("HAY MATCH #############################");        
-        console.log("MATCH[0] -> "+match[0]);
-        console.log("MATCH[1] -> "+match[1]);
-        console.log("MATCH[2] -> "+match[2]);
-        console.log("MATCH[3] -> "+match[3]);
-        /*let taskType = match[1];
-        console.log("TIPO->"+taskType);
-        let taskName = match[2];
-        console.log("TAREA->"+taskName);
-        let taskId = match[3];
-        console.log("ID->"+taskId);*/
         let task=match[0];
         let taskWithId = task.replace(match[1],match[2]);
-        console.log("CADENA->"+taskWithId);
     }
 }
-
-//const file = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-old.bpmn');
-//const rawFile = await file.text();
-
-//let modifiedFile = modifyBpmnFile(rawFile);
-//console.log(modifiedFile);
 
 //Para descargar el archivo tras parsearlo
 const guardarArchivoDeTexto = (contenido, nombre) => {
@@ -145,14 +108,6 @@ const $botonDescargar = document.querySelector("#descargar");
 $botonDescargar.onclick = () => {
     guardarArchivoDeTexto(modifiedFile, "archivo2.bpmn");
 }
-
-//detectar(rawFile);
-
-//console.log(names);
-
-//let pasar = "Obtain-all Conference";
-//let dev = convertirACamelCase(pasar);
-//console.log(dev);
 
 //Se usa en la función modifyBpmnFile para llevar a cabo el parseo de name a id
 function convertirACamelCase(cadenas) {
@@ -197,36 +152,20 @@ let fullPart= '';
 input.addEventListener("change", function(e) {
     let files = e.target.files;
     // files es una lista de objetos File, representando cada archivo en el directorio seleccionado
-    // puedes iterar sobre esta lista y aplicar la función ya existente
     for (let i = 0; i < files.length; i++) {
         let file = files[i];
-        // aplicar función ya existente a cada archivo
-        console.log("Nombre del archivo -> " + file.name);
         unprocessedFiles.push(file.name);
         fullPart = firstPart + file.name;
-        console.log(`Itteracion ${i} ` + fullPart);
 
         process(fullPart, file.name);
-        //const unprocessed = fetch(fullPart);
-        //const rawUnprocessed = unprocessed.text();
-        //console.log(rawUnprocessed);
     }
-    //Debe hacerse aquí
-    //console.log(unprocessedFiles);
-    //Idea: probar a hacer un fetch de cada archivo y luego parsearlos
     
-    /*for(let i = 0; i < unprocessedFiles.length; i++){
-        fullPart = firstPart + unprocessedFiles[i];
-        console.log(`Itteracion ${i} ` + fullPart);
-    }*/
 });
 
 //Para procesar cada archivo bpmn
 async function process(fullPart, fileName){
     const unprocessed = await fetch(fullPart);
     const rawUnprocessed = await unprocessed.text();
-    //console.log(rawUnprocessed);
     let modifiedFile = modifyBpmnFile(rawUnprocessed);
-    console.log(modifiedFile);
     guardarArchivoDeTexto(modifiedFile, fileName);
 }

@@ -26,8 +26,6 @@ input3.addEventListener('change', () => {
 
 const send = document.querySelector('#send');
 send.addEventListener('click', () => {
-    console.log(diagramA);
-    console.log(diagramB);
     if(localStorage.getItem("diagramA") !== null && localStorage.getItem("diagramB") !== null
     && localStorage.getItem("diagramA") !== undefined && localStorage.getItem("diagramB") !== undefined
     && localStorage.getItem("selected") !== null && localStorage.getItem("selected") !== undefined){
@@ -56,16 +54,12 @@ clean.addEventListener('click', () => {
 var diagramA = localStorage.getItem("diagramA");
 var diagramB = localStorage.getItem("diagramB");
 
-console.log(diagramA);
-console.log(diagramB);
-
 const min = document.querySelector("#min");
 const min_sp = document.querySelector("#min_sp");
 const max = document.querySelector("#max");
 const max_sp = document.querySelector("#max_sp");
 
 // valores de selected: min = 1 # min_sp = 2 # max = 3 # max_sp = 4
-
 
 min.addEventListener("change", () => {
     localStorage.setItem("selected", 1);
