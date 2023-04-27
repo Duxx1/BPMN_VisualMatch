@@ -1,4 +1,3 @@
-//export
 // Función para leer un archivo CSV y obtener un array con los nombres de las tareas
 async function getTaskNames(fileUrl) {
     // Obtiene el contenido del archivo CSV
@@ -13,11 +12,3 @@ async function getTaskNames(fileUrl) {
     
     return taskNames;
 }
-
-// Ejemplo de uso de la función
-/*
-(async () => {
-    const taskNames = await getTaskNames('/src/csv_files/Get_conference.bpmn.csv');
-    console.log(taskNames);  // Imprime el array con los nombres de las tareas leídas del archivo CSV
-})();
-*/

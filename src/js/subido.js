@@ -1,6 +1,5 @@
-import { BpmnVisualization, FitType, FlowKind, ShapeBpmnElementKind } from 'bpmn-visualization';
-//import diagram from './bpmn_diagrams/diagram.bpmn?raw';
-//import diagram2 from './bpmn_diagrams/CRS - Create article.bpmn?raw';
+import { BpmnVisualization, FitType } from 'bpmn-visualization';
+
 var a = localStorage.getItem("diagramaA");
 console.log(a);
 const cadenaDiagramaA = './bpmn_diagrams/'+a+'?raw';
@@ -8,18 +7,17 @@ console.log(cadenaDiagramaA);
 
 import diagram from './bpmn_diagrams/crs-get-conference-bpmn.bpmn?raw';
 import diagram2 from './bpmn_diagrams/crs-update-conference-bpmn.bpmn?raw';
-//Idea: importar todos los diagramas y segun seleccione el usuario, se carga el deseado junto con la matriz y los nombres de las tareas
+
 import diagram3 from './bpmn_diagrams/colors.bpmn?raw';
 import './styles.css';
-import { getActivitiesRunningInstances, getEdgesWaitingInstances, getPrueba } from './js/algorithms.js';
-//import { calcularSimilitudCasillas, calcularSimilitudCasillas2 } from './js/similitud';
-import { readMatrixFromCsv, getTaskNamesFromCsv } from './js/read_csv.js';
+import { readMatrixFromCsv } from './js/read_csv.js';
 
 // Variable para almacenar el diagrama de la parte izquierda de la pantalla 
 const bpmnVisualization = new BpmnVisualization({
     container: 'parte-izquierda',
     navigation: { enabled: true },
 });
+
 // Variable para almacenar el diagrama de la parte derecha de la pantalla
 const bpmnVisualization2 = new BpmnVisualization({
     container: 'parte-derecha',
@@ -31,60 +29,36 @@ const footer = document.querySelector('footer');
 const version = bpmnVisualization.getVersion();
 footer.innerText = `TFG-version-${version.lib}`;
 
-if(a == "colors.bpmn"){
-    bpmnVisualization.load(diagram3, {
-        fit: { type: FitType.Horizontal }
-    });
-} else{
-    // Cargar diagrama de la parte izquierda de la pantalla
-    bpmnVisualization.load(diagram, {
-        fit: { type: FitType.Horizontal }
-    });
-}
-
-
+// Cargar diagrama de la parte izquierda de la pantalla
+bpmnVisualization.load(diagram, {
+    fit: { type: FitType.Horizontal }
+});
 
 // Cargar diagrama de la parte derecha de la pantalla
 bpmnVisualization2.load(diagram2, {
     fit: { type: FitType.Center }
 });
 
-
-
-
 //Contadores que se usaran para el procesamiento de las tareas de los diagramas
 var cont=0;
 var cont2=0;
 
-// Ejemplo de uso de la función
 (async () => {
-    //const taskNames = await getTaskNames('/src/csv_files/Get_conference.bpmn.csv');
-    //console.log("Tareas leídas del archivo CSV Get conference");
-    //console.log(taskNames);  // Imprime el array con los nombres de las tareas leídas del archivo CSV
 
     //Se almacena en pr los nombres de las tareas del diagrama A leidas desde el csv
-    //console.log("Probando a obtener del csv Get conference los nombres de las tareas:");
     const pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
-    //console.log("nombres:", pr);
     
     //Se almacena en pr2 los nombres de las tareas del diagrama B leidos desde el csv
-    //console.log("Probando a obtener del csv Update conference los nombres de las tareas:");
     const pr2 = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
-    //console.log("nombres:", pr2);
     
     //Se almacena en sim los valores de la matriz de similitud leidos desde el csv
-    //console.log("Probando a obtener del csv los valores de la matriz de similitud:");
     const sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-    //console.log(sim);
     
     //Se almacena en idsFromA los ids de las tareas del diagrama A convertidos a camelCase a partir de los nombres de las tareas
     const idsFromA = convertirACamelCase(pr);
+
     //Se almacena en idsFromB los ids de las tareas del diagrama B convertidos a camelCase a partir de los nombres de las tareas
     const idsFromB = convertirACamelCase(pr2);
-    console.log("Ids convertidos para el diagrama A: ",idsFromA);
-    console.log("Ids convertidos para el diagrama B: ",idsFromB);
-
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 
     //Valor maximo de similitud entre dos tareas para cada fila de la matriz
     let max_match = 0;

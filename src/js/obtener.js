@@ -69,46 +69,18 @@ const max_sp = document.querySelector("#max_sp");
 
 min.addEventListener("change", () => {
     localStorage.setItem("selected", 1);
-    
-    /* if(diagramA != null && diagramB != null){
-        localStorage.clear();
-        localStorage.setItem("diagramA", diagramA);
-        localStorage.setItem("diagramB", diagramB);
-        localStorage.setItem("selected", 1);
-    } */
 });
 
 min_sp.addEventListener("change", () => {
     localStorage.setItem("selected", 2);
-    
-    /* if(diagramA != null && diagramB != null){
-        localStorage.clear();
-        localStorage.setItem("diagramA", diagramA);
-        localStorage.setItem("diagramB", diagramB);
-        localStorage.setItem("selected", 2);
-    } */
 });
 
 max.addEventListener("change", () => {
     localStorage.setItem("selected", 3);
-    
-    /* if(diagramA != null && diagramB != null){
-        localStorage.clear();
-        localStorage.setItem("diagramA", diagramA);
-        localStorage.setItem("diagramB", diagramB);
-        localStorage.setItem("selected", 3);
-    } */
 });
 
 max_sp.addEventListener("change", () => {
     localStorage.setItem("selected", 4);
-    
-    /* if(diagramA != null && diagramB != null){
-        localStorage.clear();
-        localStorage.setItem("diagramA", diagramA);
-        localStorage.setItem("diagramB", diagramB);
-        localStorage.setItem("selected", 4);
-    } */
 });
 
 function redirect() {

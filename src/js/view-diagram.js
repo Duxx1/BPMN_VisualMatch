@@ -18,11 +18,6 @@ var diagram1Raw;
 
 if (diagramC != undefined && diagramC != null){
     switch (diagramC) {
-        case 'crs-get-conference-bpmn.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
-            diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
-        break;
         case 'crs-createarticle.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();

@@ -29,11 +29,6 @@ var diagram2Raw;
 if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != undefined){
     
     switch (diagramA) {
-        case 'crs-get-conference-bpmn.bpmn':
-            diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
-            diagram1Raw = await diagram1.text();
-            console.log(diagram1Raw);
-        break;
         case 'crs-createarticle.bpmn':
             diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-createarticle.bpmn');
             diagram1Raw = await diagram1.text();
@@ -68,11 +63,6 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
     }
 
     switch (diagramB) {
-        case 'crs-get-conference-bpmn.bpmn':
-            diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-get-conference-bpmn.bpmn');
-            diagram2Raw = await diagram2.text();
-            console.log(diagram2Raw);
-        break;
         case 'crs-deletetrack.bpmn':
             diagram2 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-deletetrack.bpmn');
             diagram2Raw = await diagram2.text();
@@ -149,20 +139,6 @@ var poolsB;
 (async () => {
     
     switch (diagramA) {
-        case 'crs-get-conference-bpmn.bpmn':
-            pr = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
-            pr = pr.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-            poolsA = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
-            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
-        break;
-        case 'crs-update-conference-bpmn.bpmn':
-            pr = await getTaskNames("/src/csv_files/Update_conference.bpmn.csv");
-            pr = pr.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-            poolsA = await getTaskNames("/src/csv_files/crs-update-conference-bpmn.bpmnpools.csv");
-            poolsA = poolsA.map(string => string.replace(/\r/g, ""));
-        break;
         case 'crs-createarticle.bpmn':
             pr = await getTaskNames("/src/csv_files/tasks_crs-createarticle.csv");
             pr = pr.map(string => string.replace(/\r/g, ""));
@@ -210,13 +186,6 @@ var poolsB;
     }
 
     switch (diagramB) {
-        case 'crs-get-conference-bpmn.bpmn':
-            pr2 = await getTaskNames("/src/csv_files/Get_conference.bpmn.csv");
-            pr2 = pr2.map(string => string.replace(/\r/g, ""));
-            //sim = await readMatrixFromCsv("/src/similarity_matrix/similaritymatrix_CRS_Get_conference_CRS-Update_conference.csv");
-            poolsB = await getTaskNames("/src/csv_files/crs-get-conference-bpmn.bpmnpools.csv");
-            poolsB = poolsB.map(string => string.replace(/\r/g, ""));
-        break;
         case 'crs-deletetrack.bpmn':
             pr2 = await getTaskNames("/src/csv_files/tasks_crs-deletetrack.csv");
             pr2 = pr2.map(string => string.replace(/\r/g, ""));
