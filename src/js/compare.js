@@ -2,18 +2,18 @@ import { BpmnVisualization, FitType } from 'bpmn-visualization';
 import '/src/css/styles.css';
 import { readMatrixFromCsv } from '/src/js/read_csv.js';
 
-// Variable para almacenar el diagrama de la parte izquierda de la pantalla 
+// Variable to store the diagram on the left side of the screen
 const bpmnVisualization = new BpmnVisualization({
     container: 'parte-izquierda',
     navigation: { enabled: true },
 });
-// Variable para almacenar el diagrama de la parte derecha de la pantalla
+// Variable to store the diagram on the right side of the screen
 const bpmnVisualization2 = new BpmnVisualization({
     container: 'parte-derecha',
     navigation: { enabled: true },
 });
 
-// just for displaying my title and version of the tool
+// Just for displaying my title and version of the tool
 const footer = document.querySelector('footer');
 const version = bpmnVisualization.getVersion();
 footer.innerText = `TFG-tool-version-${version.lib}`;
@@ -96,30 +96,30 @@ if(diagramA != null && diagramB != null && diagramA != undefined && diagramB != 
     }
 }
 
-// Cargar diagrama de la parte izquierda de la pantalla
+// Load diagram from left side of screen
 bpmnVisualization.load(diagram1Raw, {
     fit: { type: FitType.Horizontal }
 });
 
-// Cargar diagrama de la parte derecha de la pantalla
+// Load diagram from right side of screen
 bpmnVisualization2.load(diagram2Raw, {
     fit: { type: FitType.Center }
 });
 
-//Contadores que se usaran para el procesamiento de las tareas de los diagramas
-//Contador para iterar sobre las tareas del diagrama A
+// Counters to be used for the processing of diagram tasks
+// Counter for iterating over the tasks in diagram A
 var cont=0;
-//Contador para iterar sobre las tareas del diagrama B
+// Counter for iterating over the tasks in diagram B
 var cont2=0;
-//Tareas del diagrama A
+// Diagram A tasks
 var pr;
-//Tareas del diagrama B
+// Diagram B tasks
 var pr2;
-//Valores de la matriz de similitud
+// Values of the similarity matrix
 var sim;
-//Pools de las tareas del diagrama A
+// Pools of the tasks in diagram A
 var poolsA;
-//Pools de las tareas del diagrama B
+// Pools of the tasks in diagram B
 var poolsB;
 
 (async () => {
@@ -216,7 +216,7 @@ var poolsB;
             poolsB = poolsB.map(string => string.replace(/\r/g, ""));
     }
 
-    //Probar aqui a decidir que matriz de similitud usar segun los diagramas
+    // Decide which similarity matrix to use according to the diagrams
     if(diagramA == 'crs-createarticle.bpmn' && diagramB == 'crs-deletetrack.bpmn'){
         sim = await readMatrixFromCsv("/src/similarity_matrix/similarity_matrixLin_crs-createarticle_crs-deletetrack.csv");
     }
@@ -243,17 +243,14 @@ var poolsB;
         //sim = await readMatrixFromCsv("/src/similarity_matrix/");
     }
     
-    //Se almacena en idsFromA los ids de las tareas del diagrama A convertidos a camelCase a partir de los nombres de las tareas
+    // The ids of the tasks in diagram A converted to camelCase from the task names are stored in idsFromA
     let idsFromA = convertToCamelCase(pr).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
-    //Se almacena en idsFromB los ids de las tareas del diagrama B convertidos a camelCase a partir de los nombres de las tareas
+    // The ids of the tasks in diagram B converted to camelCase from the task names are stored in idsFromB
     let idsFromB = convertToCamelCase(pr2).map(string => string.replace(/\r/g, "")).map(string => string.replace(/\r/g, ""));;
     
-    //Nuevo
     const namesFromA = convertToNames(idsFromA).map(string => string.replace(/\r/g, ""));
     const namesFromB = convertToNames(idsFromB).map(string => string.replace(/\r/g, ""));
-    //Hasta aqui
 
-    //Nuevo
     let idPoolsA = new Map();
     for(var i=0; i<pr.length; i++){
         idPoolsA.set(idsFromA[i], poolsA[i]);
@@ -265,90 +262,87 @@ var poolsB;
         idPoolsB.set(idsFromB[i], poolsB[i]);
     }
 
-    //Hasta aqui
-
-    //Valor maximo de similitud entre dos tareas para cada fila de la matriz
+    // Maximum similarity value between two tasks for each row of the matrix
     let max_match = 0;
-    //Valor minimo de similitud entre dos tareas para cada fila de la matriz
+    // Minimum similarity value between two tasks for each row of the matrix
     let min_match = 1;
     
-    //ID de la tarea del diagrama A con mayor similitud
+    // ID of the task with most similarity in diagram A
     let taskFromA_max = null;
-    //ID de la tarea del diagrama B con mayor similitud
+    // ID of the task with most similarity in diagram B
     let taskFromB_max = null;
-    //ID de la tarea del diagrama A con menor similitud
+    // ID of the task with less similarity in diagram A
     let taskFromA_min = null;
-    //ID de la tarea del diagrama B con menor similitud
+    // ID of the task with less similarity in diagram B
     let taskFromB_min = null;
 
-    //Pool para la tarea del diagrama A con mayor similitud en cada iteracion
+    // Pool for the task in diagram A with the highest similarity in each iteration
     let maxTmpPoolA = null;
-    //Pool para la tarea del diagrama B con mayor similitud en cada iteracion
+    // Pool for the task in diagram B with the highest similarity in each iteration
     let maxTmpPoolB = null;
-    //Pool para la tarea del diagrama A con menor similitud en cada iteracion
+    // Pool for the task in diagram A with the lowest similarity in each iteration
     let minTmpPoolA = null;
-    //Pool para la tarea del diagrama B con menor similitud en cada iteracion
+    // Pool for the task in diagram B with the lowest similarity in each iteration
     let minTmpPoolB = null;
-    //Pool para la tarea del diagrama A con mayor similitud anterior en la iteracion
+    // Pool for the task in diagram A with the highest similarity in the previous iteration
     let oldMaxTmpPoolA = null;
-    //Pool para la tarea del diagrama B con mayor similitud anterior en la iteracion
+    // Pool for the task in diagram B with the highest similarity in the previous iteration
     let oldMaxTmpPoolB = null;
-    //Pool para la tarea del diagrama A con menor similitud anterior en la iteracion
+    // Pool for the task in diagram A with the lowest similarity in the previous iteration
     let oldMinTmpPoolA = null;
-    //Pool para la tarea del diagrama B con menor similitud anterior en la iteracion
+    // Pool for the task in diagram B with the lowest similarity in the previous iteration
     let oldMinTmpPoolB = null;
     
-    //IDs de las tareas del diagrama A con mayor similitud en cada fila de la matriz
+    // IDs of tasks in diagram A with the highest similarity in each row of the matrix
     let maxTaskFromAArray = [];
-    //IDs de las tareas del diagrama A con menor similitud en cada fila de la matriz
+    // IDs of tasks in diagram A with the lowest similarity in each row of the matrix
     let minTaskFromAArray = [];
-    //IDs de las tareas del diagrama B con mayor similitud en cada fila de la matriz
+    // IDs of tasks in diagram B with the highest similarity in each row of the matrix
     let maxTaskFromBArray = [];
-    //IDs de las tareas del diagrama B con mayor similitud en cada fila de la matriz
+    // IDs of tasks in diagram B with the lowest similarity in each row of the matrix
     let minTaskFromBArray = [];
 
-    //Valores de similitud maximos para las tareas de A en cada fila de la matriz 
-    //Nota: es el mismo que para las tareas de B
+    // Maximum similarity values for the tasks of A in each row of the matrix
+    // Note: it is the same as for the tasks in B
     let maxTaskFromAValuesArray = [];
-    //Valores de similitud minimos para las tareas de A en cada fila de la matriz
-    //Nota: es el mismo que para las tareas de B
+    // Minimum similarity values for the tasks of A in each row of the matrix
+    // Note: it is the same as for the tasks in B
     let minTaskFromAValuesArray = [];
     
-    //Guarda el valor del pool para los ids de las tareas de A con mayor similitud en cada fila de la matriz
+    // Stores the value of the pool for the ids of the tasks from A with the highest similarity in each row of the matrix
     let maxTaskFromAPoolsArray = [];
-    //Guarda el valor del pool para los ids de las tareas de B con menor similitud en cada fila de la matriz
+    // Stores the value of the pool for the ids of the tasks from B with the highest similarity in each row of the matrix
     let maxTaskFromBPoolsArray = [];
-    //Guarda el valor del pool para los ids de las tareas de A con menor similitud en cada fila de la matriz
-    //Sincronizado con el array de minTaskFromAArray
+    // Stores the value of the pool for the ids of the tasks from A with the lowest similarity in each row of the matrix
+    // Synchronized with the array of minTaskFromAArray
     let minTaskFromAPoolsArray = [];
-    //Guarda el valor del pool para los ids de las tareas de B con menor similitud en cada fila de la matriz
-    //Sincronizado con el array de minTaskFromBArray
+    // Stores the value of the pool for the ids of the tasks from B with the highest similarity in each row of the matrix
+    // Synchronized with the array of minTaskFromBArray
     let minTaskFromBPoolsArray = [];
-    //Hasta aqui
 
     for(cont = 0; cont < idsFromA.length; cont++){
         for(cont2 = 0; cont2 < idsFromB.length; cont2++){
             
-            //Se hace un mejor hasta ahora para obtener los maximos y minimos en cada fila, junto con las tareas
+            // It does a better so far to get the maximum and minimum in each row, along with the tasks
             if(sim[cont][cont2] > max_match){
                 max_match = sim[cont][cont2];
                 taskFromA_max = idsFromA[cont];
                 taskFromB_max = idsFromB[cont2]; //taskFromB_max = pr2[cont];
-                //Se guardan los pools de las tareas con mayor similitud
+                // The pools of tasks with the highest similarity are saved
                 oldMaxTmpPoolA = poolsA[cont];
                 oldMaxTmpPoolB = poolsB[cont2];
             }
             if(sim[cont][cont2] == max_match){
                 
-                //Si las tareas tienen la misma similitud, se comprueba si el pool de la tarea de A es igual al de la tarea de B
+                // If the tasks have the same similarity, it is checked if the pool of A's task is the same as that of B's task
                 if(oldMaxTmpPoolA == poolsB[cont2]){
                 //if(oldMaxTmpPoolA == poolsB[cont2]){
-                    //Cuando estan en el mismo pool se actualiza la tarea con mayor similitud
+                    // When they are in the same pool, the task with the most similarity is updated
                     max_match = sim[cont][cont2];
                     taskFromA_max = idsFromA[cont];
                     taskFromB_max = idsFromB[cont2];
-                    //Se guardan los pools de las tareas con mayor similitud por si en la siguiente iteracion hay otra tarea con la misma similitud
-                    //Para poder volver a comprobar los pools
+                    // The pools of the tasks with the highest similarity are saved 
+                    // in case in the next iteration there is another task with the same similarity so that the pools can be checked again
                     oldMaxTmpPoolA = poolsA[cont];
                     oldMaxTmpPoolB = poolsB[cont2];
                 }
@@ -359,19 +353,19 @@ var poolsB;
                 min_match = sim[cont][cont2];
                 taskFromA_min = idsFromA[cont];
                 taskFromB_min = idsFromB[cont2];
-                //Se guardan los pools de las tareas con menor similitud
+                // The pools of the tasks with the lowest similarity are saved
                 oldMinTmpPoolA = poolsA[cont];
                 oldMinTmpPoolB = poolsB[cont2];
             }
             //if(sim[cont][cont2] >= min_match){
             if(sim[cont][cont2] == min_match){
                 if(oldMinTmpPoolA != poolsB[cont2]){
-                    //Cuando estan en distinto pool se actualiza la tarea con menor similitud
+                    // When they are in different pools, the task with the least similarity is updated
                     min_match = sim[cont][cont2];
                     taskFromA_min = idsFromA[cont];
                     taskFromB_min = idsFromB[cont2];
 
-                    //Se guardan los pools de las tareas con menor similitud
+                    // The pools of the tasks with the lowest similarity are saved
                     oldMinTmpPoolA = poolsA[cont];
                     oldMinTmpPoolB = poolsB[cont2];
                     
@@ -379,7 +373,7 @@ var poolsB;
             }
         }
         
-        //Se meten las tareas en los arrays y lo mismo con los valores de similitud maximos y minimos
+        // The tasks are put into the arrays and the same with the maximum and minimum similarity values
         maxTaskFromAArray.push(taskFromA_max);
         minTaskFromAArray.push(taskFromA_min);
         maxTaskFromBArray.push(taskFromB_max);
@@ -387,8 +381,7 @@ var poolsB;
         maxTaskFromAValuesArray.push(max_match);
         minTaskFromAValuesArray.push(min_match);
 
-        //Nuevo
-        //Se obtienen los pools de las tareas con mayor y menor similitud
+        // The pools of the tasks with the highest and lowest similarity are obtained
         maxTmpPoolA = idPoolsA.get(taskFromA_max);
         maxTaskFromAPoolsArray.push(maxTmpPoolA);
 
@@ -400,34 +393,30 @@ var poolsB;
 
         minTmpPoolB = idPoolsB.get(taskFromB_min);
         minTaskFromBPoolsArray.push(minTmpPoolB);
-        //Hasta aqui
         
-        //Resetear los valores de maximo y minimo para la siguiente vuelta
+        // Reset the maximum and minimum values for the next iteration
         max_match = 0;
         min_match = 1;
     }
-    //Hasta aqui
 
-    //con .map(string => string.replace(/\r/g, "")) se esta eliminando el retorno de carro de cada string del array
+    //By using .map(string => string.replace(/\r/g, "")) the carriage return of each string in the array is being eliminated
 
-    //En proceso
     const id_max_tasks_from_A = maxTaskFromAArray.map(string => string.replace(/\r/g, ""));
     const id_min_tasks_from_A = minTaskFromAArray.map(string => string.replace(/\r/g, ""));
     const id_max_tasks_from_B = maxTaskFromBArray.map(string => string.replace(/\r/g, ""));
     const id_min_tasks_from_B = minTaskFromBArray.map(string => string.replace(/\r/g, ""));
-    //Hasta aqui
 
     var selected = localStorage.getItem("selected");
 
-    if(selected == 1){  //Si se selecciona la opcion de mostrar las tareas con menor similitud
+    if(selected == 1){  // If you select the option to display the tasks with the lowest similarity
 
-        //Se colorean las tareas del diagrama A con baja coincidencia respecto a tareas del diagrama B
+        // The tasks in diagram A with low similarity with respect to tasks in diagram B are colored
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
         }
 
-        //Se colorean las tareas del diagrama B con baja coincidencia respecto a tareas del diagrama A
+        // The tasks in diagram B with low similarity with respect to tasks in diagram A are colored
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
@@ -452,7 +441,7 @@ var poolsB;
             bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
                 position: 'top-center',
-                label: `${minTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
+                label: `${minTaskFromAValuesArray[cont]}`, //Note: maxTaskFromAValuesArray has the same value for A as for B
                 style: {
                     font: { color: 'black', size: 16 },
                     fill: { color: 'white', opacity: 100 },
@@ -461,8 +450,8 @@ var poolsB;
             });
         }
     }
-    else if(selected == 2){     //Si se selecciona la opcion de mostrar las tareas con menor similitud y especial
-        //Se colorean las tareeas del diagrama A con baja coincidencia respecto a tareas del diagrama B
+    else if(selected == 2){     // If you select the option to display the tasks with less similarity and special
+        // The tasks in diagram A with low similarity with respect to tasks in diagram B are colored
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             if(minTaskFromAValuesArray[cont] <= (1/3)){
@@ -482,7 +471,7 @@ var poolsB;
             }
         }
 
-        //Se colorean las tareeas del diagrama B con baja coincidencia respecto a tareas del diagrama A
+        // The tasks in diagram B with low similarity with respect to tasks in diagram A are colored
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             if(minTaskFromAValuesArray[cont] <= (1/3)){
@@ -521,7 +510,7 @@ var poolsB;
             bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_min_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_min_tasks_from_B[cont], {
                 position: 'top-center',
-                label: `${minTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
+                label: `${minTaskFromAValuesArray[cont]}`, // Note: maxTaskFromAValuesArray has the same value for A as for B
                 style: {
                     font: { color: 'black', size: 16 },
                     fill: { color: 'white', opacity: 100 },
@@ -530,16 +519,16 @@ var poolsB;
             });
         }
     }
-    else if(selected == 3){    //Si se selecciona la opcion de mostrar las tareas con mayor similitud
+    else if(selected == 3){    // If you select the option to show the tasks with the highest similarity
 
-        //Se colorean las tareeas del diagrama A con alta coincidencia respecto a tareas del diagrama B
+        // The tasks in diagram A with high similarity with respect to tasks in diagram B are colored
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             
         }
 
-        //Se colorean las tareeas del diagrama B con alta coincidencia respecto a tareas del diagrama A
+        // The tasks in diagram B with high similarity with respect to tasks in diagram A are colored
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
@@ -564,7 +553,7 @@ var poolsB;
             bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_max_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_max_tasks_from_B[cont], {
                 position: 'top-center',
-                label: `${maxTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
+                label: `${maxTaskFromAValuesArray[cont]}`, // Note: maxTaskFromAValuesArray has the same value for A as for B
                 style: {
                     font: { color: 'black', size: 16 },
                     fill: { color: 'white', opacity: 100 },
@@ -574,9 +563,9 @@ var poolsB;
         }
         
     }
-    else if(selected == 4){     //Si se selecciona la opcion de mostrar las tareas con mayor similitud y especial
+    else if(selected == 4){     // If you select the option to display the tasks with the most similarity and special
         
-        //Se colorean las tareeas del diagrama A con alta coincidencia respecto a tareas del diagrama B
+        // The tasks in diagram A with high similarity with respect to tasks in diagram B are colored
         for(cont=0; cont < id_max_tasks_from_A.length; cont++){
             //bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_A[cont], 'high-match');
             if(maxTaskFromAValuesArray[cont] <= (1/3)){
@@ -596,7 +585,7 @@ var poolsB;
             }
         }
         
-        //Se colorean las tareeas del diagrama B con alta coincidencia respecto a tareas del diagrama A
+        // The tasks in diagram B with high similarity with respect to tasks in diagram A are colored
         for(cont=0; cont < id_max_tasks_from_B.length; cont++){
             //bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_max_tasks_from_B[cont], 'high-match');
             if(maxTaskFromAValuesArray[cont] <= (1/3)){
@@ -635,7 +624,7 @@ var poolsB;
             bpmnVisualization2.bpmnElementsRegistry.removeAllOverlays(id_max_tasks_from_B[cont]);
             bpmnVisualization2.bpmnElementsRegistry.addOverlays(id_max_tasks_from_B[cont], {
                 position: 'top-center',
-                label: `${maxTaskFromAValuesArray[cont]}`, //Nota: maxTaskFromAValuesArray tiene el mismo valor para A que para B
+                label: `${maxTaskFromAValuesArray[cont]}`, //Note: maxTaskFromAValuesArray has the same value for A as for B
                 style: {
                     font: { color: 'black', size: 16 },
                     fill: { color: 'white', opacity: 100 },
@@ -685,14 +674,13 @@ var poolsB;
         }
     }
     
-    //FIN DE LA PRUEBA
     
-    //Variables para guardar los id de tareas con mayor y menor similitud, junto con el valor de similitud
+    // Variables to store the ids of tasks with higher and lower similarity, together with the similarity value
     const id_max_similitudes = [];
     const id_min_similitudes = [];
     const names_max_similitudes = [];
     const names_min_similitudes = [];
-    //Reseteo de contador para el bucle
+    // Counter reset for the loop
     cont=0;
     let taskNamesArrayFromA_max = [];
     let taskNamesArrayFromB_max = [];
@@ -703,7 +691,7 @@ var poolsB;
     let taskNamesArrayFromB_min = [];
     taskNamesArrayFromA_min = convertToNames(id_min_tasks_from_A);
     taskNamesArrayFromB_min = convertToNames(id_min_tasks_from_B);
-    //Prueba para mostrar los nombres de las tareas junto con los pools en lugar de los id
+
     while(id_max_tasks_from_A[cont] !== undefined || id_max_tasks_from_B[cont] !== undefined ){
         //id_max_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_max_tasks_from_A[cont] + "</b> tiene un mayor parecido con la tarea del diagrama <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> con un valor de " + maxTaskFromAValuesArray[cont]);
         //id_max_similitudes.push("The task in diagram <b>A</b> with id <b>" + id_max_tasks_from_A[cont] + "</b> has a greater similarity with the task in diagram <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> with a value of <b>" + maxTaskFromAValuesArray[cont] + "</b>");
@@ -717,8 +705,7 @@ var poolsB;
         cont++;
     }cont=0;
 
-    // HASTA AQUI
-    // INICIO ORIGINAL
+    
     //cont2=0;
     /*while(id_max_tasks_from_A[cont] !== undefined || id_max_tasks_from_B[cont] !== undefined ){
         //id_max_similitudes.push("La tarea del diagrama <b>A</b> con id <b>" + id_max_tasks_from_A[cont] + "</b> tiene un mayor parecido con la tarea del diagrama <b>B</b> <b>" + id_max_tasks_from_B[cont] + "</b> con un valor de " + maxTaskFromAValuesArray[cont]);
@@ -731,14 +718,13 @@ var poolsB;
         cont++;
     }cont=0;
     */
-    // FIN ORIGINAL
 
     let maxTotalSimilarity = checkTotalSimilarity(maxTaskFromAValuesArray);
     let minTotalSimilarity = checkTotalSimilarity(minTaskFromAValuesArray);
     
     /*
-    Al descomentar las 2 lineas de abajo, se descargan 2 csv con las maximas y minimas similitudes
-    de los ids de las tareas del diagrama A respecto a los del diagrama B, junto con el valor de similitud
+    By uncommenting the 2 lines below, 2 csv are downloaded with the maximum and minimum similarities 
+    of the ids of the tasks in diagram A with respect to those in diagram B, together with the similarity value.
     */
     //writeArrayToCSV('id_max_similitudes.csv', id_max_similitudes);
     //writeArrayToCSV('id_min_similitudes.csv', id_min_similitudes);
@@ -756,9 +742,9 @@ var poolsB;
     }
 
 
-    // Obtener una referencia al elemento canvas del DOM
+    // Get a reference to the DOM canvas element
     const $chart = document.querySelector("#chart");
-    // Las etiquetas son las que van en el eje X. 
+    // The labels are those that go on the X-axis
     const tags = ["Average similarity between diagramas"]
     
     var maxSimData = {
@@ -766,21 +752,21 @@ var poolsB;
         data: [maxTotalSimilarity],
         backgroundColor: 'rgba(220, 250, 205, 1)',
         borderColor: 'rgba(75, 255, 10, 1)',
-        borderWidth: 2 // Ancho del borde
+        borderWidth: 2 // Edge width
     };
     var minSimData = {
         label: 'Minimum similarity',
         data: [minTotalSimilarity],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 2 // Ancho del borde
+        borderWidth: 2 // Edge width
     };
     var chartDiagramsData = {
         labels: ["Maximum similarity", "Minimum similarity"],
         datasets: [maxSimData, minSimData]
     };
     new Chart($chart, {
-        type: 'bar', // Gráfica de barras
+        type: 'bar', // Bar plot
         data: {
             labels: tags,
             datasets: [
@@ -803,37 +789,37 @@ var poolsB;
 
 
 // ###########################################################################################
-// ######################################## FUNCIONES ########################################
+// ######################################## FUNTIONS ########################################
 // ###########################################################################################
 
-//Función para leer un archivo CSV y obtener un array con los nombres de las tareas
+// Function to read a CSV file and obtain an array of task names
 async function getTaskNames(fileUrl) {
-    // Obtiene el contenido del archivo CSV
+    // Gets the content of the CSV file
     const response = await fetch(fileUrl);
     const csvString = await response.text();
     
-    // Divide el contenido del archivo en líneas
+    // Splits the contents of the file into lines
     const lines = csvString.split('\n');
     
-    // Divide cada línea en una matriz de valores y extrae el primer valor (nombre de la tarea)
+    // Splits each line into an array of values and extracts the first value (task name)
     const taskNames = lines.map(line => line.split(',')[0]);
     
     return taskNames;
 }
 
-//Esta función recibe un array con los nombres de las tareas
-//Devuelve un array con los id de las tareas siendo el nombre de la tarea convertido a camelCase
-//Si aparece una misma tarea mas de una vez, se agrega un numero al final indicando la ocurrencia 
+// This function receives an array with the task names
+// Returns an array with the task ids being the task name converted to camelCase
+// If the same task appears more than once, a number is added at the end indicating the occurrence
 function convertToCamelCase(strings) {
-    // Crea un objeto para contar las ocurrencias de cada cadena
+    // Creates an object to count the occurrences of each string
     const counters = {};
     
-    // Convierte cada cadena en un array de palabras y aplica la función de transformación
+    // Convert each string to an array of words and apply the transformation function
     const camelCased = strings.map(str => {
-        // Divide la cadena en palabras
+        // Splits the string into words
         const words = str.split(' ');
         
-        // Convierte la primera palabra a minúsculas y las demás a mayúsculas
+        // Convert the first word to lowercase and the rest to uppercase
         const camelCased = words.map((word, index) => {
             if (index === 0) {
                 return word.toLowerCase();
@@ -841,7 +827,7 @@ function convertToCamelCase(strings) {
             return word[0].toUpperCase() + word.slice(1).toLowerCase();
         });
         
-        // Une las palabras en una cadena y añade un sufijo si se ha repetido la cadena
+        // Joins words in a string and adds a suffix if the string has been repeated
         const result = camelCased.join('');
         if (counters[result]) {
             counters[result] += 1;
@@ -854,9 +840,9 @@ function convertToCamelCase(strings) {
     return camelCased;
 }
 
-//This function receives a string or an array of strings and returns an array of strings
-//The strings are converted to normal names
-//Use this to convert the ids of the tasks to the task names
+// This function receives a string or an array of strings and returns an array of strings
+// The strings are converted to normal names
+// Use this function to convert the ids of the tasks to the task names
 function convertToNames(inputStr){
     
     if(typeof inputStr === 'string'){
@@ -865,9 +851,9 @@ function convertToNames(inputStr){
     let transformed = [];
 
     for(let string of inputStr){
-        //Remove the numbers at the end of the string
+        // Remove the numbers at the end of the string
         string = string.replace(/[0-9]+$/g, '');
-        //Put the first letter in lowercase and split words
+        // Put the first letter in lowercase and split words
         let words = [string[0].toLowerCase()];
 
         for(let i = 1; i < string.length; i++){
@@ -881,7 +867,7 @@ function convertToNames(inputStr){
                 words[words.length - 1] += string[i].toLowerCase();
             }
         }
-        //Put the first letter in uppercase
+        // Put the first letter in uppercase
         words = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
         transformed.push(words.join(' ').replace(/ -/g, '-'));
     }
@@ -889,14 +875,14 @@ function convertToNames(inputStr){
 }
 
 function writeArrayToCSV(fileName, array) {
-    // Comprueba que el navegador soporta la API de archivos
+    // Check if the browser supports file API
     if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
         alert('Your browser does not support the File API');
         return;
     }
     
-    // Crea un archivo Blob con los datos del array
-    const data = array.join('\n');  // une los elementos del array con saltos de línea
+    // Creates a blob file with array data
+    const data = array.join('\n');  // joins array elements with line break
     const blob = new Blob([data], { type: 'text/csv' });
     
     // Descarga el archivo
@@ -908,6 +894,7 @@ function writeArrayToCSV(fileName, array) {
     
 }
 
+// Calculates the total similarity from an array of values
 function checkTotalSimilarity(values) {
     let accumulator = 0;
     let length = values.length;
