@@ -1,13 +1,13 @@
-// Función para leer un archivo CSV y obtener un array con los nombres de las tareas
+// Function to read a CSV file and obtain an array of task names
 async function getTaskNames(fileUrl) {
-    // Obtiene el contenido del archivo CSV
+    // Gets the content of the CSV file
     const response = await fetch(fileUrl);
     const csvString = await response.text();
     
-    // Divide el contenido del archivo en líneas
+    // Splits the contents of the file into lines
     const lines = csvString.split('\n');
     
-    // Divide cada línea en una matriz de valores y extrae el primer valor (nombre de la tarea)
+    // Splits each line into an array of values and extracts the first value (task name)
     const taskNames = lines.map(line => line.split(',')[0]);
     
     return taskNames;

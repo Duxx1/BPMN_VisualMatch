@@ -1,31 +1,31 @@
-// Función para leer un archivo CSV y obtener una matriz de valores
+// Function to read a CSV file and get an array of values
 export async function readMatrixFromCsv(fileUrl) {
-    // Obtiene el contenido del archivo CSV
+    // Gets the content of the CSV file
     const response = await fetch(fileUrl);
     const csvString = await response.text();
     
-    //Elimina los caracteres de retorno de carro
+    // Removes carriage return characters
     const cleanCsvString = csvString.replace(/\r/g, "");
 
-    // Divide el contenido del archivo en líneas
+    // Splits the contents of the file into lines
     const lines = cleanCsvString.split('\n');
     
-    // Divide cada línea en una matriz de valores y almacena los valores en una matriz
+    // Divides each line into an array of values and stores the values in an array
     const values = lines.map(line => line.split(','));
     
     return values;
 }
 
-//Función para leer un archivo CSV y obtener un array con los nombres de las tareas
+// Function to read a CSV file and obtain an array of task names
 export async function getTaskNamesFromCsv(fileUrl) {
-    // Obtiene el contenido del archivo CSV
+    // Gets the content of the CSV file
     const response = await fetch(fileUrl);
     const csvString = await response.text();
     
-    // Divide el contenido del archivo en líneas
+    // Splits the contents of the file into lines
     const lines = csvString.split('\n');
     
-    // Divide cada línea en una matriz de valores y extrae el primer valor (nombre de la tarea)
+    // Splits each line into an array of values and extracts the first value (task name)
     const taskNames = lines.map(line => line.split(',')[0]);
     
     return taskNames;

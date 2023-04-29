@@ -1,13 +1,13 @@
 import { BpmnVisualization, FitType} from 'bpmn-visualization';
 
-// Variable para almacenar el diagramC de la parte izquierda de la pantalla 
+// Variable to store the diagram of the left part of the screen
 const bpmnVisualization = new BpmnVisualization({
     container: 'marco',
     navigation: { enabled: true },
     fit: { type: FitType.Center }
 });
 
-// just for displaying my title and version of the tool
+// Just for displaying my title and version of the tool
 const footer = document.querySelector('footer');
 const version = bpmnVisualization.getVersion();
 footer.innerText = `TFG-tool-version-${version.lib}`;
@@ -57,7 +57,7 @@ if (diagramC != undefined && diagramC != null){
             diagram1Raw = await diagram1.text();
     }
 } else{
-    //Carga de diagrama por defecto
+    // Default diagram loading
     if(diagram1 === null || diagram1 === undefined){
         diagram1 = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-getpaper.bpmn');
         diagram1Raw = await diagram1.text();
@@ -65,7 +65,7 @@ if (diagramC != undefined && diagramC != null){
     }
 }
 
-//Carga del diagrama
+// Loading diagram
 bpmnVisualization.load(diagram1Raw, {
     fit: { type: FitType.Horizontal }
 });

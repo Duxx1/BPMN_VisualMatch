@@ -14,7 +14,6 @@ input2.addEventListener('change', () => {
     localStorage.setItem("diagramB", fileNameDisplay2.textContent);
 });
 
-//
 const input3 = document.querySelector('#bpmnFile3');
 const fileNameDisplay3 = document.querySelector('#fileName3');
 
@@ -22,7 +21,6 @@ input3.addEventListener('change', () => {
     fileNameDisplay3.textContent = input3.files[0].name;
     localStorage.setItem("diagramC", fileNameDisplay3.textContent);
 });
-//
 
 const send = document.querySelector('#send');
 send.addEventListener('click', () => {
@@ -59,7 +57,7 @@ const min_sp = document.querySelector("#min_sp");
 const max = document.querySelector("#max");
 const max_sp = document.querySelector("#max_sp");
 
-// valores de selected: min = 1 # min_sp = 2 # max = 3 # max_sp = 4
+// values of selected: min = 1 # min_sp = 2 # max = 3 # max_sp = 4
 
 min.addEventListener("change", () => {
     localStorage.setItem("selected", 1);

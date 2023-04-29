@@ -1,24 +1,24 @@
-//De momento no se usa
+// It is not used at the moment
 function processBPMNFile(file) {
-    // Expresión regular para buscar las tareas
+    // Regular expression to search for tasks
     const regexTask = /<(.*?)Task.*?name="(.*?)".*?id="(.*?)"/g;
     let modifiedFile = file;
     
-    // Crear un mapa para almacenar los nombres de tareas y su número de aparición
+    // Create a map for storing task names and their occurrence number
     let taskNames = new Map();
     
-    // Aplicar la expresión regular al archivo y buscar todas las tareas
+    // Apply regular expression to the file and search for all tasks
     while (regexTask.exec(file) !== null) {
         let taskType = match[1];
         let taskName = match[2];
         let taskId = match[3];
         
-        // Convertir el nombre de la tarea a camel case
+        // Convert the task name to camel case
         taskName = taskName.replace(/\s+(.)/g, function($1) { return $1.toUpperCase(); });
         taskName = taskName.replace(/\s/g, '');
         taskName = taskName[0].toLowerCase() + taskName.slice(1);
         
-        // Si ya se ha encontrado una tarea con este nombre, añadirle un número al final
+        // If a task with this name has already been found, add a number to the end of it
         if (taskNames.has(taskName)) {
             let count = taskNames.get(taskName);
             taskNames.set(taskName, count + 1);
@@ -29,24 +29,24 @@ function processBPMNFile(file) {
         
         names.push(taskName);
         
-        // Reemplazar el id de la tarea por el nombre convertido a camel case
+        // Replace the task id with the name converted to camel case
         modifiedFile = modifiedFile.replace(`<${taskType}Task.*?name="${taskName}" id="${taskId}"`, `<${taskType}Task.*?name="${taskName}" id="${taskName}"`);
     }
     
-    // Devolver el archivo modificado
+    // Return the modified file
     return modifiedFile;
 }
 
-//Esta función recibe el texto raw de un archivo .bpmn y lo parsea
-//Devuelve un archivo .bpmn raw con los id de las tareas ya puestos a partir de los nombres
+// This function receives the raw text from a .bpmn file and parses it
+// Returns a raw .bpmn file with the task ids already set from the task names
 function modifyBpmnFile(file) {
-    // Expresión regular para buscar tareas
+    // Regular expression to search for tasks
     let regexTask = /Task[\s\S]*?id="([\s\S]*?)"[\s\S]*?name="([\s\S]*?)"/g;
     let modifiedFile = file;
     let taskNames = new Map();
     let match;
     
-    // Buscar tareas en el archivo
+    // Search for tasks in the file
     while ((match = regexTask.exec(file)) !== null) {
         
         let taskName = "";
@@ -58,8 +58,7 @@ function modifyBpmnFile(file) {
             taskName = match[1];
         }
         
-        // Si ya se ha encontrado una tarea con este nombre, añadirle un número al final
-        //original
+        // If a task with this name has already been found, add a number to the end of it
         
         if (taskNames.has(taskName)) {
             let count = taskNames.get(taskName);
@@ -68,7 +67,7 @@ function modifyBpmnFile(file) {
         } else {
             taskNames.set(taskName, 2);
         }
-        // Reemplazar el id de la tarea con el nombre convertido a camel case
+        // Replace the task id with the name converted to camel case
         let modifiedId = taskName;
         let idRegex = new RegExp(match[1], "g");
 
@@ -77,23 +76,23 @@ function modifyBpmnFile(file) {
     return modifiedFile;
 }
 
-//De momento no se usa
+// It is not used at the moment
 function detectar(file) {
-    // Expresión regular para buscar tareas
+    // Regular expression to search for tasks
     let regexTask = /Task[\s\S]*?id="([\s\S]*?)"[\s\S]*?name="([\s\S]*?)"/g;
     
     let modifiedFile = file;
     let taskNames = new Map();
     let match;
     
-    // Buscar tareas en el archivo
+    // Search for tasks in the file
     while ((match = regexTask.exec(file)) !== null) {
         let task=match[0];
         let taskWithId = task.replace(match[1],match[2]);
     }
 }
 
-//Para descargar el archivo tras parsearlo
+// To download the file after parsing
 const guardarArchivoDeTexto = (contenido, nombre) => {
     const a = document.createElement("a");
     const archivo = new Blob([contenido], { type: 'text/plain' });
@@ -109,16 +108,15 @@ $botonDescargar.onclick = () => {
     guardarArchivoDeTexto(modifiedFile, "archivo2.bpmn");
 }
 
-//Se usa en la función modifyBpmnFile para llevar a cabo el parseo de name a id
+// Used in the modifyBpmnFile function to perform name to id parsing
 function convertirACamelCase(cadenas) {
-    // Crea un objeto para contar las ocurrencias de cada cadena
+    // Creates an object to count the occurrences of each string
     const contadores = {};
     
-    
-    // Divide la cadena en palabras
+    // Divides the string into words
     const palabras = cadenas.split(' ');
     
-    // Convierte la primera palabra a minúsculas y las demás a mayúsculas
+    // Convert the first word to lowercase and the rest to uppercase
     const camelCased = palabras.map((palabra, index) => {
         if (index === 0) {
             return palabra.toLowerCase();
@@ -126,7 +124,7 @@ function convertirACamelCase(cadenas) {
         return palabra[0].toUpperCase() + palabra.slice(1).toLowerCase();
     });
     
-    // Une las palabras en una cadena y añade un sufijo si se ha repetido la cadena
+    // Joins the words in a string and adds a suffix if the string has been repeated
     const resultado = camelCased.join('');
     if (contadores[resultado]) {
         contadores[resultado] += 1;
@@ -136,22 +134,20 @@ function convertirACamelCase(cadenas) {
     return resultado;
 }
 
-// El objeto FileReader te permite leer los archivos en el directorio y utilizar su contenido como desees.
+// The FileReader object allows you to read the files in the directory and use their contents as you wish
 
 let input = document.getElementById("file-input");
 let unprocessedFiles = [];
-//let firstPart = 'http://localhost:5173/src/bpmn_diagrams/';
-let firstPart = 'http://localhost:5173/src/unparsed/';
+let firstPart = 'http://localhost:5173/src/bpmn_diagrams/';
 let fullPart= '';
-//const file = await fetch('http://localhost:5173/src/bpmn_diagrams/crs-update-conference-old.bpmn');
 //const rawFile = await file.text();
 //guardarArchivoDeTexto(modifiedFile, "archivo2.bpmn");
 
 
-//iterar sobre la lista de archivos bpmn de la carpeta subida y aplica el parseo a cada uno
+// Iterate over the list of bpmn files in the uploaded folder and apply parsing to each file
 input.addEventListener("change", function(e) {
     let files = e.target.files;
-    // files es una lista de objetos File, representando cada archivo en el directorio seleccionado
+    // files is a list of File objects, representing each file in the selected directory
     for (let i = 0; i < files.length; i++) {
         let file = files[i];
         unprocessedFiles.push(file.name);
@@ -162,7 +158,7 @@ input.addEventListener("change", function(e) {
     
 });
 
-//Para procesar cada archivo bpmn
+// To process each bpmn file
 async function process(fullPart, fileName){
     const unprocessed = await fetch(fullPart);
     const rawUnprocessed = await unprocessed.text();
