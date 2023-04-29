@@ -604,12 +604,12 @@ var poolsB;
         
     }
     else{
-        //Se colorean las tareas del diagrama A con baja coincidencia respecto a tareas del diagrama B
+        // The tasks in diagram A with low similarity with respect to tasks in diagram B are colored
         for(cont=0; cont < id_min_tasks_from_A.length; cont++){
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_A[cont], 'low-match');
         }
 
-        //Se colorean las tareas del diagrama B con baja coincidencia respecto a tareas del diagrama A
+        // The tasks in diagram B with low similarity with respect to tasks in diagram A are colored
         for(cont=0; cont < id_min_tasks_from_B.length; cont++){
             bpmnVisualization2.bpmnElementsRegistry.addCssClasses(id_min_tasks_from_B[cont], 'low-match');
         }
