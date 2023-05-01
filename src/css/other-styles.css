@@ -1,4 +1,4 @@
-/* Estilo general de la barra de navegación */
+/* General style for the navigation bar */
 nav {
     background-color: #333;
     display: flex;
@@ -7,7 +7,7 @@ nav {
     padding: 10px;
 }
 
-/* Estilo de los enlaces en la barra de navegación */
+/* Style of links in the navigation bar */
 nav a {
     color: white;
     text-decoration: none;
@@ -17,40 +17,41 @@ nav a {
     transition: background-color 0.3s ease;
 }
 
+/* Style when the mouse is over the link */
 nav a:hover {
     color: red;
 }
 
-/* Estilo para las tareas de los diagramas con alta coincidencia */
+/* Style for high-matching diagram tasks */
 .high-match > rect {
     fill: rgb(23, 255, 23);
 }
 
-  /* Estilo para las tareas de los diagramas con media coincidencia */
+/* Style for diagram tasks with medium matching */
 .medium-match > rect {
     fill: rgb(228, 253, 1);
 }
 
-  /* Estilo para las tareas de los diagramas con baja coincidencia */
+/* Style for low-matching diagram tasks */
 .low-match > rect {
     fill: rgb(250, 5, 5);
     /*animation: palpitate 3s infinite;*/
 }
 
-/* Estilo para la imagen con el logo de la aplicacion */
+/* Style for the image with the tool logo */
 #logo {
     max-width: 100px;
     text-align: left;
     align-self: flex-start;
 }
 
-/* Estilo del enlace activo */
+/* Active link style */
 #current-page {
     background-color: white;
     color: #333;
 }
 
-/* Estilo del título de la página */
+/* Page title style */
 #titulo {
     font-size: 24px;
     font-weight: bold;
@@ -59,7 +60,7 @@ nav a:hover {
     color: white;
 }
 
-/* Estilo del contenedor de las cajas */
+/* Box container style */
 .boxes {
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +69,7 @@ nav a:hover {
     height: 50vh;
 }
 
-/* Estilo de cada cuadrado */
+/* Style of each box */
 .square {
     width: 300px;
     height: 300px;
@@ -81,7 +82,7 @@ nav a:hover {
     position: relative;
 }
 
-/* Estilo del enlace dentro del cuadrado */
+/* Link style inside the square */
 .square a {
     color: #fff;
     font-size: 24px;
@@ -94,12 +95,12 @@ nav a:hover {
     padding: 10px;
 }
 
-/* Estilo para cuando se mantiene el raton sobre el enlace dentro del cuadrado */
+/* Style for when mouse is held over the link inside the square */
 .square a:hover {
     background-color: darkblue;
 }
 
-/* Estilo del contenedor principal */
+/* Main container style */
 .visualizar {
     display: flex;
     justify-content: space-between;
@@ -111,6 +112,7 @@ nav a:hover {
     height: 75vh;
 }
 
+/* Style of the frame to display only one diagram at View */
 #marco {
     box-sizing: border-box;
     background-color: #e2e1e1;
@@ -119,6 +121,7 @@ nav a:hover {
     border-color: black;
 }
 
+/* Style for viewing */
 #view{
     color: black;
     text-decoration: none;
@@ -129,17 +132,17 @@ nav a:hover {
     background-color: rgb(197, 245, 197);
 }
 
-/* Estilo de la parte izquierda del contenedor principal */
+/* Style of the left side of the main container */
 #parte-izquierda {
     flex-basis: 60%;
 }
 
-/* Estilo de la parte derecha del contenedor principal */
+/* Style of the right side of the main container */
 #parte-derecha {
     flex-basis: 40%;
 }
 
-/* Estilo del pie de página */
+/* Footer style */
 footer {
     margin-top: 20px;
     text-align: center;
@@ -147,15 +150,15 @@ footer {
     color: #666;
 }
 
-/* Estilo de la clase contenedor */
-.contenedor {
+/* Style for the container of the two bpmn diagramas */
+.container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
 }
 
-/* Estilo del primer div dentro de la clase contenedor */
+/* Style of the first div inside the container class */
 #parte-izquierda {
     flex-basis: 100%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
     /* flex-basis: 50%; */
@@ -163,7 +166,7 @@ footer {
     background-color: #f2f2f2;
 }
 
-/* Estilo del segundo div dentro de la clase contenedor */
+/* Style of the second div inside the container class */
 #parte-derecha {
     flex-basis: 100%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
     /* flex-basis: 50%; */
@@ -171,7 +174,7 @@ footer {
     background-color: #e6e6e6;
 }
 
-/* Estilo del grafico de barras */
+/* Bar graph style */
 #info-chart {
     width: 50%;
     height: 50%;
