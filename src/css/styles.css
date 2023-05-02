@@ -150,7 +150,7 @@ nav a:hover {
 }
 
 /* Style to align the steps to be followed */
-#pasos {
+.steps {
   text-align: left;
 }
 
@@ -160,7 +160,7 @@ li {
 }
 
 /* Style for buttons */
-#botones {
+#buttons {
   display: flex;
   justify-content: space-around;
 }
