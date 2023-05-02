@@ -48,16 +48,16 @@
             <p>A continuación, se presenta un resumen de los pasos a seguir para utilizar la herramienta.</p>
             <p>Si desea realizar una visualización de un diagrama sin ningún tipo de comparativa, haga lo siguiente:</p>
             <ol>
-                <li>Diríjase a la página de "Select Diagrams".</li>
+                <li>Diríjase a la página de "Select diagrams".</li>
                 <li>Seleccione el archivo del diagrama desde la carpeta <b>bpmn_diagrams</b> del proyecto, en la sección indicada.</li>
                 <li>Pulse sobre el botón "VIEW DIAGRAM".</li>
             </ol>
             <p>Si lo que desea es visualizar la comparativa entre dos diagramas, los pasos a seguir son los siguientes:</p>
             <ol id="pasos">
-                <li>Diríjase a la página de "Select Diagrams".</li>
+                <li>Diríjase a la página de "Select diagrams".</li>
                 <li>Escoja entre las combinaciones de diagramas bpmn mencionadas anteriormente desde la carpeta <b>bpmn_diagrams</b>.</li>
                 <li>Seleccione una opción de comparación tras haber escogido los diagramas.</li>
-                <li>Pulse el botón de "OK" si está seguro de su elección. En caso contrario, pulse sobre "Limpiar" y vuelva al paso 2.</li>
+                <li>Pulse el botón de "OK" si está seguro de su elección. En caso contrario, pulse sobre "Clear" y vuelva al paso 2.</li>
                 <li>Una vez pulsado sobre "OK", diríjase a la página "Compare" para ver el resultado.</li>
             </ol>
             <hr>
@@ -65,30 +65,30 @@
             <p>A continuación, se expresa el significado de cada una de las cuatro opciones de comparativa soportadas por la herramienta:</p>
             <ul id="pasos">
                 <li>
-                    <b>Mínimo.</b> 
+                    <b>Minimum.</b> 
                     Realiza una comparativa gráfica para cada tarea del diagrama A respecto con cada tarea del diagrama B, obteniendo la mínima coincidencia en cada caso.
                     <br>
                     Solo utiliza el color rojo para remarcar las coincidencias encontradas.
                 </li>
                 <li>
-                    <b>Mínimo especial.</b> 
-                    Igual que <i>Mínimo</i>, pero utiliza verde, amarillo y rojo para remarcar las coincidencias encontradas.
+                    <b>Special Minimum.</b> 
+                    Igual que <i>Minimum</i>, pero utiliza verde, amarillo y rojo para remarcar las coincidencias encontradas.
                     <br>
                 </li>
                 <li>
-                    <b>Máximo.</b> 
+                    <b>Maximum.</b> 
                     Realiza una comparativa gráfica para cada tarea del diagrama A respecto con cada tarea del diagrama B, obteniendo la máxima coincidencia en cada caso.
                     <br>
                     Solo utiliza el color verde para remarcar las coincidencias encontradas.
                 </li>
                 <li>
-                    <b>Máximo especial.</b>
-                    Igual que <i>Máximo</i>, pero utiliza verde, amarillo y rojo para remarcar las coincidencias encontradas.
+                    <b>Special Maximum.</b>
+                    Igual que <i>Maximum</i>, pero utiliza verde, amarillo y rojo para remarcar las coincidencias encontradas.
                     <br>
                 </li>
             </ul>
             
-            En los modos <b><i>Mínimo especial</i></b> y <b><i>Máximo especial</i></b>, los colores se pueden interpretar como se expone a continuación:
+            En los modos <b><i>Special Minimum</i></b> y <b><i>Special Maximum</i></b>, los colores se pueden interpretar como se expone a continuación:
             <ul>
                 <li>
                     <b>Verde: </b> alta coincidencia de la tarea del diagrama A respecto con la tarea del diagrama B.
@@ -101,8 +101,13 @@
                 </li>
 
             <hr>
-            <p>Se utiliza una <i>primera coincidencia</i>, es decir, si una tarea del diagrama A tiene el mismo grado de coincidencia con dos o más tareas del diagrama B, 
-                se colorea solo la primera coincidencia. Esto se hace con motivo de no sobrecargar el diagrama con colores, facilitar su lectura e interpretación.</p>
+            <p>
+                Para marcar las coincidencias, se tienen en cuenta las posiciones de las tareas en sus diagramas, así como el <i>pool</i> al que pertenecen. 
+                De este modo, cada tarea solo tendra una máxima o mínima coincidencia respecto con otra tarea del diagrama con el que se compara. 
+                <br>
+                Con ello se evita llenar el diagrama de colores, lo que puede resultar contraproducente.
+                Además, debajo de los diagramas hay un resumen textual de las máximas y mínimas coincidencias, así como una gráfica.
+            </p>
             
         </div>
         <!-- Sección en inglés -->
@@ -132,7 +137,7 @@
             <p>Below is a summary of the steps to follow in order to use the tool.</p>
             <p>If you want to visualize a diagram without any comparison, do the following:</p>
             <ol>
-                <li>Go to "Select Diagrams" page.</li>
+                <li>Go to "Select diagrams" page.</li>
                 <li>Select the the diagram file from the <b>bpmn_diagrams</b> folder of the project, in the indicated section.</li>
                 <li>Click on the "VIEW DIAGRAM" button.</li>
             </ol>
@@ -185,8 +190,15 @@
                 </li>
 
             <hr>
-            <p>A <i>first match</i> approachis is used, that is, if a task in diagram A has the same degree of coincidence with two or more tasks in diagram B, 
-                only the first match is colored. This is done in order not to overload the diagram with colors and to facilitate its reading and interpretation.</p>
+            <p>
+                To mark the matches, the positions of the tasks in their diagrams are taken into account, as well as the pool to which they belong.
+                <br>
+                In this way, each task will only have a maximum or minimum match with respect to another task in the diagram with which it is compared.
+                <br>
+                This avoids filling the diagram with colors, which can be counterproductive.
+                <br>
+                In addition, below the diagrams there is a textual summary of the maximum and minimum matches, as well as a graph.
+            </p>
         </div>
     </div>
     
