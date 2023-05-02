@@ -14,14 +14,14 @@ footer {
 }
 
 /* Style for the container of the two bpmn diagramas */
-.contenedor {
+.container {
   display: flex;
   justify-content: center;
 }
 
 /* Style for individual diagram containers */
-#parte-izquierda,
-#parte-derecha {
+#left-part,
+#right-part {
   width: 50%;
   height: 90vh;
   border-style: solid;
@@ -33,7 +33,7 @@ footer {
 }
 
 /* Style for the tool name */
-#titulo {
+#title {
   text-align: center;
   font-size: 1rem;
   font-weight: bold;

@@ -2,7 +2,7 @@ import { BpmnVisualization, FitType} from 'bpmn-visualization';
 
 // Variable to store the diagram of the left part of the screen
 const bpmnVisualization = new BpmnVisualization({
-    container: 'marco',
+    container: 'frame',
     navigation: { enabled: true },
     fit: { type: FitType.Center }
 });

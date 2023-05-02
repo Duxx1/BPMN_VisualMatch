@@ -4,12 +4,12 @@ import { readMatrixFromCsv } from '/src/js/read_csv.js';
 
 // Variable to store the diagram on the left side of the screen
 const bpmnVisualization = new BpmnVisualization({
-    container: 'parte-izquierda',
+    container: 'left-part',
     navigation: { enabled: true },
 });
 // Variable to store the diagram on the right side of the screen
 const bpmnVisualization2 = new BpmnVisualization({
-    container: 'parte-derecha',
+    container: 'right-part',
     navigation: { enabled: true },
 });
 

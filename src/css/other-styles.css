@@ -52,7 +52,7 @@ nav a:hover {
 }
 
 /* Page title style */
-#titulo {
+#title {
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
@@ -101,24 +101,25 @@ nav a:hover {
 }
 
 /* Main container style */
-.visualizar {
+.visualize {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     align-self: center;
     margin-top: 10px;
     overflow: hidden;
-    width: 90vw;
-    height: 75vh;
 }
 
 /* Style of the frame to display only one diagram at View */
-#marco {
+#frame {
     box-sizing: border-box;
     background-color: #e2e1e1;
     border-width: 4px;
     border-style: solid;
     border-color: black;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* Style for viewing */
@@ -133,12 +134,12 @@ nav a:hover {
 }
 
 /* Style of the left side of the main container */
-#parte-izquierda {
+#left-part {
     flex-basis: 60%;
 }
 
 /* Style of the right side of the main container */
-#parte-derecha {
+#right-part {
     flex-basis: 40%;
 }
 
@@ -151,7 +152,7 @@ footer {
 }
 
 /* Style for the container of the two bpmn diagramas */
-.contenedor {
+.container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -159,7 +160,7 @@ footer {
 }
 
 /* Style of the first div inside the container class */
-#parte-izquierda {
+#left-part {
     flex-basis: 100%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
     /* flex-basis: 50%; */
     box-sizing: border-box;
@@ -167,7 +168,7 @@ footer {
 }
 
 /* Style of the second div inside the container class */
-#parte-derecha {
+#right-part {
     flex-basis: 100%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
     /* flex-basis: 50%; */
     box-sizing: border-box;
