@@ -1,0 +1,184 @@
+/* General style for the navigation bar */
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Style of links in the navigation bar */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Style when the mouse is over the link */
+nav a:hover {
+    color: red;
+}
+
+/* Style for high-matching diagram tasks */
+.high-match > rect {
+    fill: rgb(23, 255, 23);
+}
+
+/* Style for diagram tasks with medium matching */
+.medium-match > rect {
+    fill: rgb(228, 253, 1);
+}
+
+/* Style for low-matching diagram tasks */
+.low-match > rect {
+    fill: rgb(250, 5, 5);
+    /*animation: palpitate 3s infinite;*/
+}
+
+/* Style for the image with the tool logo */
+#logo {
+    max-width: 100px;
+    text-align: left;
+    align-self: flex-start;
+}
+
+/* Active link style */
+#current-page {
+    background-color: white;
+    color: #333;
+}
+
+/* Page title style */
+#title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 5px;
+    color: white;
+}
+
+/* Box container style */
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Style of each box */
+.square {
+    width: 300px;
+    height: 300px;
+    background-color: #333;
+    margin: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Link style inside the square */
+.square a {
+    color: #fff;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    transition: background-color 0.3s ease-in-out;
+    background-color: rgb(84, 143, 2);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Style for when mouse is held over the link inside the square */
+.square a:hover {
+    background-color: darkblue;
+}
+
+/* Main container style */
+.visualize {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: center;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+/* Style of the frame to display only one diagram at View */
+#frame {
+    box-sizing: border-box;
+    background-color: #e2e1e1;
+    border-width: 4px;
+    border-style: solid;
+    border-color: black;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Style for viewing */
+#view{
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 3px solid black;
+    background-color: rgb(197, 245, 197);
+}
+
+/* Style of the left side of the main container */
+#left-part {
+    flex-basis: 60%;
+}
+
+/* Style of the right side of the main container */
+#right-part {
+    flex-basis: 40%;
+}
+
+/* Footer style */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Style for the container of the two bpmn diagramas */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Style of the first div inside the container class */
+#left-part {
+    flex-basis: 50%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
+    /* flex-basis: 50%; */
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}
+
+/* Style of the second div inside the container class */
+#right-part {
+    flex-basis: 50%; /* Poner a 100% si se quiere visualizar el diagrama en grande */
+    /* flex-basis: 50%; */
+    box-sizing: border-box;
+    background-color: #e6e6e6;
+}
+
+/* Bar graph style */
+#info-chart {
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    display: block;
+}

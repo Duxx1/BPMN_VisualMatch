@@ -1,0 +1,213 @@
+/* body font family style */
+body {
+  font-family: sans-serif;
+}
+
+/* Styles for the footer on index */
+footer {
+  float: right;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+  color: blue;
+}
+
+/* Style for the container of the two bpmn diagramas */
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style for individual diagram containers */
+#left-part,
+#right-part {
+  width: 50%;
+  height: 90vh;
+  border-style: solid;
+  border-color: lightslategray;
+  border-width: 4px;
+  /* The parts of the diagram outside of the container are not displayed. */
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Style for the tool name */
+#title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Styles for BPMN diagram elements */
+.bpmn-type-event > ellipse,
+.bpmn-type-activity > rect,
+.bpmn-type-gateway > path:nth-child(1) {
+  /*fill: rgb(230, 225, 225);*/
+  fill: lightgray;
+}
+
+/* Style for high-matching diagram tasks */
+.high-match > rect {
+  fill: rgb(23, 255, 23);
+}
+
+/* Style for diagram tasks with medium matching */
+.medium-match > rect {
+  fill: rgb(228, 253, 1);
+}
+
+/* Style for low-matching diagram tasks */
+.low-match > rect {
+  fill: rgb(250, 5, 5);
+  /*animation: palpitate 3s infinite;*/
+}
+
+/* Animation */
+@keyframes palpitate {
+  0% {
+    transform: scale(1.009);
+  }
+  50% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(1.009);
+  }
+}
+
+/* Styles for the navigation bar */
+nav {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Style of links in the navigation bar */
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Style when hovering over a link in the navigation bar */
+nav a:hover {
+  color: red;
+}
+
+
+/* Style for the link to the current page */
+#current-page {
+  color: red;
+}
+
+/* Container style for the info page */
+.information {
+  display: flex;
+}
+
+/* Style of the content inside the info page container */
+.info-content {
+  flex: 1;
+  padding: 20px;
+  text-align: justify;
+  background-color: rgb(240, 230, 213);
+  color: black;
+  font-family: sans-serif;
+  width: 60%;
+  margin: 10px 15px 20px 15px;
+  border: 3px dashed #00A4BD;
+}
+
+/* Style for diagram preprocessing box */
+#info-upload, #preprocess {
+  text-align: center;
+  background-color: rgb(240, 230, 213);
+  color: black;
+  font-family: sans-serif;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px dashed #00A4BD;
+}
+
+/* Style for the comparative results table */
+#results{
+  text-align: justify;
+  background-color: rgb(240, 230, 213);
+  font-family: sans-serif;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 15px;
+  border: 2px dashed #00A4BD;
+  padding: 5px;
+}
+
+/* Style to align the steps to be followed */
+.steps {
+  text-align: left;
+}
+
+/* Style for lists */
+li {
+  padding-top: 5px;
+}
+
+/* Style for buttons */
+#buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Style for other buttons */
+#back, #clean, #send {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: large;
+  color: black;
+  margin-left: 4px;
+  padding-left: 2px;
+}
+
+/* Style for the send button */
+#send {
+  color: rgb(24, 80, 235);
+}
+
+/* Style for the clean button */
+#clean {
+  color: rgb(235, 24, 24);
+}
+
+/* Style for the script button */
+.scriptbutton {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #2c8b30;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 6px #999;
+}
+
+/* Style for when the mouse is left over the script button */
+.scriptbutton:hover {background-color: #163bdf}
+
+/* Style for when the script button is active */
+.scriptbutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

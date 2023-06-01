@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TFG</title>
+    <meta charset="UTF-8" />
+    
+    <link rel="stylesheet" href="/src/css/styles.css">
+    <link rel="stylesheet" href="/src/css/other-styles.css"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+    
+    <nav>
+        <a href="/index.html"><img src="/logo.PNG" alt="logo" id="logo" /></a>
+        <a class="no-underline" href="/index.html">Home</a>
+        <a class="no-underline" id="current-page" href="">Select diagrams</a>
+        <a class="no-underline" href="/src/html/view-diagram.html">View diagram</a>
+        <a class="no-underline" href="./compare.html">Compare</a>
+        <a class="no-underline" href="./info.html">Info</a>
+    </nav>
+        
+    <div id="info-upload">
+        
+        <h1>Please select diagrams in .bpmn format.</h1>
+        <form>
+            <label for="bpmnFile1">Select a .bpmn file:</label>
+            <input type="file" id="bpmnFile1" name="bpmnFile1" accept=".bpmn">
+            <br><br>
+            
+            <label for="bpmnFile2">Select another .bpmn file:</label>
+            <input type="file" id="bpmnFile2" name="bpmnFile2" accept=".bpmn">
+            <br><br>
+            
+            <hr>
+            <p>Name of the first file uploaded: <b><span id="fileName1"></span></b></p>
+            
+            <p>Name of the second file uploaded: <b><span id="fileName2"></span></b></p>
+            <hr>
+            
+            <h2>Choose an option after selecting the diagrams</h2>
+
+            <label>
+                <input type="radio" name="group1" id="min">Minimum
+            </label>
+            
+            <label>
+                <input type="radio" name="group1" id="min_sp">Special Minimum
+            </label>
+            
+            <label>
+                <input type="radio" name="group1" id="max">Maximum
+            </label>
+            
+            <label>
+                <input type="radio" name="group1" id="max_sp">Special Maximum
+            </label>
+
+            <br><br>
+
+            <div id="buttons">
+                <button id="clean">Clear</button>
+                <button id="send" type="submit">OK</button>
+            </div>
+        
+            <hr>
+            <h2>If you just want to visualize one diagram at the View Diagram page, then just select the bpmn file here:</h2>
+            <label for="bpmnFile2">Select the .bpmn file:</label>
+            <input type="file" id="bpmnFile3" name="bpmnFile3" accept=".bpmn">
+            <p>Name of the file uploaded: <b><span id="fileName3"></span></b></p>
+            
+        </form>
+            <a id="view" href="/src/html/view-diagram.html">VIEW DIAGRAM</a>
+        <br><br>
+        
+        <hr>
+        <button>
+            <a id="back" href="/index.html">Back</a>
+        </button>
+        <br><br>
+        
+    </div>
+
+    <footer></footer>
+    
+    <script type="text/javascript" src="/src/js/obtain.js"></script>
+    
+</body>
+
+</html>

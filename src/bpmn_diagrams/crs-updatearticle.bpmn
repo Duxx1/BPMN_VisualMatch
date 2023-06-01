@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:definitions xmlns:ns0="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.signavio.com" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns5="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="Signavio Process Editor, http://www.signavio.com" exporterVersion="11.9.1" expressionLanguage="http://www.w3.org/TR/XPath" id="sid-c59d399b-e4b3-40ac-aaf3-8822eddfabec" targetNamespace="http://www.signavio.com" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
+   <ns0:dataStore capacity="0" id="sid-427957d9-d84c-4e57-96f5-ffaccacd9b5c" isUnlimited="false" name="CRS" />
+   <ns0:collaboration id="sid-8e549d3d-3121-4077-a4da-5c804c884da1">
+      <ns0:extensionElements>
+         <ns2:signavioDiagramMetaData metaKey="businessunit" metaValue="" />
+         <ns2:signavioDiagramMetaData metaKey="iso9000ff" metaValue="" />
+         <ns2:signavioDiagramMetaData metaKey="processowner" metaValue="" />
+         <ns2:signavioDiagramMetaData metaKey="processgoal" metaValue="" />
+         <ns2:signavioDiagramMetaData metaKey="soxrelevant" metaValue="" />
+         <ns2:signavioDiagramMetaData metaKey="revisionid" metaValue="9321ca92a227422c85af7fde85df4bba" />
+      </ns0:extensionElements>
+      <ns0:participant id="sid-BA3D0AFB-0A2F-41BF-A283-BA2F1CE6EE5F" name="Chair" processRef="sid-31EFA9DA-E642-46BD-9F65-17715CE71DD8">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:participant>
+      <ns0:participant id="sid-BC31CA59-222D-449E-8FB3-6E1D67B19388" name="CRS&#10;" processRef="sid-A47533A8-DEEB-4C52-B8BF-3D414129A39D">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:participant>
+      <ns0:messageFlow id="sid-0C3407AD-766A-43EA-B07A-B2D72BE6A52F" name="" sourceRef="obtain-allPaper2" targetRef="papersData">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:messageFlow>
+      <ns0:messageFlow id="sid-201409AF-0554-4CE0-9C66-B53E2A686A59" name="" sourceRef="choosePaper" targetRef="paperSelected">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:messageFlow>
+      <ns0:messageFlow id="sid-14371AB1-A1FC-4F36-AAB5-674B0E02514C" name="" sourceRef="obtainArticle" targetRef="sid-012251C4-93CA-4565-88CA-3363E7397BD6">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:messageFlow>
+      <ns0:messageFlow id="sid-342D0508-3EFF-43DA-9C8F-71C916C3693B" name="" sourceRef="sid-0250AF59-173D-4972-91DD-B435C3F2C1F8" targetRef="sid-79122305-1EB5-468D-8E83-4B0A6CF970A5">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:messageFlow>
+      <ns0:messageFlow id="sid-BCBE0491-2B83-41AE-AF77-DA8B62831CD6" name="" sourceRef="obtain-allPaper" targetRef="sid-0180192C-02BC-423B-9AA4-B2EBA78B2904">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:messageFlow>
+      <ns0:messageFlow id="sid-3B53CFD5-C29A-49A8-A1D4-958C45A9A322" name="" sourceRef="updatePaperOk2" targetRef="updatePaperOk">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:messageFlow>
+   </ns0:collaboration>
+   <ns0:process id="sid-31EFA9DA-E642-46BD-9F65-17715CE71DD8" isClosed="false" isExecutable="false" name="Chair" processType="None">
+      <ns0:extensionElements />
+      <ns0:laneSet id="sid-2a21eca2-8ab7-4dfb-b15a-53eb408a56a7">
+         <ns0:lane id="sid-B24A8DBA-29B6-4393-A041-90B0FA2A4696">
+            <ns0:extensionElements>
+               <ns2:signavioMetaData metaKey="bgcolor" metaValue="" />
+               <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            </ns0:extensionElements>
+            <ns0:flowNodeRef>obtain-allPaper</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-5CD79881-4E57-42C8-9001-BE23AA6D62D7</ns0:flowNodeRef>
+            <ns0:flowNodeRef>choosePaper</ns0:flowNodeRef>
+            <ns0:flowNodeRef>papersData</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-012251C4-93CA-4565-88CA-3363E7397BD6</ns0:flowNodeRef>
+            <ns0:flowNodeRef>mark-allConflict</ns0:flowNodeRef>
+            <ns0:flowNodeRef>assign-allReviewer</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-C10313DC-65A2-453F-A78B-267F82137331</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-892853AF-840A-476B-9FBE-BB34CFA17EDA</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-0250AF59-173D-4972-91DD-B435C3F2C1F8</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-56078692-FBB8-4D33-B764-3EDE86A84F9B</ns0:flowNodeRef>
+            <ns0:flowNodeRef>acceptPaper</ns0:flowNodeRef>
+            <ns0:flowNodeRef>rejectPaper</ns0:flowNodeRef>
+            <ns0:flowNodeRef>updatePaperOk</ns0:flowNodeRef>
+         </ns0:lane>
+      </ns0:laneSet>
+      <ns0:userTask completionQuantity="1" id="obtain-allPaper" implementation="##WebService" isForCompensation="false" name="Obtain-all paper" startQuantity="1" taskPosition="1" poolNumber="1">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-597C3864-41D0-4588-9DC2-872E7F58CC84</ns0:incoming>
+         <ns0:outgoing>sid-E41A4B1F-37C0-450A-AEC3-F40561EEF85F</ns0:outgoing>
+      </ns0:userTask>
+      <ns0:startEvent id="sid-5CD79881-4E57-42C8-9001-BE23AA6D62D7" name="">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:outgoing>sid-597C3864-41D0-4588-9DC2-872E7F58CC84</ns0:outgoing>
+      </ns0:startEvent>
+      <ns0:userTask completionQuantity="1" id="choosePaper" implementation="##WebService" isForCompensation="false" name="Choose paper" startQuantity="1" taskPosition="2" poolNumber="1">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-846CF867-3B62-4B08-A284-3290CA2681FD</ns0:incoming>
+         <ns0:outgoing>sid-2646BEE3-A7E3-4E62-81EC-E3A8088FCDFD</ns0:outgoing>
+      </ns0:userTask>
+      <ns0:intermediateCatchEvent id="papersData" name="Papers data">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="viaitsystem" metaValue="" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-E41A4B1F-37C0-450A-AEC3-F40561EEF85F</ns0:incoming>
+         <ns0:outgoing>sid-846CF867-3B62-4B08-A284-3290CA2681FD</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-edb881d6-9f11-4918-a488-5e9005a6865b" />
+      </ns0:intermediateCatchEvent>
+      <ns0:intermediateCatchEvent id="sid-012251C4-93CA-4565-88CA-3363E7397BD6" name="Paper data">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="viaitsystem" metaValue="" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-2646BEE3-A7E3-4E62-81EC-E3A8088FCDFD</ns0:incoming>
+         <ns0:outgoing>sid-005B5199-AC85-4BB6-9178-325FDFBD4A01</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-98291b50-91a8-47da-a2d1-beac29b6f66a" />
+      </ns0:intermediateCatchEvent>
+      <ns0:userTask completionQuantity="1" id="mark-allConflict" implementation="##WebService" isForCompensation="false" name="Mark-all conflict" startQuantity="1" taskPosition="3" poolNumber="1">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-1AECB2B4-1A23-4C9C-9BAD-968BAB855847</ns0:incoming>
+         <ns0:outgoing>sid-8D9C2D49-F73D-4667-850D-28A2F6C3DA7E</ns0:outgoing>
+      </ns0:userTask>
+      <ns0:userTask completionQuantity="1" id="assign-allReviewer" implementation="##WebService" isForCompensation="false" name="Assign-all reviewer" startQuantity="1" taskPosition="4" poolNumber="1">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#FFFFCC" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-04AE86CB-904F-4528-89D5-362C10337A45</ns0:incoming>
+         <ns0:outgoing>sid-757AC647-28CE-4E12-B16A-442B70A1D72C</ns0:outgoing>
+      </ns0:userTask>
+      <ns0:parallelGateway gatewayDirection="Diverging" id="sid-C10313DC-65A2-453F-A78B-267F82137331" name="">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-005B5199-AC85-4BB6-9178-325FDFBD4A01</ns0:incoming>
+         <ns0:outgoing>sid-1AECB2B4-1A23-4C9C-9BAD-968BAB855847</ns0:outgoing>
+         <ns0:outgoing>sid-04AE86CB-904F-4528-89D5-362C10337A45</ns0:outgoing>
+         <ns0:outgoing>sid-2B2CAA37-74E4-4917-BEBA-DEC2C21EE507</ns0:outgoing>
+         <ns0:outgoing>sid-19DF6467-0D62-4E02-A298-944C453C5927</ns0:outgoing>
+      </ns0:parallelGateway>
+      <ns0:parallelGateway gatewayDirection="Converging" id="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA" name="">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-8D9C2D49-F73D-4667-850D-28A2F6C3DA7E</ns0:incoming>
+         <ns0:incoming>sid-286853F6-B127-4DEC-A8BE-5B2D733AAF8F</ns0:incoming>
+         <ns0:incoming>sid-DBEFDE88-E5EB-401F-8BA7-B71081611BB1</ns0:incoming>
+         <ns0:incoming>sid-757AC647-28CE-4E12-B16A-442B70A1D72C</ns0:incoming>
+         <ns0:outgoing>sid-E619EA1C-D320-4580-BD33-2ED07A5DC109</ns0:outgoing>
+      </ns0:parallelGateway>
+      <ns0:intermediateThrowEvent id="sid-0250AF59-173D-4972-91DD-B435C3F2C1F8" name="Assign data">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-E619EA1C-D320-4580-BD33-2ED07A5DC109</ns0:incoming>
+         <ns0:outgoing>sid-3BA4FA2E-FDEB-46FE-8529-F301EC0FFCF8</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-bcde1bca-2c0a-4703-9a73-b4c87c47024e" />
+      </ns0:intermediateThrowEvent>
+      <ns0:endEvent id="sid-56078692-FBB8-4D33-B764-3EDE86A84F9B" name="">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-3D22CAAD-ADDE-4EDC-ADA2-0ECA7C0FD896</ns0:incoming>
+      </ns0:endEvent>
+      <ns0:userTask completionQuantity="1" id="acceptPaper" implementation="##WebService" isForCompensation="false" name="Accept paper" startQuantity="1" taskPosition="5" poolNumber="1">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-2B2CAA37-74E4-4917-BEBA-DEC2C21EE507</ns0:incoming>
+         <ns0:outgoing>sid-286853F6-B127-4DEC-A8BE-5B2D733AAF8F</ns0:outgoing>
+      </ns0:userTask>
+      <ns0:userTask completionQuantity="1" id="rejectPaper" implementation="##WebService" isForCompensation="false" name="Reject paper" startQuantity="1" taskPosition="6" poolNumber="1">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-19DF6467-0D62-4E02-A298-944C453C5927</ns0:incoming>
+         <ns0:outgoing>sid-DBEFDE88-E5EB-401F-8BA7-B71081611BB1</ns0:outgoing>
+      </ns0:userTask>
+      <ns0:intermediateCatchEvent id="updatePaperOk" name="Update Paper Ok">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="viaitsystem" metaValue="" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-3BA4FA2E-FDEB-46FE-8529-F301EC0FFCF8</ns0:incoming>
+         <ns0:outgoing>sid-3D22CAAD-ADDE-4EDC-ADA2-0ECA7C0FD896</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-8dc02271-534d-4c87-9835-cfde4ffe7ad9" />
+      </ns0:intermediateCatchEvent>
+      <ns0:sequenceFlow id="sid-597C3864-41D0-4588-9DC2-872E7F58CC84" name="" sourceRef="sid-5CD79881-4E57-42C8-9001-BE23AA6D62D7" targetRef="obtain-allPaper">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-E41A4B1F-37C0-450A-AEC3-F40561EEF85F" name="" sourceRef="obtain-allPaper" targetRef="papersData">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-2646BEE3-A7E3-4E62-81EC-E3A8088FCDFD" name="" sourceRef="choosePaper" targetRef="sid-012251C4-93CA-4565-88CA-3363E7397BD6">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-005B5199-AC85-4BB6-9178-325FDFBD4A01" name="" sourceRef="sid-012251C4-93CA-4565-88CA-3363E7397BD6" targetRef="sid-C10313DC-65A2-453F-A78B-267F82137331">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-1AECB2B4-1A23-4C9C-9BAD-968BAB855847" name="" sourceRef="sid-C10313DC-65A2-453F-A78B-267F82137331" targetRef="mark-allConflict">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-04AE86CB-904F-4528-89D5-362C10337A45" name="" sourceRef="sid-C10313DC-65A2-453F-A78B-267F82137331" targetRef="assign-allReviewer">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-8D9C2D49-F73D-4667-850D-28A2F6C3DA7E" name="" sourceRef="mark-allConflict" targetRef="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-E619EA1C-D320-4580-BD33-2ED07A5DC109" name="" sourceRef="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA" targetRef="sid-0250AF59-173D-4972-91DD-B435C3F2C1F8">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-846CF867-3B62-4B08-A284-3290CA2681FD" name="" sourceRef="papersData" targetRef="choosePaper">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-2B2CAA37-74E4-4917-BEBA-DEC2C21EE507" name="" sourceRef="sid-C10313DC-65A2-453F-A78B-267F82137331" targetRef="acceptPaper">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-286853F6-B127-4DEC-A8BE-5B2D733AAF8F" name="" sourceRef="acceptPaper" targetRef="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-19DF6467-0D62-4E02-A298-944C453C5927" name="" sourceRef="sid-C10313DC-65A2-453F-A78B-267F82137331" targetRef="rejectPaper">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-DBEFDE88-E5EB-401F-8BA7-B71081611BB1" name="" sourceRef="rejectPaper" targetRef="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-757AC647-28CE-4E12-B16A-442B70A1D72C" name="" sourceRef="assign-allReviewer" targetRef="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-3BA4FA2E-FDEB-46FE-8529-F301EC0FFCF8" name="" sourceRef="sid-0250AF59-173D-4972-91DD-B435C3F2C1F8" targetRef="updatePaperOk">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-3D22CAAD-ADDE-4EDC-ADA2-0ECA7C0FD896" name="" sourceRef="updatePaperOk" targetRef="sid-56078692-FBB8-4D33-B764-3EDE86A84F9B">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:association associationDirection="None" id="sid-88583517-7F13-4EA4-9812-6AF388D1E30B" sourceRef="choosePaper" targetRef="sid-B425C880-8896-4C9D-84C4-72EABC2D2604">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:association>
+      <ns0:textAnnotation id="sid-B425C880-8896-4C9D-84C4-72EABC2D2604" ns2:alignment="left" textFormat="text/plain">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:text>Id</ns0:text>
+      </ns0:textAnnotation>
+   </ns0:process>
+   <ns0:process id="sid-A47533A8-DEEB-4C52-B8BF-3D414129A39D" isClosed="false" isExecutable="false" name="CRS&#10;" processType="None">
+      <ns0:extensionElements />
+      <ns0:laneSet id="sid-7a5085a7-4d4a-4744-aa1a-d551169d0db4">
+         <ns0:lane id="sid-C5B4EED5-C5B0-4564-B4D8-72BDEA6C78E7">
+            <ns0:extensionElements>
+               <ns2:signavioMetaData metaKey="bgcolor" metaValue="" />
+               <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            </ns0:extensionElements>
+            <ns0:flowNodeRef>obtain-allPaper2</ns0:flowNodeRef>
+            <ns0:flowNodeRef>obtainArticle</ns0:flowNodeRef>
+            <ns0:flowNodeRef>paperSelected</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-79122305-1EB5-468D-8E83-4B0A6CF970A5</ns0:flowNodeRef>
+            <ns0:flowNodeRef>updateArticle</ns0:flowNodeRef>
+            <ns0:flowNodeRef>updatePaperOk2</ns0:flowNodeRef>
+            <ns0:flowNodeRef>sid-0180192C-02BC-423B-9AA4-B2EBA78B2904</ns0:flowNodeRef>
+         </ns0:lane>
+      </ns0:laneSet>
+      <ns0:dataObject id="sid-743e8bcb-d69d-4c5d-9f4d-dab56036e869" isCollection="false" name="Paper" />
+      <ns0:dataObject id="sid-d4df4f09-d455-4464-b8ef-ee961901af1a" isCollection="true" name="Paper" />
+      <ns0:serviceTask completionQuantity="1" id="obtain-allPaper2" implementation="##WebService" isForCompensation="false" name="Obtain-all Paper" startQuantity="1" taskPosition="7" poolNumber="2">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-E9AB4E2A-4A38-44C0-B792-099CB749A14D</ns0:incoming>
+         <ns0:outgoing>sid-B7AC771E-65C7-4A34-A230-E992D7D9DCC3</ns0:outgoing>
+         <ns0:ioSpecification id="sid-0411059c-ff26-4c64-b67d-f08ded6d47a8">
+            <ns0:dataOutput id="sid-d3cd16bc-6230-41c4-a70a-a79c309582bd" />
+            <ns0:inputSet id="sid-6a97e734-e196-4229-ac16-4f8d212ba66d" name="DefaultInputSet">
+               <ns0:outputSetRefs>sid-d0e7259c-a2e7-4867-a20e-a8d79a7d65be</ns0:outputSetRefs>
+            </ns0:inputSet>
+            <ns0:outputSet id="sid-d0e7259c-a2e7-4867-a20e-a8d79a7d65be" name="DefaultOutputSet">
+               <ns0:dataOutputRefs>sid-d3cd16bc-6230-41c4-a70a-a79c309582bd</ns0:dataOutputRefs>
+               <ns0:inputSetRefs>sid-6a97e734-e196-4229-ac16-4f8d212ba66d</ns0:inputSetRefs>
+            </ns0:outputSet>
+         </ns0:ioSpecification>
+         <ns0:dataOutputAssociation id="sid-8EDA903D-3B5B-42C8-8FC0-706916E2BD3B">
+            <ns0:extensionElements>
+               <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            </ns0:extensionElements>
+            <ns0:sourceRef>sid-d3cd16bc-6230-41c4-a70a-a79c309582bd</ns0:sourceRef>
+            <ns0:targetRef>sid-2BB03939-FA49-49BE-9200-05E4C595C9E8</ns0:targetRef>
+         </ns0:dataOutputAssociation>
+      </ns0:serviceTask>
+      <ns0:serviceTask completionQuantity="1" id="obtainArticle" implementation="##WebService" isForCompensation="false" name="Obtain article" startQuantity="1" taskPosition="8" poolNumber="2">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-8D28D088-7D1D-4817-8728-331426660BB7</ns0:incoming>
+         <ns0:outgoing>sid-B0350080-E0C5-48C6-8F5F-AEE7D7F3759E</ns0:outgoing>
+         <ns0:ioSpecification id="sid-b3693535-25e9-4c19-b9ef-78aef4d87fa4">
+            <ns0:dataOutput id="sid-cd902162-25d6-481c-a1c6-2cf2e9a9f9a2" />
+            <ns0:inputSet id="sid-0a32273a-386b-4341-89df-2eab5b86f73b" name="DefaultInputSet">
+               <ns0:outputSetRefs>sid-dc80e3b8-e94f-4d1c-8816-f81e690db23a</ns0:outputSetRefs>
+            </ns0:inputSet>
+            <ns0:outputSet id="sid-dc80e3b8-e94f-4d1c-8816-f81e690db23a" name="DefaultOutputSet">
+               <ns0:dataOutputRefs>sid-cd902162-25d6-481c-a1c6-2cf2e9a9f9a2</ns0:dataOutputRefs>
+               <ns0:inputSetRefs>sid-0a32273a-386b-4341-89df-2eab5b86f73b</ns0:inputSetRefs>
+            </ns0:outputSet>
+         </ns0:ioSpecification>
+         <ns0:dataOutputAssociation id="sid-85E3132C-6471-4CEC-9EF3-99353A279389">
+            <ns0:extensionElements>
+               <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            </ns0:extensionElements>
+            <ns0:sourceRef>sid-cd902162-25d6-481c-a1c6-2cf2e9a9f9a2</ns0:sourceRef>
+            <ns0:targetRef>sid-865FA040-7A3B-4979-A82B-03B3FB51CD07</ns0:targetRef>
+         </ns0:dataOutputAssociation>
+      </ns0:serviceTask>
+      <ns0:intermediateCatchEvent id="paperSelected" name="Paper selected">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="viaitsystem" metaValue="" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-B7AC771E-65C7-4A34-A230-E992D7D9DCC3</ns0:incoming>
+         <ns0:outgoing>sid-8D28D088-7D1D-4817-8728-331426660BB7</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-836d2008-d8a1-46e6-9488-6f72db5bb999" />
+      </ns0:intermediateCatchEvent>
+      <ns0:intermediateCatchEvent id="sid-79122305-1EB5-468D-8E83-4B0A6CF970A5" name="Assign data">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="viaitsystem" metaValue="" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-B0350080-E0C5-48C6-8F5F-AEE7D7F3759E</ns0:incoming>
+         <ns0:outgoing>sid-A2415147-3F20-475C-BB10-FAC16AFE52FC</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-38d2c389-2d83-4272-a914-61489c1036f7" />
+      </ns0:intermediateCatchEvent>
+      <ns0:serviceTask completionQuantity="1" id="updateArticle" implementation="##WebService" isForCompensation="false" name="Update article" startQuantity="1" taskPosition="9" poolNumber="2">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="risklevel" metaValue="" />
+            <ns2:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-A2415147-3F20-475C-BB10-FAC16AFE52FC</ns0:incoming>
+         <ns0:outgoing>sid-0DD2B48A-38A8-4F16-9DB6-7904EFB5B75D</ns0:outgoing>
+         <ns0:ioSpecification id="sid-d5f1032d-adef-433d-91ac-f2477f7934bb">
+            <ns0:dataOutput id="sid-075554a4-b00b-4450-bfac-3c68c1d60ded" />
+            <ns0:inputSet id="sid-df8ecafb-407e-4592-a793-9c797f0c9272" name="DefaultInputSet">
+               <ns0:outputSetRefs>sid-ba835317-f18f-478c-bd24-11dcf7220888</ns0:outputSetRefs>
+            </ns0:inputSet>
+            <ns0:outputSet id="sid-ba835317-f18f-478c-bd24-11dcf7220888" name="DefaultOutputSet">
+               <ns0:dataOutputRefs>sid-075554a4-b00b-4450-bfac-3c68c1d60ded</ns0:dataOutputRefs>
+               <ns0:inputSetRefs>sid-df8ecafb-407e-4592-a793-9c797f0c9272</ns0:inputSetRefs>
+            </ns0:outputSet>
+         </ns0:ioSpecification>
+         <ns0:dataOutputAssociation id="sid-D2B741BB-4820-4621-88F3-6D4EEFD33CC4">
+            <ns0:extensionElements>
+               <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            </ns0:extensionElements>
+            <ns0:sourceRef>sid-075554a4-b00b-4450-bfac-3c68c1d60ded</ns0:sourceRef>
+            <ns0:targetRef>sid-60A57A11-1A51-4A56-9E61-0E523C7BF7F2</ns0:targetRef>
+         </ns0:dataOutputAssociation>
+      </ns0:serviceTask>
+      <ns0:endEvent id="updatePaperOk2" name="Update Paper Ok">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:incoming>sid-0DD2B48A-38A8-4F16-9DB6-7904EFB5B75D</ns0:incoming>
+         <ns0:messageEventDefinition id="sid-d1eeb175-bc24-4e30-bdc6-9d3b3dd73853" />
+      </ns0:endEvent>
+      <ns0:startEvent id="sid-0180192C-02BC-423B-9AA4-B2EBA78B2904" isInterrupting="true" name="Obtain papers">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+            <ns2:signavioMetaData metaKey="viaitsystem" metaValue="" />
+         </ns0:extensionElements>
+         <ns0:outgoing>sid-E9AB4E2A-4A38-44C0-B792-099CB749A14D</ns0:outgoing>
+         <ns0:messageEventDefinition id="sid-7638a733-4997-4065-9dd4-13bbc9595781" />
+      </ns0:startEvent>
+      <ns0:sequenceFlow id="sid-8D28D088-7D1D-4817-8728-331426660BB7" name="" sourceRef="paperSelected" targetRef="obtainArticle">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-B7AC771E-65C7-4A34-A230-E992D7D9DCC3" name="" sourceRef="obtain-allPaper2" targetRef="paperSelected">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-B0350080-E0C5-48C6-8F5F-AEE7D7F3759E" name="" sourceRef="obtainArticle" targetRef="sid-79122305-1EB5-468D-8E83-4B0A6CF970A5">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-A2415147-3F20-475C-BB10-FAC16AFE52FC" name="" sourceRef="sid-79122305-1EB5-468D-8E83-4B0A6CF970A5" targetRef="updateArticle">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-E9AB4E2A-4A38-44C0-B792-099CB749A14D" name="" sourceRef="sid-0180192C-02BC-423B-9AA4-B2EBA78B2904" targetRef="obtain-allPaper2">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:sequenceFlow id="sid-0DD2B48A-38A8-4F16-9DB6-7904EFB5B75D" name="" sourceRef="updateArticle" targetRef="updatePaperOk2">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:sequenceFlow>
+      <ns0:dataStoreReference dataStoreRef="sid-427957d9-d84c-4e57-96f5-ffaccacd9b5c" id="sid-13BF8792-6CF9-4A7F-BFA0-944AB4470B0D" name="CRS">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:dataStoreReference>
+      <ns0:dataObjectReference dataObjectRef="sid-743e8bcb-d69d-4c5d-9f4d-dab56036e869" id="sid-865FA040-7A3B-4979-A82B-03B3FB51CD07" name="Paper">
+         <ns0:documentation id="sid-183abd1e-4587-4d2e-afb5-77d0a32a6041">Id
+long
+Title
+string
+Abstract
+string
+FileLocalPath
+string
+FinalStatus
+string</ns0:documentation>
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:dataObjectReference>
+      <ns0:dataObjectReference dataObjectRef="sid-743e8bcb-d69d-4c5d-9f4d-dab56036e869" id="sid-60A57A11-1A51-4A56-9E61-0E523C7BF7F2" name="Paper">
+         <ns0:documentation id="sid-981ca84c-1990-4248-b1c8-c337e2a83ada">Id
+long
+Title
+string
+Abstract
+string
+FileLocalPath
+string
+FinalStatus
+string</ns0:documentation>
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:dataObjectReference>
+      <ns0:dataStoreReference dataStoreRef="sid-427957d9-d84c-4e57-96f5-ffaccacd9b5c" id="sid-214033D1-BBCE-42CC-9E7A-97BAC70A24BF" name="CRS">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:dataStoreReference>
+      <ns0:dataObjectReference dataObjectRef="sid-d4df4f09-d455-4464-b8ef-ee961901af1a" id="sid-2BB03939-FA49-49BE-9200-05E4C595C9E8" name="Paper">
+         <ns0:documentation id="sid-2955de29-4184-4d91-b6d0-3074deeb1806">Id
+long
+Title
+string
+Abstract
+string
+FileLocalPath
+string
+FinalStatus
+string</ns0:documentation>
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:dataObjectReference>
+      <ns0:association associationDirection="None" id="sid-42B9F7ED-6890-44D6-A735-837E23D71355" sourceRef="sid-13BF8792-6CF9-4A7F-BFA0-944AB4470B0D" targetRef="obtain-allPaper2">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:association>
+      <ns0:association associationDirection="None" id="sid-0DFB7FB5-D16D-4F99-865F-53B21A3E9960" sourceRef="updateArticle" targetRef="sid-214033D1-BBCE-42CC-9E7A-97BAC70A24BF">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:association>
+      <ns0:association associationDirection="None" id="sid-AFE8AC09-7081-459F-A5CA-1DE0366AB73F" sourceRef="sid-3AB66429-0C13-4820-AD1B-C051CE6458E5" targetRef="updateArticle">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:association>
+      <ns0:association associationDirection="None" id="sid-73EC7DDC-AAA2-468D-9B77-319F2FA3502D" sourceRef="sid-1C544DC9-AFA5-4F19-96AC-95684EF2C83D" targetRef="obtainArticle">
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+      </ns0:association>
+      <ns0:textAnnotation id="sid-1C544DC9-AFA5-4F19-96AC-95684EF2C83D" ns2:alignment="left" textFormat="text/plain">
+         <ns0:documentation id="sid-e2477bef-4355-41ed-aaf5-c33f1d1b32c7">Id
+long</ns0:documentation>
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:text>Id</ns0:text>
+      </ns0:textAnnotation>
+      <ns0:textAnnotation id="sid-3AB66429-0C13-4820-AD1B-C051CE6458E5" ns2:alignment="left" textFormat="text/plain">
+         <ns0:documentation id="sid-cb1ae924-8476-4c46-b5a9-52bbd70539b9">Id
+long
+Title
+string
+Abstract
+string
+FileLocalPath
+string
+FinalStatus
+string</ns0:documentation>
+         <ns0:extensionElements>
+            <ns2:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+         </ns0:extensionElements>
+         <ns0:text>Id
+Title
+Abstract
+FileLocalPath
+FinalStatus</ns0:text>
+      </ns0:textAnnotation>
+   </ns0:process>
+   <ns3:BPMNDiagram id="sid-177c5726-9f07-4635-b31d-96103de29016">
+      <ns3:BPMNPlane bpmnElement="sid-8e549d3d-3121-4077-a4da-5c804c884da1" id="sid-800068e4-5d1f-44d1-b7d6-219d983d72cc">
+         <ns3:BPMNShape bpmnElement="sid-BA3D0AFB-0A2F-41BF-A283-BA2F1CE6EE5F" id="sid-BA3D0AFB-0A2F-41BF-A283-BA2F1CE6EE5F_gui" isHorizontal="true">
+            <ns4:Bounds height="264.0" width="1354.0" x="0.0" y="15.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="27.77143096923828" width="12.000000000000005" x="4.999999999999998" y="133.11428451538086" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-BC31CA59-222D-449E-8FB3-6E1D67B19388" id="sid-BC31CA59-222D-449E-8FB3-6E1D67B19388_gui" isHorizontal="true">
+            <ns4:Bounds height="179.0" width="1342.5" x="11.5" y="297.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="23.14285659790039" width="12.0" x="16.5" y="374.9285717010498" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-B24A8DBA-29B6-4393-A041-90B0FA2A4696" id="sid-B24A8DBA-29B6-4393-A041-90B0FA2A4696_gui" isHorizontal="true">
+            <ns4:Bounds height="264.0" width="1324.0" x="30.0" y="15.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="obtain-allPaper" id="obtain-allPaper_gui">
+            <ns4:Bounds height="80.0" width="100.0" x="137.0" y="72.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="86.39999389648438" x="143.8000030517578" y="104.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-5CD79881-4E57-42C8-9001-BE23AA6D62D7" id="sid-5CD79881-4E57-42C8-9001-BE23AA6D62D7_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="41.5" y="97.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="choosePaper" id="choosePaper_gui">
+            <ns4:Bounds height="80.0" width="100.0" x="382.0" y="72.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="75.5999984741211" x="394.20000076293945" y="104.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="papersData" id="papersData_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="285.0" y="97.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="58.69285583496094" x="270.65357208251953" y="129.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-012251C4-93CA-4565-88CA-3363E7397BD6" id="sid-012251C4-93CA-4565-88CA-3363E7397BD6_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="534.5" y="97.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="53.03571319580078" x="522.9821434020996" y="129.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="mark-allConflict" id="mark-allConflict_gui">
+            <ns4:Bounds height="51.0" width="100.0" x="740.0" y="21.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="83.31428527832031" x="748.3428573608398" y="38.5" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="assign-allReviewer" id="assign-allReviewer_gui">
+            <ns4:Bounds height="51.0" width="72.0" x="747.0" y="217.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="24.0" width="52.45713806152344" x="756.7714309692383" y="228.5" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-C10313DC-65A2-453F-A78B-267F82137331" id="sid-C10313DC-65A2-453F-A78B-267F82137331_gui">
+            <ns4:Bounds height="40.0" width="40.0" x="637.0" y="92.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA" id="sid-892853AF-840A-476B-9FBE-BB34CFA17EDA_gui">
+            <ns4:Bounds height="40.0" width="40.0" x="896.0" y="92.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-0250AF59-173D-4972-91DD-B435C3F2C1F8" id="sid-0250AF59-173D-4972-91DD-B435C3F2C1F8_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="1004.0" y="97.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="58.69285583496094" x="989.6535720825195" y="129.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-56078692-FBB8-4D33-B764-3EDE86A84F9B" id="sid-56078692-FBB8-4D33-B764-3EDE86A84F9B_gui">
+            <ns4:Bounds height="28.0" width="28.0" x="1308.0" y="98.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="acceptPaper" id="acceptPaper_gui">
+            <ns4:Bounds height="51.0" width="72.0" x="747.0" y="86.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="24.0" width="36.25714111328125" x="764.8714294433594" y="97.5" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="rejectPaper" id="rejectPaper_gui">
+            <ns4:Bounds height="51.0" width="72.0" x="747.0" y="151.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="24.0" width="33.94285583496094" x="766.0285720825195" y="162.5" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="updatePaperOk" id="updatePaperOk_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="1244.0" y="97.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="83.44285583496094" x="1217.2785720825195" y="129.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-B425C880-8896-4C9D-84C4-72EABC2D2604" id="sid-B425C880-8896-4C9D-84C4-72EABC2D2604_gui">
+            <ns4:Bounds height="23.0" width="42.5" x="452.0" y="197.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-C5B4EED5-C5B0-4564-B4D8-72BDEA6C78E7" id="sid-C5B4EED5-C5B0-4564-B4D8-72BDEA6C78E7_gui" isHorizontal="true">
+            <ns4:Bounds height="179.0" width="1312.5" x="41.5" y="297.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="obtain-allPaper2" id="obtain-allPaper2_gui">
+            <ns4:Bounds height="80.0" width="100.0" x="243.0" y="313.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="85.62857055664062" x="250.1857147216797" y="345.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="obtainArticle" id="obtainArticle_gui">
+            <ns4:Bounds height="80.0" width="100.0" x="527.0" y="313.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="70.97142791748047" x="541.5142860412598" y="345.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="paperSelected" id="paperSelected_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="410.0" y="338.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="71.42142486572266" x="389.2892875671387" y="370.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-79122305-1EB5-468D-8E83-4B0A6CF970A5" id="sid-79122305-1EB5-468D-8E83-4B0A6CF970A5_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="1004.0" y="338.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="58.69285583496094" x="989.6535720825195" y="370.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="updateArticle" id="updateArticle_gui">
+            <ns4:Bounds height="55.0" width="86.0" x="1088.0" y="325.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="74.05714416503906" x="1093.9714279174805" y="344.5" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="updatePaperOk2" id="updatePaperOk2_gui">
+            <ns4:Bounds height="28.0" width="28.0" x="1245.0" y="339.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="83.44285583496094" x="1217.2785720825195" y="369.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-0180192C-02BC-423B-9AA4-B2EBA78B2904" id="sid-0180192C-02BC-423B-9AA4-B2EBA78B2904_gui">
+            <ns4:Bounds height="30.0" width="30.0" x="163.0" y="338.0" />
+            <ns3:BPMNLabel labelStyle="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+               <ns4:Bounds height="11.0" width="70.00714111328125" x="142.99642944335938" y="370.0" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-13BF8792-6CF9-4A7F-BFA0-944AB4470B0D" id="sid-13BF8792-6CF9-4A7F-BFA0-944AB4470B0D_gui">
+            <ns4:Bounds height="60.173" width="62.001000000000005" x="170.999" y="400.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="23.14285659790039" x="189.50257246398925" y="465.33799743652344" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-865FA040-7A3B-4979-A82B-03B3FB51CD07" id="sid-865FA040-7A3B-4979-A82B-03B3FB51CD07_gui">
+            <ns4:Bounds height="64.173" width="49.0" x="652.0" y="405.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="30.085716247558594" x="661.4571418762207" y="429.0870018005371" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-60A57A11-1A51-4A56-9E61-0E523C7BF7F2" id="sid-60A57A11-1A51-4A56-9E61-0E523C7BF7F2_gui">
+            <ns4:Bounds height="56.173" width="49.0" x="1185.0" y="413.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="30.085716247558594" x="1194.4571418762207" y="433.08599853515625" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-214033D1-BBCE-42CC-9E7A-97BAC70A24BF" id="sid-214033D1-BBCE-42CC-9E7A-97BAC70A24BF_gui">
+            <ns4:Bounds height="60.173" width="62.000999999999976" x="898.0" y="380.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="23.14285659790039" x="916.5035724639893" y="445.33799743652344" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-2BB03939-FA49-49BE-9200-05E4C595C9E8" id="sid-2BB03939-FA49-49BE-9200-05E4C595C9E8_gui">
+            <ns4:Bounds height="69.173" width="49.0" x="349.0" y="400.0" />
+            <ns3:BPMNLabel labelStyle="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+               <ns4:Bounds height="12.0" width="30.085716247558594" x="358.4571418762207" y="426.5870018005371" />
+            </ns3:BPMNLabel>
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-1C544DC9-AFA5-4F19-96AC-95684EF2C83D" id="sid-1C544DC9-AFA5-4F19-96AC-95684EF2C83D_gui">
+            <ns4:Bounds height="23.0" width="42.5" x="485.0" y="425.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNShape bpmnElement="sid-3AB66429-0C13-4820-AD1B-C051CE6458E5" id="sid-3AB66429-0C13-4820-AD1B-C051CE6458E5_gui">
+            <ns4:Bounds height="66.0" width="100.0" x="1041.0" y="402.0" />
+         </ns3:BPMNShape>
+         <ns3:BPMNEdge bpmnElement="sid-597C3864-41D0-4588-9DC2-872E7F58CC84" id="sid-597C3864-41D0-4588-9DC2-872E7F58CC84_gui">
+            <ns5:waypoint x="71.5" y="112.0" />
+            <ns5:waypoint x="137.0" y="112.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-E41A4B1F-37C0-450A-AEC3-F40561EEF85F" id="sid-E41A4B1F-37C0-450A-AEC3-F40561EEF85F_gui">
+            <ns5:waypoint x="237.0" y="112.0" />
+            <ns5:waypoint x="285.0" y="112.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-8D28D088-7D1D-4817-8728-331426660BB7" id="sid-8D28D088-7D1D-4817-8728-331426660BB7_gui">
+            <ns5:waypoint x="440.0" y="353.0" />
+            <ns5:waypoint x="527.0" y="353.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-B7AC771E-65C7-4A34-A230-E992D7D9DCC3" id="sid-B7AC771E-65C7-4A34-A230-E992D7D9DCC3_gui">
+            <ns5:waypoint x="343.0" y="353.0" />
+            <ns5:waypoint x="410.0" y="353.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-0C3407AD-766A-43EA-B07A-B2D72BE6A52F" id="sid-0C3407AD-766A-43EA-B07A-B2D72BE6A52F_gui">
+            <ns5:waypoint x="300.0" y="313.0" />
+            <ns5:waypoint x="300.0" y="127.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-201409AF-0554-4CE0-9C66-B53E2A686A59" id="sid-201409AF-0554-4CE0-9C66-B53E2A686A59_gui">
+            <ns5:waypoint x="425.0" y="152.0" />
+            <ns5:waypoint x="425.0" y="338.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-2646BEE3-A7E3-4E62-81EC-E3A8088FCDFD" id="sid-2646BEE3-A7E3-4E62-81EC-E3A8088FCDFD_gui">
+            <ns5:waypoint x="482.0" y="112.0" />
+            <ns5:waypoint x="534.5" y="112.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-B0350080-E0C5-48C6-8F5F-AEE7D7F3759E" id="sid-B0350080-E0C5-48C6-8F5F-AEE7D7F3759E_gui">
+            <ns5:waypoint x="627.0" y="353.0" />
+            <ns5:waypoint x="1004.0" y="353.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-A2415147-3F20-475C-BB10-FAC16AFE52FC" id="sid-A2415147-3F20-475C-BB10-FAC16AFE52FC_gui">
+            <ns5:waypoint x="1034.0" y="352.9330357142857" />
+            <ns5:waypoint x="1088.0" y="352.6919642857143" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-42B9F7ED-6890-44D6-A735-837E23D71355" id="sid-42B9F7ED-6890-44D6-A735-837E23D71355_gui">
+            <ns5:waypoint x="233.0" y="403.4833990516869" />
+            <ns5:waypoint x="245.4596194970393" y="393.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-85E3132C-6471-4CEC-9EF3-99353A279389" id="sid-85E3132C-6471-4CEC-9EF3-99353A279389_gui">
+            <ns5:waypoint x="624.3322114727097" y="393.0" />
+            <ns5:waypoint x="652.0" y="416.381783919598" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-005B5199-AC85-4BB6-9178-325FDFBD4A01" id="sid-005B5199-AC85-4BB6-9178-325FDFBD4A01_gui">
+            <ns5:waypoint x="564.5" y="112.06944444444444" />
+            <ns5:waypoint x="637.0" y="112.4050925925926" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-1AECB2B4-1A23-4C9C-9BAD-968BAB855847" id="sid-1AECB2B4-1A23-4C9C-9BAD-968BAB855847_gui">
+            <ns5:waypoint x="657.5" y="92.0" />
+            <ns5:waypoint x="657.5" y="46.5" />
+            <ns5:waypoint x="740.0" y="46.5" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-04AE86CB-904F-4528-89D5-362C10337A45" id="sid-04AE86CB-904F-4528-89D5-362C10337A45_gui">
+            <ns5:waypoint x="651.0423692378585" y="132.0" />
+            <ns5:waypoint x="651.0423692378585" y="242.5" />
+            <ns5:waypoint x="747.0" y="242.5" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-8D9C2D49-F73D-4667-850D-28A2F6C3DA7E" id="sid-8D9C2D49-F73D-4667-850D-28A2F6C3DA7E_gui">
+            <ns5:waypoint x="840.0" y="46.5" />
+            <ns5:waypoint x="916.5" y="46.5" />
+            <ns5:waypoint x="916.5" y="92.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-E619EA1C-D320-4580-BD33-2ED07A5DC109" id="sid-E619EA1C-D320-4580-BD33-2ED07A5DC109_gui">
+            <ns5:waypoint x="936.0" y="112.40487804878049" />
+            <ns5:waypoint x="1004.0" y="112.07317073170732" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-14371AB1-A1FC-4F36-AAB5-674B0E02514C" id="sid-14371AB1-A1FC-4F36-AAB5-674B0E02514C_gui">
+            <ns5:waypoint x="549.5" y="313.0" />
+            <ns5:waypoint x="549.5" y="127.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-342D0508-3EFF-43DA-9C8F-71C916C3693B" id="sid-342D0508-3EFF-43DA-9C8F-71C916C3693B_gui">
+            <ns5:waypoint x="1019.0" y="127.0" />
+            <ns5:waypoint x="1019.0" y="338.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-0DFB7FB5-D16D-4F99-865F-53B21A3E9960" id="sid-0DFB7FB5-D16D-4F99-865F-53B21A3E9960_gui">
+            <ns5:waypoint x="1088.0" y="364.6983924870754" />
+            <ns5:waypoint x="960.001" y="401.00960271854444" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-D2B741BB-4820-4621-88F3-6D4EEFD33CC4" id="sid-D2B741BB-4820-4621-88F3-6D4EEFD33CC4_gui">
+            <ns5:waypoint x="1155.3688372381796" y="380.0" />
+            <ns5:waypoint x="1185.0" y="413.43848407643316" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-BCBE0491-2B83-41AE-AF77-DA8B62831CD6" id="sid-BCBE0491-2B83-41AE-AF77-DA8B62831CD6_gui">
+            <ns5:waypoint x="178.0" y="152.0" />
+            <ns5:waypoint x="178.0" y="338.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-E9AB4E2A-4A38-44C0-B792-099CB749A14D" id="sid-E9AB4E2A-4A38-44C0-B792-099CB749A14D_gui">
+            <ns5:waypoint x="193.0" y="353.0" />
+            <ns5:waypoint x="243.0" y="353.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-846CF867-3B62-4B08-A284-3290CA2681FD" id="sid-846CF867-3B62-4B08-A284-3290CA2681FD_gui">
+            <ns5:waypoint x="315.0" y="112.0" />
+            <ns5:waypoint x="382.0" y="112.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-2B2CAA37-74E4-4917-BEBA-DEC2C21EE507" id="sid-2B2CAA37-74E4-4917-BEBA-DEC2C21EE507_gui">
+            <ns5:waypoint x="677.0" y="112.34462151394422" />
+            <ns5:waypoint x="747.0" y="111.78685258964143" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-286853F6-B127-4DEC-A8BE-5B2D733AAF8F" id="sid-286853F6-B127-4DEC-A8BE-5B2D733AAF8F_gui">
+            <ns5:waypoint x="819.0" y="111.76966292134831" />
+            <ns5:waypoint x="896.0" y="112.34644194756554" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-19DF6467-0D62-4E02-A298-944C453C5927" id="sid-19DF6467-0D62-4E02-A298-944C453C5927_gui">
+            <ns5:waypoint x="657.5" y="132.0" />
+            <ns5:waypoint x="657.5" y="176.5" />
+            <ns5:waypoint x="747.0" y="176.5" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-DBEFDE88-E5EB-401F-8BA7-B71081611BB1" id="sid-DBEFDE88-E5EB-401F-8BA7-B71081611BB1_gui">
+            <ns5:waypoint x="819.0" y="176.5" />
+            <ns5:waypoint x="902.5" y="176.5" />
+            <ns5:waypoint x="902.5" y="132.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-757AC647-28CE-4E12-B16A-442B70A1D72C" id="sid-757AC647-28CE-4E12-B16A-442B70A1D72C_gui">
+            <ns5:waypoint x="819.0" y="242.5" />
+            <ns5:waypoint x="916.5" y="242.5" />
+            <ns5:waypoint x="916.5" y="132.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-88583517-7F13-4EA4-9812-6AF388D1E30B" id="sid-88583517-7F13-4EA4-9812-6AF388D1E30B_gui">
+            <ns5:waypoint x="440.7463556851312" y="152.0" />
+            <ns5:waypoint x="452.0" y="203.46666666666664" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-0DD2B48A-38A8-4F16-9DB6-7904EFB5B75D" id="sid-0DD2B48A-38A8-4F16-9DB6-7904EFB5B75D_gui">
+            <ns5:waypoint x="1174.0" y="352.66796875" />
+            <ns5:waypoint x="1245.0" y="352.9453125" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-3BA4FA2E-FDEB-46FE-8529-F301EC0FFCF8" id="sid-3BA4FA2E-FDEB-46FE-8529-F301EC0FFCF8_gui">
+            <ns5:waypoint x="1034.0" y="112.0" />
+            <ns5:waypoint x="1244.0" y="112.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-3D22CAAD-ADDE-4EDC-ADA2-0ECA7C0FD896" id="sid-3D22CAAD-ADDE-4EDC-ADA2-0ECA7C0FD896_gui">
+            <ns5:waypoint x="1274.0" y="112.0" />
+            <ns5:waypoint x="1308.0" y="112.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-3B53CFD5-C29A-49A8-A1D4-958C45A9A322" id="sid-3B53CFD5-C29A-49A8-A1D4-958C45A9A322_gui">
+            <ns5:waypoint x="1259.0" y="339.0" />
+            <ns5:waypoint x="1259.0" y="127.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-8EDA903D-3B5B-42C8-8FC0-706916E2BD3B" id="sid-8EDA903D-3B5B-42C8-8FC0-706916E2BD3B_gui">
+            <ns5:waypoint x="332.4673138325581" y="393.0" />
+            <ns5:waypoint x="349.0" y="409.7558260869565" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-AFE8AC09-7081-459F-A5CA-1DE0366AB73F" id="sid-AFE8AC09-7081-459F-A5CA-1DE0366AB73F_gui">
+            <ns5:waypoint x="1076.7317073170732" y="402.0" />
+            <ns5:waypoint x="1100.850948509485" y="380.0" />
+         </ns3:BPMNEdge>
+         <ns3:BPMNEdge bpmnElement="sid-73EC7DDC-AAA2-468D-9B77-319F2FA3502D" id="sid-73EC7DDC-AAA2-468D-9B77-319F2FA3502D_gui">
+            <ns5:waypoint x="498.0982658959538" y="425.0" />
+            <ns5:waypoint x="533.1657032755298" y="393.0" />
+         </ns3:BPMNEdge>
+      </ns3:BPMNPlane>
+      <ns3:BPMNLabelStyle id="sid-db364b49-ce29-45fc-8947-a8505f00182f">
+         <ns4:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="11.0" />
+      </ns3:BPMNLabelStyle>
+      <ns3:BPMNLabelStyle id="sid-608fff9e-17d5-4891-a174-08cda4d15e21">
+         <ns4:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="12.0" />
+      </ns3:BPMNLabelStyle>
+   </ns3:BPMNDiagram>
+</ns0:definitions>
